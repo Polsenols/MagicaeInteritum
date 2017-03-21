@@ -309,7 +309,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -870,7 +870,7 @@ ModelImporter:
       name: Run [2]
       takeName: Run [2]
       firstFrame: 0
-      lastFrame: 20.1
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

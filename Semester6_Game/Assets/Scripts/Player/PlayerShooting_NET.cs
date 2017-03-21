@@ -2,32 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShooting_NET : Photon.MonoBehaviour {
+public class PlayerShooting_NET : Photon.MonoBehaviour
+{
 
 
     private PhotonView m_PhotonView;
     public GameObject testSpawn;
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake()
+    {
         m_PhotonView = GetComponent<PhotonView>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.H))
         {
             SpawnShout();
         }
-	}
+    }
 
     void SpawnShout()
     {
-            m_PhotonView.RPC("spawnThing", PhotonTargets.All, PhotonNetwork.player.ID);       
+        Vector3 pos = transform.position;
+        m_PhotonView.RPC("spawnThing", PhotonTargets.All, PhotonNetwork.player.ID, pos);
     }
 
     [PunRPC]
-    private void spawnThing(int playerID)
+    private void spawnThing(int playerID, Vector3 spawnPos)
     {
-        Instantiate(testSpawn, transform.position, Quaternion.identity);
+        if (m_PhotonView.isMine)
+        {
+            Instantiate(testSpawn, spawnPos, Quaternion.identity);
+        }
     }
 }

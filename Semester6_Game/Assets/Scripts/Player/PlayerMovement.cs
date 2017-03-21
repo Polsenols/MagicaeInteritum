@@ -5,14 +5,15 @@ public class PlayerMovement : MonoBehaviour
 {
     private PhotonView m_PhotonView;
     private MousePositionScript mouseController;
-    public float movementSpeed = 25f;
+    private Animator anim;
+    public float movementSpeed = 15f;
     public float rotationSpeed = 10f;
     public float force = 10f;
     public float distanceToStop;
 
     private bool moving;
 
-    private float currentSpeed = 0;
+    public float currentSpeed = 0;
     private Vector3 targetPosition = Vector3.zero;
     private Quaternion targetRotation;
 
@@ -20,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDir;
     
     private Rigidbody rb;
-    private Animator anim;
 
 
     void Awake()
@@ -42,11 +42,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         currentSpeed = rb.velocity.sqrMagnitude;
-
-        #region Controls for movement
+        anim.SetFloat("m_MoveSpeed", currentSpeed);
+        #region Key pressed action
         if (Input.GetKey(KeyCode.Mouse1))
         {
             targetPosition = mouseController.getMouseWorldPoint();
@@ -54,11 +54,7 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
 
-    }
-
-    void FixedUpdate()
-    {
-        #region Movement Controls
+        #region Movement
         if (moving)
         {
             moveDir = targetPosition - transform.position;
@@ -71,11 +67,11 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        /*if (distance > 0.1f && canMove)
+        if (distance > 0.1f && moving)
         {
-            targetRotation = Quaternion.LookRotation(targetPointMovement - transform.position, Vector3.up);
+            targetRotation = Quaternion.LookRotation(targetPosition - transform.position, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-        }*/
+        }
         #endregion
 
 

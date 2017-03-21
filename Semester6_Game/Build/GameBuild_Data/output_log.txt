@@ -7,35 +7,35 @@ Direct3D:
     VRAM:     1980 MB
     Driver:   10.18.10.3574
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\Photon3Unity3D.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.038 seconds
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+- Completed reload, in  0.030 seconds
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\GameBuild_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 3.588436 ms
+UnloadTime: 1.431354 ms
 Update() was called by Unity. Scene is loaded. Let's connect to the Photon Master Server. Calling: PhotonNetwork.ConnectUsingSettings();
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 30d0 -> priority: 1 
-  Thread -> id: 138c -> priority: 1 
+  Thread -> id: 3840 -> priority: 1 
+  Thread -> id: 1564 -> priority: 1 
 OnConnectedToMaster() was called by PUN. Now this client is connected and could join a room. Calling: PhotonNetwork.JoinRandomRoom();
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
@@ -53,6 +53,29 @@ OnJoinedRoom() called by PUN. Now this client is in a room. From here on, your g
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Instantiating: Player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CharacterManager_NET.OnPhotonSerializeView (.PhotonStream stream, PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in <filename unknown>:0 
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at PhotonView.ExecuteComponentOnSerialize (UnityEngine.Component component, .PhotonStream stream, PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeComponent (UnityEngine.Component component, .PhotonStream stream, PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at PhotonView.DeserializeView (.PhotonStream stream, PhotonMessageInfo info) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnSerializeRead (System.Object[] data, .PhotonPlayer sender, Int32 networkTime, Int16 correctPrefix) [0x00000] in <filename unknown>:0 
+  at NetworkingPeer.OnEvent (ExitGames.Client.Photon.EventData photonEvent) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PeerBase.DeserializeMessageAndCallback (System.Byte[] inBuff) [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.TPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at ExitGames.Client.Photon.PhotonPeer.DispatchIncomingCommands () [0x00000] in <filename unknown>:0 
+  at PhotonHandler.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+[Singleton] Using instance already created: Main Camera
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 

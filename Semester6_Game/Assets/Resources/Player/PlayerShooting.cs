@@ -39,8 +39,7 @@ public class PlayerShooting : MonoBehaviour {
     void shoot()
     {
 
-            GameObject go = PhotonNetwork.Instantiate(projectile.name,barrelPos.position,barrelPos.rotation, 0) as GameObject;
-            go.GetComponent<Rigidbody>().AddForce(barrelPos.forward * power);
+            GameObject go = PhotonNetwork.Instantiate(projectile.name,transform.position, Quaternion.identity, 0) as GameObject;
 
     }
 }
