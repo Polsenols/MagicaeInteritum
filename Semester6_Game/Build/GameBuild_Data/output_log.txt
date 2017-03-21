@@ -1,0 +1,58 @@
+Initialize engine version: 5.5.1f1 (88d00a7498cd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 860M (ID=0x1392)
+    Vendor:   NVIDIA
+    VRAM:     1980 MB
+    Driver:   10.18.10.3574
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+- Completed reload, in  0.027 seconds
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\Semester6_Game\Build\GameBuild_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.152522 ms
+Update() was called by Unity. Scene is loaded. Let's connect to the Photon Master Server. Calling: PhotonNetwork.ConnectUsingSettings();
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 320c -> priority: 1 
+  Thread -> id: 3008 -> priority: 1 
+OnConnectedToMaster() was called by PUN. Now this client is connected and could join a room. Calling: PhotonNetwork.JoinRandomRoom();
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Operation failed: OperationResponse 225: ReturnCode: 32760 (No match found). Parameters: {}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonRandomJoinFailed() was called by PUN. No random room available, so we create one. Calling: PhotonNetwork.CreateRoom(null, new RoomOptions() {maxPlayers = 4}, null);
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnJoinedRoom() called by PUN. Now this client is in a room. From here on, your game would be running. For reference, all callbacks are listed in enum: PhotonNetworkingMessage
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Instantiating: BoxPlayer
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
