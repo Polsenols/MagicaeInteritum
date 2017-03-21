@@ -239,7 +239,9 @@
     <Compile Include="Assets\Resources\Player\PlayerController_NET.cs" />
     <Compile Include="Assets\Resources\Player\PlayerShooting.cs" />
     <Compile Include="Assets\Scripts\Player\MousePositionScript.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerHealth_NET.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerShooting_NET.cs" />
     <Compile Include="Assets\Sync.cs" />
   </ItemGroup>
   <ItemGroup>
