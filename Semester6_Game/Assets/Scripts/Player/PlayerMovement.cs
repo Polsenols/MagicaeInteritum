@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float force = 10f;
     public float distanceToStop;
 
-    private bool moving;
+    public bool moving;
 
     public float currentSpeed = 0;
     private Vector3 targetPosition = Vector3.zero;

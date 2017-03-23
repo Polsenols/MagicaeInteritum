@@ -238,8 +238,14 @@
     <Compile Include="Assets\Resources\Player\PlayerControl.cs" />
     <Compile Include="Assets\Resources\Player\PlayerController_NET.cs" />
     <Compile Include="Assets\Resources\Player\PlayerShooting.cs" />
-    <Compile Include="Assets\Scripts\Abilities\MeteorMove.cs" />
+    <Compile Include="Assets\Scripts\Abilities\AOE.cs" />
+    <Compile Include="Assets\Scripts\Abilities\Ability_Dash.cs" />
+    <Compile Include="Assets\Scripts\Abilities\Fireball.cs" />
+    <Compile Include="Assets\Scripts\Abilities\MeteorController.cs" />
+    <Compile Include="Assets\Scripts\Abilities\MeteorImpact_ NET.cs" />
     <Compile Include="Assets\Scripts\Abilities\PseudoVolumetricExplosion.cs" />
+    <Compile Include="Assets\Scripts\Camera\HealthbarUI.cs" />
+    <Compile Include="Assets\Scripts\Camera\PickName.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenEffects.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterManager_NET.cs" />
     <Compile Include="Assets\Scripts\Player\MousePositionScript.cs" />
