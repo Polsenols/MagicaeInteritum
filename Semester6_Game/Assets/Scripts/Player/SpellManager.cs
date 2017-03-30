@@ -122,7 +122,9 @@ public class SpellManager : Photon.PunBehaviour
         }
         else
         {
-            //GameObject go = (GameObject)Instantiate(Spell[spellID], transform.position, Quaternion.identity);
+            GameObject go = (GameObject)Instantiate(Spell[spellID], transform.position, Quaternion.identity);
+            go.GetComponent<SpellData>().setOwnerID(ownerID);
+            go.GetComponent<SpellMovement>().SetSpellDirection(transform.position, position);
         }
         //GameObject spell = Instantiate(Spell[spellID],)
     }

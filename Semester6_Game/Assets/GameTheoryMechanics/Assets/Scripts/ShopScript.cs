@@ -115,7 +115,7 @@ public class ShopScript : MonoBehaviour
 
     void Update()
     {
-        // Controls for entering the shop; player must click the shop to enter.
+        // Controls for entering the shop; player must press B to enter.
         if (Input.GetKeyDown(KeyCode.B) && closeEnoughToShop)
         {
             if (isCurrentlyShopping == false)

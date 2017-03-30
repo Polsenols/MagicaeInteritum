@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour {
 
+    private AOEImpact impact;
+    private LayerMask layermask;
 	// Use this for initialization
 	void Start () {
-		
+        impact = GetComponent<AOEImpact>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        transform.Translate(transform.forward * Time.deltaTime * 10);
-	}
+	void OnTriggerEnter(Collider other)
+    {
+        impact.damageNearbyEnemies(transform.position, true);
+        Destroy(this.gameObject);
+    }
 }

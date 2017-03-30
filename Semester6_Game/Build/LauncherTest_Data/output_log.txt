@@ -21,14 +21,14 @@ Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\Magicae
 Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
 Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.042 seconds
+- Completed reload, in  0.040 seconds
 Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 3.004690 ms
+UnloadTime: 6.032031 ms
 We are Instantiating LocalPlayer from Game
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
@@ -38,17 +38,17 @@ Failed to Instantiate prefab: Player. Client should be in a room. Current connec
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 21d4 -> priority: 1 
-  Thread -> id: 1a58 -> priority: 1 
+  Thread -> id: 2e48 -> priority: 1 
+  Thread -> id: 2df0 -> priority: 1 
 DemoAnimator/Launcher: OnConnectedToMaster() was called by PUN
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.886791 ms
+UnloadTime: 8.117689 ms
 
-Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 1056.
-Total: 2.731420 ms (FindLiveObjects: 0.276263 ms CreateObjectMapping: 0.633354 ms MarkObjects: 1.763213 ms  DeleteObjects: 0.045758 ms)
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 1444.
+Total: 1.297923 ms (FindLiveObjects: 0.097932 ms CreateObjectMapping: 0.083392 ms MarkObjects: 1.080676 ms  DeleteObjects: 0.028652 ms)
 
 We are Instantiating LocalPlayer from Game
  
@@ -62,23 +62,15 @@ We are Instantiating LocalPlayer from Game
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Player 2 attacked me
+Player 1 attacked me
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-I now have health: 90
+I now have health: 85
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-[Singleton] Using instance already created: Main Camera
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Player 2 attacked me
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-I now have health: 80
+Shop Exited
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -86,7 +78,7 @@ Player 1 attacked me
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-I now have health: 90
+I now have health: 70
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -94,7 +86,51 @@ Player 1 attacked me
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-I now have health: 80
+I now have health: 55
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 1 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 40
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 1 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 25
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 1 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 10
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 1 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 85
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 1 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 70
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -111,10 +147,10 @@ PhotonNetwork : Loading Game
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.075961 ms
+UnloadTime: 1.018667 ms
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 1060.
-Total: 0.944257 ms (FindLiveObjects: 0.118032 ms CreateObjectMapping: 0.109479 ms MarkObjects: 0.690659 ms  DeleteObjects: 0.025231 ms)
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 0.899352 ms (FindLiveObjects: 0.099642 ms CreateObjectMapping: 0.058588 ms MarkObjects: 0.725725 ms  DeleteObjects: 0.014967 ms)
 
 We are Instantiating LocalPlayer from Game
  
@@ -124,10 +160,1049 @@ We are Instantiating LocalPlayer from Game
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Component:get_gameObject ()
-  at AOE+<_CleanUp>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
-  at MovementEffects.Timing.Update () [0x00000] in <filename unknown>:0 
+OnPhotonPlayerConnected() Hej Far
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerDisconnected() Hej Far
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.272820 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 3.063271 ms (FindLiveObjects: 0.106485 ms CreateObjectMapping: 0.080826 ms MarkObjects: 2.839181 ms  DeleteObjects: 0.035495 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerDisconnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.114161 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 0.966493 ms (FindLiveObjects: 0.082109 ms CreateObjectMapping: 0.074411 ms MarkObjects: 0.794149 ms  DeleteObjects: 0.013684 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 5 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 85
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 5 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 70
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 5 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 55
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 5 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 40
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 5 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 25
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Shop Exited
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 5 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 10
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 5 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 85
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerDisconnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.582440 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 0.885239 ms (FindLiveObjects: 0.056877 ms CreateObjectMapping: 0.072273 ms MarkObjects: 0.733850 ms  DeleteObjects: 0.022237 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CharacterManager_NET.SetScore (Int32 score) [0x00000] in <filename unknown>:0 
+  at CharacterManager_NET.Start () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
+
+Received RPC "Respawn" for viewID 2004 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2004 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 6 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 85
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2004 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2004 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 6 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 70
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerDisconnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.612525 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 0.863429 ms (FindLiveObjects: 0.044475 ms CreateObjectMapping: 0.063292 ms MarkObjects: 0.741548 ms  DeleteObjects: 0.012401 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CharacterManager_NET.SetScore (Int32 score) [0x00000] in <filename unknown>:0 
+  at CharacterManager_NET.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Received RPC "Respawn" for viewID 2005 but this PhotonView does not exist! View was/is ours. Remote called. By: 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2005 but this PhotonView does not exist! View was/is ours. Remote called. By: 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 7 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 85
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2004 but this PhotonView does not exist! View was/is ours. Remote called. By: 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2004 but this PhotonView does not exist! View was/is ours. Remote called. By: 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 7 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 70
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerDisconnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.222785 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 1.011396 ms (FindLiveObjects: 0.059443 ms CreateObjectMapping: 0.074839 ms MarkObjects: 0.822374 ms  DeleteObjects: 0.054311 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CharacterManager_NET.SetScore (Int32 score) [0x00000] in <filename unknown>:0 
+  at CharacterManager_NET.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 8
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 8
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 8 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 85
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 8
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 8
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 8
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 8
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerDisconnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.863985 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 1.224795 ms (FindLiveObjects: 0.097932 ms CreateObjectMapping: 0.112900 ms MarkObjects: 0.998567 ms  DeleteObjects: 0.014967 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CharacterManager_NET.SetScore (Int32 score) [0x00000] in <filename unknown>:0 
+  at CharacterManager_NET.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Player 9 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 85
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2004 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2004 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2006 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2006 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2005 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2005 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2005 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2005 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2006 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2006 but this PhotonView does not exist! View was/is ours. Remote called. By: 9
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerDisconnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.345949 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 0.891654 ms (FindLiveObjects: 0.063292 ms CreateObjectMapping: 0.075266 ms MarkObjects: 0.739837 ms  DeleteObjects: 0.012829 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CharacterManager_NET.SetScore (Int32 score) [0x00000] in <filename unknown>:0 
+  at CharacterManager_NET.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+OnPhotonPlayerDisconnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.321872 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 0.831355 ms (FindLiveObjects: 0.066286 ms CreateObjectMapping: 0.055594 ms MarkObjects: 0.696217 ms  DeleteObjects: 0.012401 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CharacterManager_NET.SetScore (Int32 score) [0x00000] in <filename unknown>:0 
+  at CharacterManager_NET.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+OnPhotonPlayerDisconnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.681805 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 0.931426 ms (FindLiveObjects: 0.064575 ms CreateObjectMapping: 0.076122 ms MarkObjects: 0.776615 ms  DeleteObjects: 0.013684 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CharacterManager_NET.SetScore (Int32 score) [0x00000] in <filename unknown>:0 
+  at CharacterManager_NET.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+OnPhotonPlayerDisconnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.019650 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 0.906622 ms (FindLiveObjects: 0.065430 ms CreateObjectMapping: 0.056450 ms MarkObjects: 0.771484 ms  DeleteObjects: 0.012401 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CharacterManager_NET.SetScore (Int32 score) [0x00000] in <filename unknown>:0 
+  at CharacterManager_NET.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Received RPC "Respawn" for viewID 2010 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2010 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2005 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2005 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2008 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2008 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2007 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2007 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2006 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2006 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2009 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2009 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2011 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2011 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2004 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2004 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2003 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2008 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2008 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2006 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2006 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2011 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2011 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2005 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2005 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2001 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2002 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "Respawn" for viewID 2008 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received RPC "SetScore" for viewID 2008 but this PhotonView does not exist! View was/is ours. Remote called. By: 13
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 13 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 85
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerDisconnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.011375 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 2.302050 ms (FindLiveObjects: 0.109906 ms CreateObjectMapping: 0.058588 ms MarkObjects: 2.096777 ms  DeleteObjects: 0.034639 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at CharacterManager_NET.SetScore (Int32 score) [0x00000] in <filename unknown>:0 
+  at CharacterManager_NET.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+OnPhotonPlayerDisconnected() lolololololol
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.831056 ms
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1448.
+Total: 0.935274 ms (FindLiveObjects: 0.071417 ms CreateObjectMapping: 0.087668 ms MarkObjects: 0.761220 ms  DeleteObjects: 0.014112 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 

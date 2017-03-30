@@ -16,6 +16,7 @@ public class SpellMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         spellData = GetComponent<SpellData>();
         lastPos = transform.position;
+        transform.position += spellDir * 1.25f;
 	}
 	
 	// Update is called once per frame
@@ -23,7 +24,8 @@ public class SpellMovement : MonoBehaviour {
         if (isFired)
         {
             distanceTravelled += Vector3.SqrMagnitude(transform.position - lastPos);
-            rb.AddForce(spellDir * spellData.speed());
+            //rb.AddForce(spellDir * spellData.speed());
+            transform.position += spellDir * spellData.speed() * Time.deltaTime;
             lastPos = transform.position;
             if (distanceTravelled >= spellData.travelDistance()*spellData.travelDistance())
             {
@@ -34,6 +36,8 @@ public class SpellMovement : MonoBehaviour {
 
     public void SetSpellDirection(Vector3 castOrigin, Vector3 targetPos)
     {
+        castOrigin.y = 0;
+        targetPos.y = 0;
         spellDir = Vector3.Normalize(targetPos - castOrigin);
         isFired = true;
     }
