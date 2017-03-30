@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using MovementEffects;
 
-public class PlayerHealth_NET : Photon.MonoBehaviour
+public class PlayerHealth_NET : Photon.PunBehaviour
 {
 
     public LayerMask mask;
@@ -17,6 +18,7 @@ public class PlayerHealth_NET : Photon.MonoBehaviour
     public GameObject meteor;
     public GameObject healthbarUI_prefab;
     private GameObject healthbarUI;
+
     void Awake()
     {
         m_PhotonView = GetComponent<PhotonView>();
@@ -30,6 +32,7 @@ public class PlayerHealth_NET : Photon.MonoBehaviour
         healthBar = healthbarUI.transform.GetChild(0).GetComponent<Image>();
         healthbarUI.transform.SetParent(canvas.transform, false);
         health = maxHealth;
+        setName();
     }
 
     public int getHealth()
@@ -42,13 +45,22 @@ public class PlayerHealth_NET : Photon.MonoBehaviour
         health = amount;
     }
 
+    public void setName()
+    {
+        healthbarUI.transform.GetChild(1).GetComponent<Text>().text = GetComponent<CharacterManager_NET>().playerName;
+    }
+
     void Update()
     {
         UpdateHealthBarPos();
         if (m_PhotonView.isMine)
         {
             if (Input.GetKeyDown(KeyCode.K))
-                Doit(10);
+            {
+                #region testing
+
+                #endregion
+            }
         }
     }
 
@@ -57,33 +69,48 @@ public class PlayerHealth_NET : Photon.MonoBehaviour
         Vector3 healthBarPos = new Vector3(transform.position.x, transform.position.y + healthBarHeight, transform.position.z);
         Vector3 screenPos = Camera.main.WorldToScreenPoint(healthBarPos);
         healthbarUI.transform.position = screenPos;
-        healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
+        healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);        
     }
 
     public void Die()
     {
-        Debug.Log("I am dead xD");
+        m_PhotonView.RPC("Respawn", PhotonTargets.All);
     }
-
-    public void Doit(int damage)
-    {
-        m_PhotonView.RPC("spawnShit", PhotonTargets.All, transform.position, PhotonNetwork.player.ID);
-    }
-
 
     [PunRPC]
-    public void spawnShit(Vector3 pos, int playerID)
+    public void Respawn()
     {
-        GameObject go = Instantiate(meteor, pos, Quaternion.identity) as GameObject;
-        go.GetComponentInChildren<MeteorController>().ownerID = playerID;
+        Timing.RunCoroutine(_Die(2.0f));
     }
 
-    public void TakeDamage(int damage)
+    private IEnumerator<float> _Die(float respawnTime)
     {
+        this.gameObject.SetActive(false);
+        healthbarUI.SetActive(false);
+        yield return Timing.WaitForSeconds(respawnTime);
+        setHealth(maxHealth);
+        #region Temporary transform respawner
+        Vector3 spawnPos = Vector3.up;
+        Vector3 random = Random.insideUnitSphere * 10.0f;
+        random.y = 1;
+        Vector3 itempos = spawnPos + 1.0f * random;
+        transform.position = itempos;
+        #endregion
+        healthbarUI.SetActive(true);
+        this.gameObject.SetActive(true);
+    }
+
+    public void TakeDamage(int damage, int playerID, CharacterManager_NET charMan)
+    {
+        Debug.Log("Player " + playerID + " attacked me");
         health -= damage;
         healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
         if (health <= 0)
+        {
             Die();
+            charMan.ShoutScore();
+            Debug.Log("I died");
+        }
         Debug.Log("I now have health: " + health);
     }
 }

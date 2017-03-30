@@ -30,7 +30,8 @@ public class AOE : MonoBehaviour
             {
                 if (canPush)
                     Push(col.GetComponent<Rigidbody>(), force, isDistanceBased);
-                col.GetComponent<PlayerHealth_NET>().TakeDamage(damage);
+
+                col.GetComponent<PlayerHealth_NET>().TakeDamage(damage, ownerID, player);                
             }
         }
     }

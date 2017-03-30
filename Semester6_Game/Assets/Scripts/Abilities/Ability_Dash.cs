@@ -29,7 +29,7 @@ public class Ability_Dash : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Jump"))
         {
-            GetComponent<Rigidbody>().AddForce(transform.forward * dashForce, ForceMode.Impulse);
+            rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
             dashParticleSys.startRotation3D = new Vector3(0, transform.localEulerAngles.y * Mathf.Deg2Rad, 0);
             StartCoroutine(Dash());
             playerMove.moving = false;

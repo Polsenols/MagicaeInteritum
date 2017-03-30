@@ -1,0 +1,52 @@
+#
+# mtl file for SpellBookCircle.obj obj file
+#
+
+newmtl world_goober_g_demoniccirclesummon_base.m2_Geoset_000_Lum_Dbl
+illum 2
+Kd 0.000000 0.000000 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.262745 0.890196 0.070588
+Ke 0.000000 0.000000 0.000000
+Ns 0.000000
+map_Kd SpellBookCircle_mail_raidhunter_g_01_particle01a.png
+newmtl world_goober_g_demoniccirclesummon_base.m2_Geoset_002_Lum_Dbl
+illum 2
+Kd 0.000000 0.000000 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.262745 0.890196 0.070588
+Ke 0.000000 0.000000 0.000000
+Ns 0.000000
+map_Kd SpellBookCircle_mail_raidhunter_g_01_particle01a.png
+newmtl world_goober_g_demoniccirclesummon_base.m2_Geoset_004_Lum_Dbl
+illum 2
+Kd 0.000000 0.000000 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.262745 0.890196 0.070588
+Ke 0.000000 0.000000 0.000000
+Ns 0.000000
+map_Kd SpellBookCircle_mail_raidhunter_g_01_particle01a.png
+newmtl world_goober_g_demoniccirclesummon_base.m2_Geoset_006_Lum_Dbl
+illum 2
+Kd 0.000000 0.000000 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ns 0.000000
+map_Kd SpellBookCircle_caustic_lowfreq_hardcenter.png
+newmtl world_goober_g_demoniccirclesummon_base.m2_Geoset_001_Lum_Dbl
+illum 2
+Kd 0.000000 0.000000 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.215686 0.792157 0.172549
+Ke 0.000000 0.000000 0.000000
+Ns 0.000000
+map_Kd SpellBookCircle_beam_smokegrey.png
+newmtl world_goober_g_demoniccirclesummon_base.m2_Geoset_005_Lum
+illum 2
+Kd 0.000000 0.000000 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ns 0.000000
+map_Kd SpellBookCircle_demonicrunesummon01.png

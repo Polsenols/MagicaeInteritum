@@ -1,0 +1,20 @@
+#
+# mtl file for MeteorCracks.obj obj file
+#
+
+newmtl spells_mage_meteor_impactstate_world.m2_Geoset_001
+illum 2
+Kd 0.000000 0.000000 0.000000
+Ka 0.250000 0.250000 0.250000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ns 0.000000
+map_Kd MeteorCracks_groundcrack_earth_mod2x.png
+newmtl spells_mage_meteor_impactstate_world.m2_Geoset_002_Lum
+illum 2
+Kd 0.000000 0.000000 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.300300 0.300300 0.300300
+Ke 0.000000 0.000000 0.000000
+Ns 0.000000
+map_Kd MeteorCracks_cata1_ba.png
