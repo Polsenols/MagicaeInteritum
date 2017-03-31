@@ -13,7 +13,7 @@ public class Fireball : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other)
     {
+        SpellManager m_Owner = other.GetComponent<SpellManager>();
         impact.damageNearbyEnemies(transform.position, true);
-        Destroy(this.gameObject);
     }
 }

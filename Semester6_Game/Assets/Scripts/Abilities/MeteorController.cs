@@ -32,8 +32,15 @@ public class MeteorController : MonoBehaviour
             explosion.SetActive(true);
             cracks.SetActive(true);
             debrisParticleSys.Play();
+            Timing.RunCoroutine(_CleanUp(2));
         }
         meteorMesh.Translate(Vector3.down * Time.fixedDeltaTime * speed, Space.World);
+    }
+
+    public IEnumerator<float> _CleanUp(float duration)
+    {
+        yield return Timing.WaitForSeconds(duration);
+        Destroy(this.gameObject);
     }
 
 }

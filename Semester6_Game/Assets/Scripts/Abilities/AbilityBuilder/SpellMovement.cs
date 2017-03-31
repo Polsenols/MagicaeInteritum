@@ -10,7 +10,9 @@ public class SpellMovement : MonoBehaviour {
     private Rigidbody rb;
     Vector3 lastPos;
     float distanceTravelled = 0;
-    
+
+    private double m_creationTime = 0;
+    private Vector3 m_startPosition = Vector3.zero;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -23,6 +25,7 @@ public class SpellMovement : MonoBehaviour {
 	void Update () {
         if (isFired)
         {
+            /*
             distanceTravelled += Vector3.SqrMagnitude(transform.position - lastPos);
             //rb.AddForce(spellDir * spellData.speed());
             transform.position += spellDir * spellData.speed() * Time.deltaTime;
@@ -30,7 +33,10 @@ public class SpellMovement : MonoBehaviour {
             if (distanceTravelled >= spellData.travelDistance()*spellData.travelDistance())
             {
                 Destroy(this.gameObject);
-            }
+            }*/
+
+            float timePassed = (float)(PhotonNetwork.time - m_creationTime);
+            transform.position = m_startPosition + spellDir * spellData.speed() * timePassed;
         }
 	}
 
@@ -40,5 +46,15 @@ public class SpellMovement : MonoBehaviour {
         targetPos.y = 0;
         spellDir = Vector3.Normalize(targetPos - castOrigin);
         isFired = true;
+    }
+
+    public void SetCreationTime(double createTime)
+    {
+        m_creationTime = createTime;
+    }
+
+    public void SetStartPosition(Vector3 startPos)
+    {
+        m_startPosition = startPos;
     }
 }

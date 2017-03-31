@@ -7,7 +7,7 @@ public class Sync : Photon.MonoBehaviour{
     Vector3 trueLoc;
     Quaternion trueRot;
     PhotonView pv;
-    
+    public float lerpSpeed;
 
     void Awake () {
         pv = GetComponent<PhotonView>();
@@ -17,8 +17,8 @@ public class Sync : Photon.MonoBehaviour{
 	void Update () {
         if (!pv.isMine)
         {
-            transform.position = Vector3.Lerp(transform.position, trueLoc, Time.deltaTime * 5);
-            transform.rotation = Quaternion.Lerp(transform.rotation, trueRot, Time.deltaTime * 5);
+            transform.position = Vector3.Lerp(transform.position, trueLoc, Time.deltaTime * lerpSpeed);
+            transform.rotation = Quaternion.Lerp(transform.rotation, trueRot, Time.deltaTime * lerpSpeed);
         }
 	}
 

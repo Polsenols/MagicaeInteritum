@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class SpellManager : Photon.PunBehaviour
+public class SpellManager : Photon.MonoBehaviour
 {
 
     private PhotonView m_photonView;
@@ -16,6 +16,7 @@ public class SpellManager : Photon.PunBehaviour
     private bool spellSelected = false;
     public bool[] isAOE;
     public GameObject reticle_AOE;
+    private List<GameObject> sceneAbilities = new List<GameObject>();
 
     void Awake()
     {
@@ -109,24 +110,43 @@ public class SpellManager : Photon.PunBehaviour
     {
         hideReticles();
         spellSelected = false;
-        m_photonView.RPC("castSpell", PhotonTargets.AllBuffered, spell_ID, mousePos.getMouseWorldPoint(), PhotonNetwork.player.ID);
+        //m_photonView.RPC("castSpell", PhotonTargets.AllBuffered, spell_ID, mousePos.getMouseWorldPoint(), PhotonNetwork.player.ID);
+        m_photonView.RPC("castSpell", PhotonTargets.All, spell_ID, GetProjectileSpawnPos(), mousePos.getMouseWorldPoint(), PhotonNetwork.player.ID);
     }
 
+
     [PunRPC]
-    void castSpell(int spellID, Vector3 position, int ownerID)
+    void castSpell(int spellID,Vector3 startPos, Vector3 targetPos, int ownerID, PhotonMessageInfo info)
     {
+        double timestamp = info.timestamp;
+
         if (isAOE[spellID])
         {
-            GameObject go = (GameObject)Instantiate(Spell[spellID], position, Quaternion.identity);
+            GameObject go = (GameObject)Instantiate(Spell[spellID], targetPos, Quaternion.identity);
             go.GetComponent<SpellData>().setOwnerID(ownerID);
         }
         else
         {
-            GameObject go = (GameObject)Instantiate(Spell[spellID], transform.position, Quaternion.identity);
-            go.GetComponent<SpellData>().setOwnerID(ownerID);
-            go.GetComponent<SpellMovement>().SetSpellDirection(transform.position, position);
+            CreateProjectile(startPos, targetPos, timestamp, ownerID, spellID);
         }
         //GameObject spell = Instantiate(Spell[spellID],)
+    }
+
+    public void CreateProjectile(Vector3 startPos, Vector3 targetPos, double createTime, int ownerID, int spellID)
+    {
+        GameObject go = (GameObject)Instantiate(Spell[spellID], startPos, Quaternion.identity);
+        sceneAbilities.Add(go);
+        SpellMovement projectileMovement = go.GetComponent<SpellMovement>();
+        go.GetComponent<SpellData>().setOwnerID(ownerID);
+        projectileMovement.SetCreationTime(createTime);
+        projectileMovement.SetStartPosition(startPos);
+        projectileMovement.SetSpellDirection(startPos, targetPos);
+    }
+
+
+    Vector3 GetProjectileSpawnPos()
+    {
+        return transform.position;
     }
 
     private void displayReticle(int spellID)
