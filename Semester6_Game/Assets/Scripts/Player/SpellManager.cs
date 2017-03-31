@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using MovementEffects;
 
 public class SpellManager : Photon.MonoBehaviour
 {
@@ -12,11 +13,17 @@ public class SpellManager : Photon.MonoBehaviour
     public SpellData[] spellData;
     private KeyCode[] keyCodes = { KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R, KeyCode.T };
     private List<int> mySpells = new List<int>();
+    public List<float> myCooldown = new List<float>();
+    public List<float> myCooldownMax = new List<float>();
     private KeyCode currentKey = KeyCode.Q;
     private bool spellSelected = false;
     public bool[] isAOE;
+    private float[] cooldown;
     public GameObject reticle_AOE;
+    public GameObject reticle_Direction;
     private List<GameObject> sceneAbilities = new List<GameObject>();
+    //private List<float[]> cooldown = new List<float[]>();
+
 
     void Awake()
     {
@@ -31,8 +38,38 @@ public class SpellManager : Photon.MonoBehaviour
         if (m_photonView.isMine)
         {
             reticle_AOE = (GameObject)Instantiate(reticle_AOE, transform.position, reticle_AOE.transform.rotation);
-            //addSpell(0);
+            reticle_Direction = (GameObject)Instantiate(reticle_Direction, new Vector3(transform.position.x, transform.position.y + 100, transform.position.x), reticle_Direction.transform.rotation);
         }
+    }
+
+    void GetMaxCooldowns()
+    {
+        cooldown = new float[Spell.Length];
+        for (int i = 0; i < Spell.Length; i++)
+        {
+            cooldown[i] = spellData[i].cooldown();
+        }
+    }
+
+    IEnumerator<float> _StartCooldown(int index)
+    {
+        myCooldown[index] = myCooldownMax[index];
+        while (myCooldown[index] > 0)
+        {
+            myCooldown[index] -= Time.deltaTime;
+            yield return 0f;
+            Debug.Log(myCooldown[index]);
+        }
+    }
+
+    bool isSpellReady(int index)
+    {
+        Debug.Log(myCooldown[index]);
+        if (myCooldown[index] <= 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     private void getSpellTypes()
@@ -47,6 +84,7 @@ public class SpellManager : Photon.MonoBehaviour
     private void hideReticles()
     {
         reticle_AOE.SetActive(false);
+        reticle_Direction.SetActive(false);
     }
 
     private void getSpellData()
@@ -60,9 +98,15 @@ public class SpellManager : Photon.MonoBehaviour
 
     private void positionReticles()
     {
+        //AOE
         Vector3 reticlePos = mousePos.getMouseWorldPoint();
         reticle_AOE.transform.position = reticlePos;
         reticle_AOE.transform.Rotate(Vector3.back * Time.deltaTime * 20f);
+
+        //Directional
+        reticle_Direction.transform.position = transform.position;
+        Vector3 targetTransform = mousePos.getMouseWorldPoint();
+        reticle_Direction.transform.LookAt(new Vector3(targetTransform.x, 0.0f, targetTransform.z));
     }
 
     // Update is called once per frame
@@ -78,7 +122,11 @@ public class SpellManager : Photon.MonoBehaviour
                 {
                     if (currentKey == keyCodes[i] && mySpells.Count > i)
                     {
-                        ShoutSpell(mySpells[i]);
+                        if (isSpellReady(i))
+                        {
+                            ShoutSpell(mySpells[i]);
+                            Timing.RunCoroutine(_StartCooldown(i));
+                        }
                     }
                 }
             }
@@ -104,6 +152,13 @@ public class SpellManager : Photon.MonoBehaviour
     public void addSpell(int spell_ID)
     {
         mySpells.Add(spell_ID);
+        setCooldown(spell_ID);
+    }
+
+    public void setCooldown(int spell_ID)
+    {
+        myCooldown.Add(0);
+        myCooldownMax.Add(spellData[spell_ID].cooldown());
     }
 
     public void ShoutSpell(int spell_ID)
@@ -154,12 +209,14 @@ public class SpellManager : Photon.MonoBehaviour
         bool isAOE = spellData[spellID].isAOE();
         if (isAOE)
         {
+            reticle_Direction.SetActive(false);
             reticle_AOE.SetActive(true);
             reticle_AOE.GetComponent<Projector>().orthographicSize = spellData[spellID].radius();
         }
         else
         {
             reticle_AOE.SetActive(false);
+            reticle_Direction.SetActive(true);
         }
     }
 }

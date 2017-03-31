@@ -262,6 +262,7 @@
     <Compile Include="Assets\Scripts\Environment\EnvironmentSpawner.cs" />
     <Compile Include="Assets\Scripts\Environment\LaserOscillation.cs" />
     <Compile Include="Assets\Scripts\Environment\LaserTowerController.cs" />
+    <Compile Include="Assets\Scripts\Environment\releaseSpikes.cs" />
     <Compile Include="Assets\Scripts\GameCountDown.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Launcher.cs" />

@@ -20,6 +20,8 @@ public class SpellData : MonoBehaviour {
     private float _knockbackForce;
     [SerializeField]
     private int _ownerID;
+    [SerializeField]
+    private float _cooldown;
 
     public bool isAOE()
     {
@@ -64,5 +66,10 @@ public class SpellData : MonoBehaviour {
     public void setOwnerID(int ID)
     {
         _ownerID = ID;
+    }
+
+    public float cooldown()
+    {
+        return _cooldown;
     }
 }
