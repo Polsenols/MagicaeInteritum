@@ -255,8 +255,9 @@
     <Compile Include="Assets\Scripts\Abilities\MeteorImpact_ NET.cs" />
     <Compile Include="Assets\Scripts\Abilities\PseudoVolumetricExplosion.cs" />
     <Compile Include="Assets\Scripts\Abilities\TextureScroller.cs" />
+    <Compile Include="Assets\Scripts\Camera\AssignCamera.cs" />
+    <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Camera\HealthbarUI.cs" />
-    <Compile Include="Assets\Scripts\Camera\PickName.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenEffects.cs" />
     <Compile Include="Assets\Scripts\Environment\EnvironmentSpawner.cs" />
     <Compile Include="Assets\Scripts\Environment\LaserOscillation.cs" />
@@ -271,6 +272,7 @@
     <Compile Include="Assets\Scripts\Player\SpellManager.cs" />
     <Compile Include="Assets\Scripts\PlayerNameInputField.cs" />
     <Compile Include="Assets\Scripts\ProjectorFadeOut.cs" />
+    <Compile Include="Assets\Scripts\RagdollControl.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\SingleTon.cs" />
     <Compile Include="Assets\Sync.cs" />

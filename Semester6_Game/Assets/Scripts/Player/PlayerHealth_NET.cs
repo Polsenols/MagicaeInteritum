@@ -16,6 +16,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     private int health;
     private Image healthBar;
 
+    public GameObject ragdoll;
     public GameObject meteor;
     public GameObject healthbarUI_prefab;
     private GameObject healthbarUI;
@@ -82,6 +83,8 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     [PunRPC]
     public void Respawn()
     {
+        GameObject go = (GameObject)Instantiate(ragdoll, transform.position, ragdoll.transform.rotation);
+        go.GetComponent<RagdollControl>().PushRagdoll(transform.position);
         Timing.RunCoroutine(_Die(2.0f));
     }
 
