@@ -453,7 +453,7 @@ public class ShopScript : MonoBehaviour
     {
         while (true)
         {
-            playerResource.CurrentResources++;
+            playerResource.CurrentResources+=10;
             yield return new WaitForSeconds(waitTime);
         }
     }

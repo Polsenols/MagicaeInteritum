@@ -19,7 +19,7 @@ public class PseudoVolumetricExplosion : MonoBehaviour {
 	private float startTime;
 
 	void Start () {
-        Timing.RunCoroutine(ScreenEffects.Instance.screenShake());
+        //Timing.RunCoroutine(ScreenEffects.Instance.screenShake());
 		loopDuration *= timeScale;
 		loopOffset *= timeScale;
 		if (randomizeLoopOffset) {
