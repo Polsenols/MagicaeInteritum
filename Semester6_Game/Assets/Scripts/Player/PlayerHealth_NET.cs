@@ -21,6 +21,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     public GameObject healthbarUI_prefab;
     private GameObject healthbarUI;
     private int lastAttackedByID;
+    public bool invulnurable = false;
 
     void Awake()
     {
@@ -103,30 +104,41 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         #endregion
         healthbarUI.SetActive(true);
         this.gameObject.SetActive(true);
+        invulnurable = true;
+        Timing.RunCoroutine(_Invul(2.0f));
+    }
+
+    private IEnumerator<float> _Invul(float invul_time)
+    {
+        yield return Timing.WaitForSeconds(invul_time);
+        invulnurable = false;
     }
 
     public void TakeDamage(int damage, int playerID, CharacterManager_NET charMan)
     {
-        if (playerID > 0)
+        if (!invulnurable)
         {
-            lastAttackedByID = playerID;
-            lastAttackedByPlayer = charMan;
-        }
-
-        Debug.Log("Player " + playerID + " attacked me");
-        health -= damage;
-        healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
-        if (health <= 0)
-        {
-            if (lastAttackedByPlayer != null)
+            if (playerID > 0)
             {
-                lastAttackedByPlayer.ShoutScore();
+                lastAttackedByID = playerID;
+                lastAttackedByPlayer = charMan;
             }
-            Die();
-            Debug.Log("I died");
-        }
 
-        Debug.Log("I now have health: " + health);
+            Debug.Log("Player " + playerID + " attacked me");
+            health -= damage;
+            healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
+            if (health <= 0)
+            {
+                if (lastAttackedByPlayer != null)
+                {
+                    lastAttackedByPlayer.ShoutScore();
+                }
+                Die();
+                Debug.Log("I died");
+            }
+
+            Debug.Log("I now have health: " + health);
+        }
     }
 
 }
