@@ -22,6 +22,7 @@ public class ScreenEffects : SingleTon<ScreenEffects>
     private Vector3 OriginalPos;
     private bool isShakeRunning = false;
 
+
     public IEnumerator<float> screenShake()
     {
         if (isShakeRunning == false)

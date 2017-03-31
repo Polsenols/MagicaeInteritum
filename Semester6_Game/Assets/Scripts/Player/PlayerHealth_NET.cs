@@ -94,6 +94,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         this.gameObject.SetActive(false);
         healthbarUI.SetActive(false);
         yield return Timing.WaitForSeconds(respawnTime);
+        invulnurable = true;
         setHealth(maxHealth);
         #region Temporary transform respawner
         Vector3 spawnPos = Vector3.up;
@@ -104,7 +105,6 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         #endregion
         healthbarUI.SetActive(true);
         this.gameObject.SetActive(true);
-        invulnurable = true;
         Timing.RunCoroutine(_Invul(2.0f));
     }
 
