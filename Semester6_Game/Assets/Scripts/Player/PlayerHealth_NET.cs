@@ -105,7 +105,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         #endregion
         healthbarUI.SetActive(true);
         this.gameObject.SetActive(true);
-        Timing.RunCoroutine(_Invul(2.0f));
+        Timing.RunCoroutine(_Invul(3.0f));
     }
 
     private IEnumerator<float> _Invul(float invul_time)
