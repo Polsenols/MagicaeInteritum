@@ -10,6 +10,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     public LayerMask mask;
     public Canvas canvas;
     PhotonView m_PhotonView;
+    CharacterManager_NET lastAttackedByPlayer;
     public int maxHealth;
     public float healthBarHeight;
     private int health;
@@ -18,6 +19,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     public GameObject meteor;
     public GameObject healthbarUI_prefab;
     private GameObject healthbarUI;
+    private int lastAttackedByID;
 
     void Awake()
     {
@@ -102,15 +104,26 @@ public class PlayerHealth_NET : Photon.PunBehaviour
 
     public void TakeDamage(int damage, int playerID, CharacterManager_NET charMan)
     {
+        if (playerID > 0)
+        {
+            lastAttackedByID = playerID;
+            lastAttackedByPlayer = charMan;
+        }
+
         Debug.Log("Player " + playerID + " attacked me");
         health -= damage;
         healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
         if (health <= 0)
         {
+            if (lastAttackedByPlayer != null)
+            {
+                lastAttackedByPlayer.ShoutScore();
+            }
             Die();
-            charMan.ShoutScore();
             Debug.Log("I died");
         }
+
         Debug.Log("I now have health: " + health);
     }
+
 }
