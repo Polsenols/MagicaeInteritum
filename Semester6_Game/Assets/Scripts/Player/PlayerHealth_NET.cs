@@ -22,6 +22,8 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     private GameObject healthbarUI;
     private int lastAttackedByID;
     public bool invulnurable = false;
+    private float timestamp = 0;
+    private float deathTimer = 3;
 
     void Awake()
     {
@@ -57,6 +59,10 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     void Update()
     {
         UpdateHealthBarPos();
+        if(timestamp <= Time.time)
+        {
+            invulnurable = false;
+        }
         if (m_PhotonView.isMine)
         {
             if (Input.GetKeyDown(KeyCode.K))
@@ -103,10 +109,13 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         Vector3 itempos = spawnPos + 1.0f * random;
         transform.position = itempos;
         #endregion
+        timestamp = Time.time + deathTimer;
         healthbarUI.SetActive(true);
         this.gameObject.SetActive(true);
-        Timing.RunCoroutine(_Invul(3.0f));
+        //Timing.RunCoroutine(_Invul(3.0f));
     }
+
+
 
     private IEnumerator<float> _Invul(float invul_time)
     {
