@@ -91,10 +91,10 @@ public class PlayerHealth_NET : Photon.PunBehaviour
 
     private IEnumerator<float> _Die(float respawnTime)
     {
+        invulnurable = true;
         this.gameObject.SetActive(false);
         healthbarUI.SetActive(false);
         yield return Timing.WaitForSeconds(respawnTime);
-        invulnurable = true;
         setHealth(maxHealth);
         #region Temporary transform respawner
         Vector3 spawnPos = Vector3.up;
