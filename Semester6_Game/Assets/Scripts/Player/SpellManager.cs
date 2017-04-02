@@ -11,6 +11,7 @@ public class SpellManager : Photon.MonoBehaviour
     private MousePositionScript mousePos;
     public GameObject[] Spell;
     public SpellData[] spellData;
+    public Transform spellOrigin;
     private KeyCode[] keyCodes = { KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R, KeyCode.T };
     private List<int> mySpells = new List<int>();
     public List<float> myCooldown = new List<float>();
@@ -201,7 +202,9 @@ public class SpellManager : Photon.MonoBehaviour
 
     Vector3 GetProjectileSpawnPos()
     {
-        return transform.position;
+        Vector3 spawnPos = transform.position;
+        spawnPos.y = 1f;
+        return spawnPos;
     }
 
     private void displayReticle(int spellID)
