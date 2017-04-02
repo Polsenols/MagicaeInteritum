@@ -24,9 +24,9 @@ public class AOEImpact : MonoBehaviour {
             if (player.playerID != spellData.ownerID())
             {
                 if (canPush)
-                    Push(col.GetComponent<Rigidbody>(), spellData.knockbackForce(), isDistanceBased);
+                    Push(player.GetComponent<Rigidbody>(), spellData.knockbackForce(), isDistanceBased);
 
-                col.GetComponent<PlayerHealth_NET>().TakeDamage(spellData.damage(), spellData.ownerID(), player);
+                player.GetComponent<PlayerHealth_NET>().TakeDamage(spellData.damage(), spellData.ownerID(), player);
             }
         }
     }
@@ -34,6 +34,7 @@ public class AOEImpact : MonoBehaviour {
     public void Push(Rigidbody rb, float force, bool isDistanceBased)
     {
         Vector3 pushDir = rb.transform.position - transform.position;
+        pushDir.y = 0;
         if (isDistanceBased)
             force -= pushDir.sqrMagnitude;
         rb.AddForce(pushDir.normalized * Mathf.Abs(force), ForceMode.Impulse);

@@ -185,7 +185,6 @@ public class SpellManager : Photon.MonoBehaviour
         {
             CreateProjectile(startPos, targetPos, timestamp, ownerID, spellID);
         }
-        //GameObject spell = Instantiate(Spell[spellID],)
     }
 
     public void CreateProjectile(Vector3 startPos, Vector3 targetPos, double createTime, int ownerID, int spellID)
@@ -203,7 +202,7 @@ public class SpellManager : Photon.MonoBehaviour
     Vector3 GetProjectileSpawnPos()
     {
         Vector3 spawnPos = transform.position;
-        spawnPos.y = 1f;
+        spawnPos.y = 0.64f;
         return spawnPos;
     }
 

@@ -84,7 +84,10 @@ public class PlayerHealth_NET : Photon.PunBehaviour
 
     public void Die()
     {
-        m_PhotonView.RPC("Respawn", PhotonTargets.All);
+        if (m_PhotonView.isMine)
+        {
+            m_PhotonView.RPC("Respawn", PhotonTargets.All);
+        }
     }
 
     [PunRPC]

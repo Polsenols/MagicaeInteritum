@@ -1,34 +1,34 @@
-Initialize engine version: 5.5.1f1 (88d00a7498cd)
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 860M (ID=0x1392)
+    Renderer: NVIDIA GeForce GTX 980 Ti (ID=0x17c8)
     Vendor:   NVIDIA
-    VRAM:     1980 MB
-    Driver:   10.18.10.3574
+    VRAM:     3072 MB
+    Driver:   21.21.13.7866
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Photon3Unity3D.dll (this message is harmless)
-Loading C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.040 seconds
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\John\Desktop\AAU\Semester 6\MagicaeInteritum\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\System.dll (this message is harmless)
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+Platform assembly: C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+- Completed reload, in  0.162 seconds
+Platform assembly: C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\MadsKD\Documents\GitHub\MagicaeInteritum\Semester6_Game\Build\LauncherTest_Data\Managed\System.dll (this message is harmless)
+desktop: 2560x1440 59Hz; virtual: 2560x1440 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.521585 ms
+UnloadTime: 1.225742 ms
 We are Instantiating LocalPlayer from Game
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
@@ -37,18 +37,19 @@ Failed to Instantiate prefab: Player. Client should be in a room. Current connec
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1f70 -> priority: 1 
-  Thread -> id: 24f0 -> priority: 1 
+Setting up 3 worker threads for Enlighten.
+  Thread -> id: 2268 -> priority: 1 
+  Thread -> id: d44 -> priority: 1 
+  Thread -> id: 3388 -> priority: 1 
 DemoAnimator/Launcher: OnConnectedToMaster() was called by PUN
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.835482 ms
+UnloadTime: 1.497956 ms
 
-Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2221.
-Total: 1.166206 ms (FindLiveObjects: 0.225800 ms CreateObjectMapping: 0.084247 ms MarkObjects: 0.823657 ms  DeleteObjects: 0.021810 ms)
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2247.
+Total: 0.791191 ms (FindLiveObjects: 0.078219 ms CreateObjectMapping: 0.054008 ms MarkObjects: 0.643755 ms  DeleteObjects: 0.014588 ms)
 
 We are Instantiating LocalPlayer from Game
  
@@ -74,25 +75,9 @@ NullReferenceException: Object reference not set to an instance of an object
  
 (Filename:  Line: -1)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GameCountDown+<_CountDown>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
-  at MovementEffects.Timing.Update () [0x00000] in <filename unknown>:0 
+Shop Exited
  
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Component:get_gameObject ()
-  at GameCountDown+<_CountDown>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
-  at MovementEffects.Timing.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Component:get_gameObject ()
-  at GameCountDown+<_CountDown>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
-  at MovementEffects.Timing.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Player -1 attacked me
  
@@ -106,7 +91,39 @@ I now have health: 0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-OnPhotonPlayerDisconnected() 8====D
+Hit player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Hit player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Hit player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Shop Exited
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 1 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 95
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player 1 attacked me
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+I now have health: 90
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerDisconnected() oo
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -119,10 +136,10 @@ PhotonNetwork : Loading Game
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.226078 ms
+UnloadTime: 1.080788 ms
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 2225.
-Total: 0.976757 ms (FindLiveObjects: 0.121880 ms CreateObjectMapping: 0.070990 ms MarkObjects: 0.768918 ms  DeleteObjects: 0.014540 ms)
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2251.
+Total: 0.785915 ms (FindLiveObjects: 0.074804 ms CreateObjectMapping: 0.054008 ms MarkObjects: 0.635995 ms  DeleteObjects: 0.021106 ms)
 
 We are Instantiating LocalPlayer from Game
  

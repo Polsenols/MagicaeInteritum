@@ -11,7 +11,7 @@ public class SpellData : MonoBehaviour {
     [SerializeField]
     private int _range;
     [SerializeField]
-    private int _speed;
+    private float _speed;
     [SerializeField]
     private float _radius;
     [SerializeField]
@@ -38,7 +38,7 @@ public class SpellData : MonoBehaviour {
         return _range;
     }
 
-    public int speed()
+    public float speed()
     {
         return _speed;
     }

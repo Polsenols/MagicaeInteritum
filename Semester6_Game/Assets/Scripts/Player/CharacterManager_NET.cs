@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterManager_NET : Photon.PunBehaviour {
 
-    private PhotonView m_PhotonView;
+    public PhotonView m_PhotonView;
     private Animator anim;
     private PlayerHealth_NET playerHealth;
     public int playerID;
