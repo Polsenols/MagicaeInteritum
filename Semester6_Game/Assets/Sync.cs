@@ -9,13 +9,19 @@ public class Sync : Photon.MonoBehaviour{
     PhotonView pv;
     public float lerpSpeed;
     Quaternion m_NetworkRotation;
+    Rigidbody rb;
 
     void Awake () {
+        rb = GetComponent<Rigidbody>();
         pv = GetComponent<PhotonView>();
+        if (!pv.isMine)
+        {
+            Destroy(rb);
+        }
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if (!pv.isMine)
         {
             transform.position = Vector3.Lerp(transform.position, trueLoc, Time.deltaTime * lerpSpeed);
