@@ -252,6 +252,7 @@
     <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SpellMovement.cs" />
     <Compile Include="Assets\Scripts\Abilities\Ability_Dash.cs" />
     <Compile Include="Assets\Scripts\Abilities\Fireball.cs" />
+    <Compile Include="Assets\Scripts\Abilities\FrostBolt.cs" />
     <Compile Include="Assets\Scripts\Abilities\LightFlicker.cs" />
     <Compile Include="Assets\Scripts\Abilities\MeteorController.cs" />
     <Compile Include="Assets\Scripts\Abilities\MeteorImpact_ NET.cs" />
@@ -269,6 +270,9 @@
     <Compile Include="Assets\Scripts\Environment\releaseSpikes.cs" />
     <Compile Include="Assets\Scripts\GameCountDown.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\HUD Canvas\AbilityCoolDown.cs" />
+    <Compile Include="Assets\Scripts\HUD Canvas\AbilityDataForUI.cs" />
+    <Compile Include="Assets\Scripts\HUD Canvas\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Launcher.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterManager_NET.cs" />
     <Compile Include="Assets\Scripts\Player\MousePositionScript.cs" />
@@ -277,6 +281,9 @@
     <Compile Include="Assets\Scripts\Player\SpellManager.cs" />
     <Compile Include="Assets\Scripts\PlayerNameInputField.cs" />
     <Compile Include="Assets\Scripts\ProjectorFadeOut.cs" />
+    <Compile Include="Assets\Scripts\PullInLineTower\BossNPC.cs" />
+    <Compile Include="Assets\Scripts\PullInLineTower\LaserPullBahviour.cs" />
+    <Compile Include="Assets\Scripts\PullInLineTower\bossLineRender.cs" />
     <Compile Include="Assets\Scripts\RagdollControl.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\SingleTon.cs" />

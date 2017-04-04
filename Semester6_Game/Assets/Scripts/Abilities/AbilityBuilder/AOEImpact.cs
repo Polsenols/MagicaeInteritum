@@ -8,6 +8,7 @@ public class AOEImpact : MonoBehaviour {
     private SpellData spellData;
     public LayerMask mask;
     public bool canPush = false;
+    public bool screenshake = true;
 
     void Start()
     {
@@ -29,6 +30,8 @@ public class AOEImpact : MonoBehaviour {
                 player.GetComponent<PlayerHealth_NET>().TakeDamage(spellData.damage(), spellData.ownerID(), player);
             }
         }
+        if (screenshake)
+            ScreenEffects.Instance.screenShake();
     }
 
     public void freezeNearbyEnemies(Vector3 origin, bool isDistanceBased)
