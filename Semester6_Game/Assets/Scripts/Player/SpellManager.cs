@@ -25,6 +25,7 @@ public class SpellManager : Photon.MonoBehaviour
     public List<SpellData> m_sceneAbilities = new List<SpellData>();
     private int m_LastInstantiatedID = 0;
     private bool canCastSpells = true;
+    private float timeStampSpellCasted = 0;
 
 
     void Awake()
@@ -175,6 +176,7 @@ public class SpellManager : Photon.MonoBehaviour
     public void ShoutSpell(int spell_ID)
     {
         hideReticles();
+        timeStampSpellCasted = Time.time;
         spellSelected = false;
         m_LastInstantiatedID++;
         m_photonView.RPC("castSpell", PhotonTargets.All, spell_ID, GetProjectileSpawnPos(), mousePos.getMouseWorldPoint(), PhotonNetwork.player.ID, m_LastInstantiatedID);

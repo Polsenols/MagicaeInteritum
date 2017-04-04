@@ -57,6 +57,7 @@ public class ShopScript : MonoBehaviour
     public Button buySpell;
     public Button dontBuySpell;
 
+    public Text[] spellTxt = new Text[15];
     public Text spellHeadline;
     public Text spellDescription;
     public Text spellCost;
@@ -65,6 +66,12 @@ public class ShopScript : MonoBehaviour
     public Text spellDPS;
     public Text spellAOE;
     public Text spellDuration;
+
+    public Text resourcesDisplay;
+    public Text resourcesHUDDisplay;
+
+    public Image[] mySpellImages = new Image[15];
+
     #endregion
 
     private bool buyingSpells = false;
@@ -81,7 +88,7 @@ public class ShopScript : MonoBehaviour
             Destroy(canvasPlaceholder);
             Destroy(this);
         }
-        playerResource.CurrentResources = 99;
+        playerResource.CurrentResources = 50;
         StartCoroutine(resourceProvider(playerResource.MoneyWaitTime));
         canvasPlaceholder.SetActive(false);
 
@@ -102,6 +109,13 @@ public class ShopScript : MonoBehaviour
         buyingSpells = false;
         closeEnoughToShop = false;
         isCurrentlyShopping = false;
+
+        for(int i = 0; i < spellTxt.Length; i++)
+        {
+            spellTxt[i] = spellTxt[i].GetComponent<Text>();
+            spellTxt[i].text += " (Cost: " + spellCostArray[i] +")";
+        }
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -116,7 +130,7 @@ public class ShopScript : MonoBehaviour
     void Update()
     {
         // Controls for entering the shop; player must press B to enter.
-        if (Input.GetKeyDown(KeyCode.B) && closeEnoughToShop)
+        if (Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.Escape) && closeEnoughToShop)
         {
             if (isCurrentlyShopping == false)
             {
@@ -127,6 +141,10 @@ public class ShopScript : MonoBehaviour
                 CloseShop();
             }
         }
+
+        resourcesDisplay.GetComponent<Text>().text = playerResource.CurrentResources.ToString();
+        resourcesHUDDisplay.GetComponent<Text>().text = "Resources: " + playerResource.CurrentResources.ToString();
+
     }
 
     private void OpenShop()
@@ -398,6 +416,7 @@ public class ShopScript : MonoBehaviour
             dontBuySpell.enabled = false;
             buyingSpells = false;
             closeEnoughToShop = true;
+            checkAffordance();
 
             /****************** Added for HUD to work ******************/
 
@@ -460,8 +479,27 @@ public class ShopScript : MonoBehaviour
     {
         while (true)
         {
-            playerResource.CurrentResources+=10;
+            playerResource.CurrentResources+=3;
+
+            checkAffordance();
+
             yield return new WaitForSeconds(waitTime);
+        }
+    }
+
+    //Checks if player can afford some shit; if he can, dont paint the image shit
+    private void checkAffordance()
+    {
+        for (int i = 0; i < mySpellImages.Length; i++)
+        {
+            if (spellCostArray[i] > playerResource.CurrentResources)
+            {
+                mySpellImages[i].GetComponent<Image>().color = Color.red;
+            }
+            else
+            {
+                mySpellImages[i].GetComponent<Image>().color = Color.white;
+            }
         }
     }
 }

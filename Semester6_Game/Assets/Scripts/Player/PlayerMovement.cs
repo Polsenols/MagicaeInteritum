@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     //Freeze controls
     private bool canPlayerMove = true;
 
+
+
     private Rigidbody rb;
 
 
@@ -104,4 +106,5 @@ public class PlayerMovement : MonoBehaviour
     {
         return canPlayerMove = true;
     }
+    
 }
