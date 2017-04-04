@@ -398,6 +398,13 @@ public class ShopScript : MonoBehaviour
             dontBuySpell.enabled = false;
             buyingSpells = false;
             closeEnoughToShop = true;
+
+            /****************** Added for HUD to work ******************/
+
+            GetComponent<AbilityDataForUI>().SetBoughtSpellIndex(spellIndexNumber);
+            GetComponent<AbilityDataForUI>().spellAvailable = true;
+
+            /****************** Added for HUD to work ******************/
         }
         else
         {
