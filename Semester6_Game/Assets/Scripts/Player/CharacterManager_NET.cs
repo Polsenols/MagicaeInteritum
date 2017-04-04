@@ -7,7 +7,9 @@ public class CharacterManager_NET : Photon.PunBehaviour {
 
     public PhotonView m_PhotonView;
     private Animator anim;
-    private PlayerHealth_NET playerHealth;
+    private PlayerHealth_NET _playerHealth;
+    public SpellManager spellManager;
+    private Rigidbody _rigidbody;
     public int playerID;
     public string playerName;
     public int score;
@@ -16,7 +18,9 @@ public class CharacterManager_NET : Photon.PunBehaviour {
 	// Use this for initialization
     void Awake()
     {
-        playerHealth = GetComponent<PlayerHealth_NET>();
+        spellManager = GetComponent<SpellManager>();
+        _playerHealth = GetComponent<PlayerHealth_NET>();
+        _rigidbody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         m_PhotonView = GetComponent<PhotonView>();
     }
@@ -28,11 +32,11 @@ public class CharacterManager_NET : Photon.PunBehaviour {
     {
         if (!m_PhotonView.isMine)
         {
-            playerHealth.setHealth(health);
+            _playerHealth.setHealth(health);
         }
         else
         {
-            health = playerHealth.getHealth();
+            health = _playerHealth.getHealth();
         }
     }
 
@@ -63,6 +67,16 @@ public class CharacterManager_NET : Photon.PunBehaviour {
         playerName = name;
     }
 
+    public Rigidbody rigidBody()
+    {
+        return _rigidbody;
+    }
+
+    public PlayerHealth_NET playerHealth()
+    {
+        return _playerHealth;
+    }
+
     public void ShoutScore()
     {
         m_PhotonView.RPC("SetScore", PhotonTargets.All, 10);
@@ -74,6 +88,5 @@ public class CharacterManager_NET : Photon.PunBehaviour {
         this.score += score;
         string scoreText = playerName + " : " + this.score.ToString();
         GameObject.Find("Player" + playerID).GetComponent<Text>().text = scoreText;
-        Debug.Log(playerID);
     }
 }

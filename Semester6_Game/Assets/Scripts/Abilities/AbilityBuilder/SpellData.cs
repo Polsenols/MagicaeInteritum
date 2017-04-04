@@ -22,6 +22,15 @@ public class SpellData : MonoBehaviour {
     private int _ownerID;
     [SerializeField]
     private float _cooldown;
+    [SerializeField]
+    private int _InstantiateID;
+
+    public SpellManager owner;
+
+    public void setOwner(SpellManager _owner)
+    {
+        owner = _owner;
+    }
 
     public bool isAOE()
     {
@@ -68,8 +77,19 @@ public class SpellData : MonoBehaviour {
         _ownerID = ID;
     }
 
+    public void setInstantiateID(int ID)
+    {
+        _InstantiateID = ID;
+    }
+
     public float cooldown()
     {
         return _cooldown;
+    }
+
+
+    public int InstantiateID()
+    {
+        return _InstantiateID;
     }
 }

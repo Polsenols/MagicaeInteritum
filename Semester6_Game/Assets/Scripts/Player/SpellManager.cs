@@ -10,7 +10,7 @@ public class SpellManager : Photon.MonoBehaviour
     private PhotonView m_photonView;
     private MousePositionScript mousePos;
     public GameObject[] Spell;
-    public SpellData[] spellData;
+    public SpellData[] m_spellData;
     public Transform spellOrigin;
     private KeyCode[] keyCodes = { KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R, KeyCode.T };
     private List<int> mySpells = new List<int>();
@@ -22,8 +22,8 @@ public class SpellManager : Photon.MonoBehaviour
     private float[] cooldown;
     public GameObject reticle_AOE;
     public GameObject reticle_Direction;
-    private List<GameObject> sceneAbilities = new List<GameObject>();
-    //private List<float[]> cooldown = new List<float[]>();
+    public List<SpellData> m_sceneAbilities = new List<SpellData>();
+    private int m_LastInstantiatedID = 0;
 
 
     void Awake()
@@ -48,7 +48,7 @@ public class SpellManager : Photon.MonoBehaviour
         cooldown = new float[Spell.Length];
         for (int i = 0; i < Spell.Length; i++)
         {
-            cooldown[i] = spellData[i].cooldown();
+            cooldown[i] = m_spellData[i].cooldown();
         }
     }
 
@@ -59,13 +59,11 @@ public class SpellManager : Photon.MonoBehaviour
         {
             myCooldown[index] -= Time.deltaTime;
             yield return 0f;
-            Debug.Log(myCooldown[index]);
         }
     }
 
     bool isSpellReady(int index)
     {
-        Debug.Log(myCooldown[index]);
         if (myCooldown[index] <= 0)
         {
             return true;
@@ -78,7 +76,7 @@ public class SpellManager : Photon.MonoBehaviour
         isAOE = new bool[Spell.Length];
         for (int i = 0; i < Spell.Length; i++)
         {
-            isAOE[i] = spellData[i].isAOE();
+            isAOE[i] = m_spellData[i].isAOE();
         }
     }
 
@@ -90,10 +88,10 @@ public class SpellManager : Photon.MonoBehaviour
 
     private void getSpellData()
     {
-        spellData = new SpellData[Spell.Length];
+        m_spellData = new SpellData[Spell.Length];
         for (int i = 0; i < Spell.Length; i++)
         {
-            spellData[i] = Spell[i].GetComponent<SpellData>();
+            m_spellData[i] = Spell[i].GetComponent<SpellData>();
         }
     }
 
@@ -159,20 +157,25 @@ public class SpellManager : Photon.MonoBehaviour
     public void setCooldown(int spell_ID)
     {
         myCooldown.Add(0);
-        myCooldownMax.Add(spellData[spell_ID].cooldown());
+        myCooldownMax.Add(m_spellData[spell_ID].cooldown());
     }
 
     public void ShoutSpell(int spell_ID)
     {
         hideReticles();
         spellSelected = false;
-        //m_photonView.RPC("castSpell", PhotonTargets.AllBuffered, spell_ID, mousePos.getMouseWorldPoint(), PhotonNetwork.player.ID);
-        m_photonView.RPC("castSpell", PhotonTargets.All, spell_ID, GetProjectileSpawnPos(), mousePos.getMouseWorldPoint(), PhotonNetwork.player.ID);
+        m_LastInstantiatedID++;
+        m_photonView.RPC("castSpell", PhotonTargets.All, spell_ID, GetProjectileSpawnPos(), mousePos.getMouseWorldPoint(), PhotonNetwork.player.ID, m_LastInstantiatedID);
     }
 
+    public void SendAbilityHit(int ID)
+    {
+        Debug.Log("Ability hit sent!");
+        m_photonView.RPC("OnAbilityHit", PhotonTargets.Others, ID);
+    }
 
     [PunRPC]
-    void castSpell(int spellID,Vector3 startPos, Vector3 targetPos, int ownerID, PhotonMessageInfo info)
+    void castSpell(int spellID,Vector3 startPos, Vector3 targetPos, int ownerID, int InstantiateID, PhotonMessageInfo info)
     {
         double timestamp = info.timestamp;
 
@@ -183,19 +186,44 @@ public class SpellManager : Photon.MonoBehaviour
         }
         else
         {
-            CreateProjectile(startPos, targetPos, timestamp, ownerID, spellID);
+            CreateProjectile(startPos, targetPos, timestamp, ownerID, spellID, InstantiateID);
         }
     }
 
-    public void CreateProjectile(Vector3 startPos, Vector3 targetPos, double createTime, int ownerID, int spellID)
+    [PunRPC]
+    public void OnAbilityHit(int ID)
+    {
+            m_sceneAbilities.RemoveAll(item => item = null);
+
+            Debug.Log("Amount of abilities " + m_sceneAbilities.Count);
+            SpellData spell = m_sceneAbilities.Find(item => item.InstantiateID() == ID);
+
+            if (spell == null)
+            {
+                Debug.Log("Spell is null");
+            }
+            if (spell != null)
+            {
+                Debug.Log("Removing: " + ID);
+                m_sceneAbilities.Remove(spell);
+                Destroy(spell.gameObject);
+            }
+
+    }
+
+    public void CreateProjectile(Vector3 startPos, Vector3 targetPos, double createTime, int ownerID, int spellID, int instantiateID)
     {
         GameObject go = (GameObject)Instantiate(Spell[spellID], startPos, Quaternion.identity);
-        sceneAbilities.Add(go);
+        SpellData spellData = go.GetComponent<SpellData>();
         SpellMovement projectileMovement = go.GetComponent<SpellMovement>();
-        go.GetComponent<SpellData>().setOwnerID(ownerID);
+        spellData.setOwnerID(ownerID);
+        spellData.setOwner(this);
+        spellData.setInstantiateID(instantiateID);
+        Debug.Log("Spell created with ID: " + instantiateID);
         projectileMovement.SetCreationTime(createTime);
         projectileMovement.SetStartPosition(startPos);
         projectileMovement.SetSpellDirection(startPos, targetPos);
+        m_sceneAbilities.Add(spellData);
     }
 
 
@@ -208,12 +236,12 @@ public class SpellManager : Photon.MonoBehaviour
 
     private void displayReticle(int spellID)
     {
-        bool isAOE = spellData[spellID].isAOE();
+        bool isAOE = m_spellData[spellID].isAOE();
         if (isAOE)
         {
             reticle_Direction.SetActive(false);
             reticle_AOE.SetActive(true);
-            reticle_AOE.GetComponent<Projector>().orthographicSize = spellData[spellID].radius();
+            reticle_AOE.GetComponent<Projector>().orthographicSize = m_spellData[spellID].radius();
         }
         else
         {

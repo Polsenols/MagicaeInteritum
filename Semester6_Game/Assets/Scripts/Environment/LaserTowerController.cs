@@ -9,7 +9,7 @@ public class LaserTowerController : MonoBehaviour {
     public GameObject[] laser_rays;
 	// Use this for initialization
 	void Start () {
-        Timing.RunCoroutine(_ActivateLaser(2.5f));
+        Timing.RunCoroutine(_ActivateLaser(10f));
 	}
 	
 	// Update is called once per frame
