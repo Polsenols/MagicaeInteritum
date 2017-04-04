@@ -19,10 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float distance;
     private Vector3 moveDir;
-
-    //Freeze controls
-    private bool canPlayerMove = true;
-
+    
     private Rigidbody rb;
 
 
@@ -47,14 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (canPlayerMove)
-        {
-            currentSpeed = rb.velocity.sqrMagnitude;
-        }
-        else
-        {
-            currentSpeed = 0;
-        }
+        currentSpeed = rb.velocity.sqrMagnitude;
         anim.SetFloat("m_MoveSpeed", currentSpeed);
         #region Key pressed action
         if (Input.GetKey(KeyCode.Mouse1))
@@ -64,28 +54,27 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
 
-        if (canPlayerMove)
+        #region Movement
+        if (moving)
         {
-            #region Movement
-            if (moving)
-            {
-                moveDir = targetPosition - transform.position;
-                distance = moveDir.sqrMagnitude;
+            moveDir = targetPosition - transform.position;
+            distance = moveDir.sqrMagnitude;
 
-                if (distance < distanceToStop * distanceToStop)
-                    moving = false;
-                else
-                    FollowTarget(targetPosition, movementSpeed);
+            if (distance < distanceToStop * distanceToStop)
+                moving = false;
+            else
+                FollowTarget(targetPosition, movementSpeed);
 
-            }
-
-            if (distance > 0.1f && moving)
-            {
-                targetRotation = Quaternion.LookRotation(targetPosition - transform.position, Vector3.up);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-            }
-            #endregion
         }
+
+        if (distance > 0.1f && moving)
+        {
+            targetRotation = Quaternion.LookRotation(targetPosition - transform.position, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
+        #endregion
+
+
     }
 
     #region Move Towards A target
@@ -94,14 +83,4 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(moveDir.normalized * speed);
     }
     #endregion
-
-    public bool FreezePlayerMovement()
-    {
-        return canPlayerMove = false;
-    }
-
-    public bool UnfreezePlayerMovemenet()
-    {
-        return canPlayerMove = true;
-    }
 }

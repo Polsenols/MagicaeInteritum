@@ -24,7 +24,6 @@ public class SpellManager : Photon.MonoBehaviour
     public GameObject reticle_Direction;
     public List<SpellData> m_sceneAbilities = new List<SpellData>();
     private int m_LastInstantiatedID = 0;
-    private bool canCastSpells = true;
 
 
     void Awake()
@@ -112,23 +111,20 @@ public class SpellManager : Photon.MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canCastSpells)
+        if (m_photonView.isMine)
         {
-            if (m_photonView.isMine)
+            lastKeySelected();
+            positionReticles();
+            if (Input.GetMouseButtonDown(0) && spellSelected)
             {
-                lastKeySelected();
-                positionReticles();
-                if (Input.GetMouseButtonDown(0) && spellSelected)
+                for (int i = 0; i < keyCodes.Length; i++)
                 {
-                    for (int i = 0; i < keyCodes.Length; i++)
+                    if (currentKey == keyCodes[i] && mySpells.Count > i)
                     {
-                        if (currentKey == keyCodes[i] && mySpells.Count > i)
+                        if (isSpellReady(i))
                         {
-                            if (isSpellReady(i))
-                            {
-                                ShoutSpell(mySpells[i]);
-                                Timing.RunCoroutine(_StartCooldown(i));
-                            }
+                            ShoutSpell(mySpells[i]);
+                            Timing.RunCoroutine(_StartCooldown(i));
                         }
                     }
                 }
@@ -142,19 +138,11 @@ public class SpellManager : Photon.MonoBehaviour
         {
             if (Input.GetKeyDown(keyCodes[i]))
             {
-                if (spellSelected)
+                if (mySpells.Count > 0)
                 {
-                    hideReticles();
-                    spellSelected = false;
-                }
-                else
-                {
-                    if (mySpells.Count > 0)
-                    {
-                        displayReticle(mySpells[i]);
-                        spellSelected = true;
-                        currentKey = keyCodes[i];
-                    }
+                    displayReticle(mySpells[i]);
+                    spellSelected = true;
+                    currentKey = keyCodes[i];
                 }
             }
         }
@@ -187,7 +175,7 @@ public class SpellManager : Photon.MonoBehaviour
     }
 
     [PunRPC]
-    void castSpell(int spellID, Vector3 startPos, Vector3 targetPos, int ownerID, int InstantiateID, PhotonMessageInfo info)
+    void castSpell(int spellID,Vector3 startPos, Vector3 targetPos, int ownerID, int InstantiateID, PhotonMessageInfo info)
     {
         double timestamp = info.timestamp;
 
@@ -205,21 +193,21 @@ public class SpellManager : Photon.MonoBehaviour
     [PunRPC]
     public void OnAbilityHit(int ID)
     {
-        m_sceneAbilities.RemoveAll(item => item = null);
+            m_sceneAbilities.RemoveAll(item => item = null);
 
-        Debug.Log("Amount of abilities " + m_sceneAbilities.Count);
-        SpellData spell = m_sceneAbilities.Find(item => item.InstantiateID() == ID);
+            Debug.Log("Amount of abilities " + m_sceneAbilities.Count);
+            SpellData spell = m_sceneAbilities.Find(item => item.InstantiateID() == ID);
 
-        if (spell == null)
-        {
-            Debug.Log("Spell is null");
-        }
-        if (spell != null)
-        {
-            Debug.Log("Removing: " + ID);
-            m_sceneAbilities.Remove(spell);
-            Destroy(spell.gameObject);
-        }
+            if (spell == null)
+            {
+                Debug.Log("Spell is null");
+            }
+            if (spell != null)
+            {
+                Debug.Log("Removing: " + ID);
+                m_sceneAbilities.Remove(spell);
+                Destroy(spell.gameObject);
+            }
 
     }
 
@@ -260,15 +248,5 @@ public class SpellManager : Photon.MonoBehaviour
             reticle_AOE.SetActive(false);
             reticle_Direction.SetActive(true);
         }
-    }
-
-    public bool FreezePlayerSpellCasting()
-    {
-        return canCastSpells = false;
-    }
-
-    public bool UnfreezePlayerSpellCasting()
-    {
-        return canCastSpells = true;
     }
 }
