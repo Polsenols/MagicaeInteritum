@@ -22,8 +22,12 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     private GameObject healthbarUI;
     private int lastAttackedByID;
     public bool invulnurable = false;
-    private float timestamp = 0;
+    private float timeStamp1 = 0;
+    private float timeStamp2 = 0;
     private float deathTimer = 3;
+    public float freezeAmount = 2.0f;
+    public GameObject iceBlock;
+    private LineRenderer myLine;
 
     void Awake()
     {
@@ -38,7 +42,9 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         healthBar = healthbarUI.transform.GetChild(0).GetComponent<Image>();
         healthbarUI.transform.SetParent(canvas.transform, false);
         health = maxHealth;
+        myLine = this.GetComponent<LineRenderer>();
         setName();
+        iceBlock.SetActive(false);
     }
 
     public int getHealth()
@@ -59,7 +65,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     void Update()
     {
         UpdateHealthBarPos();
-        if(timestamp <= Time.time)
+        if (timeStamp1 <= Time.time)
         {
             invulnurable = false;
         }
@@ -74,12 +80,21 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        if (Time.time > timeStamp2 + freezeAmount)
+        {
+            UnfreezePlayer();
+        }
+
+    }
+
     private void UpdateHealthBarPos()
     {
         Vector3 healthBarPos = new Vector3(transform.position.x, transform.position.y + healthBarHeight, transform.position.z);
         Vector3 screenPos = Camera.main.WorldToScreenPoint(healthBarPos);
         healthbarUI.transform.position = screenPos;
-        healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);        
+        healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
     }
 
     public void Die()
@@ -112,9 +127,11 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         Vector3 itempos = spawnPos + 1.0f * random;
         transform.position = itempos;
         #endregion
-        timestamp = Time.time + deathTimer;
+        timeStamp1 = Time.time + deathTimer;
         healthbarUI.SetActive(true);
         this.gameObject.SetActive(true);
+        UnfreezePlayer();
+        myLine.enabled = false;
         //Timing.RunCoroutine(_Invul(3.0f));
     }
 
@@ -153,4 +170,27 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         }
     }
 
+    public void FreezePlayer()
+    {
+        if (!invulnurable)
+        {
+            if (this.GetComponent<PlayerMovement>() != null)
+                this.GetComponent<PlayerMovement>().FreezePlayerMovement();
+            if (this.GetComponent<SpellManager>() != null)
+                this.GetComponent<SpellManager>().FreezePlayerSpellCasting();
+            iceBlock.SetActive(true);
+
+            timeStamp2 = Time.time;
+        }
+    }
+
+    private void UnfreezePlayer()
+    {
+        Debug.Log("Unfreezing PLayer");
+        if (this.GetComponent<PlayerMovement>() != null)
+            this.GetComponent<PlayerMovement>().UnfreezePlayerMovemenet();
+        if (this.GetComponent<SpellManager>() != null)
+            this.GetComponent<SpellManager>().UnfreezePlayerSpellCasting();
+        iceBlock.SetActive(false);
+    }
 }
