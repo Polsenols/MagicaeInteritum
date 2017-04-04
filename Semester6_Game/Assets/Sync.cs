@@ -8,6 +8,7 @@ public class Sync : Photon.MonoBehaviour{
     Quaternion trueRot;
     PhotonView pv;
     public float lerpSpeed;
+    Quaternion m_NetworkRotation;
 
     void Awake () {
         pv = GetComponent<PhotonView>();
@@ -18,9 +19,17 @@ public class Sync : Photon.MonoBehaviour{
         if (!pv.isMine)
         {
             transform.position = Vector3.Lerp(transform.position, trueLoc, Time.deltaTime * lerpSpeed);
-            transform.rotation = Quaternion.Lerp(transform.rotation, trueRot, Time.deltaTime * lerpSpeed);
+            UpdateNetworkedRotation();
         }
 	}
+
+    void UpdateNetworkedRotation()
+    {
+        transform.rotation = Quaternion.RotateTowards(
+            transform.rotation,
+            m_NetworkRotation, 180f * Time.deltaTime
+        );
+    }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -30,7 +39,8 @@ public class Sync : Photon.MonoBehaviour{
             //receive the next data from the stream and set it to the truLoc varible
             if (!pv.isMine)
             {//do we own this photonView?????
-                this.trueLoc = (Vector3)stream.ReceiveNext(); //the stream send data types of "object" we must typecast the data into a Vector3 format
+                trueLoc = (Vector3)stream.ReceiveNext();
+                m_NetworkRotation = (Quaternion)stream.ReceiveNext();
             }
         }
         //we need to send our data
@@ -40,6 +50,7 @@ public class Sync : Photon.MonoBehaviour{
             if (pv.isMine)
             {
                 stream.SendNext(transform.position);
+                stream.SendNext(transform.rotation);
             }
         }
     }
