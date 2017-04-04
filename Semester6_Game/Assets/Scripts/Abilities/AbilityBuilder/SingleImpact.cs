@@ -7,6 +7,7 @@ public class SingleImpact : MonoBehaviour {
 
     public bool doesDamage = false;
     public bool canPush = false;
+    public bool canFreeze = false;
     public GameObject impactEffect;
     public SpellData spellData;
 
@@ -27,9 +28,10 @@ public class SingleImpact : MonoBehaviour {
         {
             other.GetComponent<PlayerHealth_NET>().TakeDamage(spellData.damage(), spellData.ownerID(), player);
             if (canPush)
-            {
                 Push(other.GetComponent<Rigidbody>(), spellData.knockbackForce(), false);
-            }
+            if (canFreeze)
+                other.GetComponent<PlayerHealth_NET>().Freeze();
+
             spellData.owner.SendAbilityHit(spellData.InstantiateID());
             Destroy(this.gameObject);
         }

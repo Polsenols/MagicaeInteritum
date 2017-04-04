@@ -170,8 +170,15 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         }
     }
 
-    public void FreezePlayer()
+    public void Freeze()
     {
+        m_PhotonView.RPC("FreezePlayer", PhotonTargets.All);
+    }
+
+    [PunRPC]
+    void FreezePlayer()
+    {
+        Debug.Log("Freeze player");
         if (!invulnurable)
         {
             if (this.GetComponent<PlayerMovement>() != null)
@@ -186,7 +193,6 @@ public class PlayerHealth_NET : Photon.PunBehaviour
 
     private void UnfreezePlayer()
     {
-        Debug.Log("Unfreezing PLayer");
         if (this.GetComponent<PlayerMovement>() != null)
             this.GetComponent<PlayerMovement>().UnfreezePlayerMovemenet();
         if (this.GetComponent<SpellManager>() != null)

@@ -87,6 +87,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FreezeSpikeMovementBehaviour.cs" />
     <Compile Include="Assets\GameTheoryMechanics\Assets\Random Scripts\MouseChanger.cs" />
     <Compile Include="Assets\GameTheoryMechanics\Assets\Random Scripts\changeColor.cs" />
     <Compile Include="Assets\GameTheoryMechanics\Assets\Random Scripts\changeColorv2.cs" />

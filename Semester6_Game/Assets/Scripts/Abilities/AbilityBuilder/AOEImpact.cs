@@ -49,7 +49,7 @@ public class AOEImpact : MonoBehaviour {
                 col.GetComponent<PlayerHealth_NET>().TakeDamage(spellData.damage(), spellData.ownerID(), player);
 
                 if (col.GetComponent<PlayerHealth_NET>() != null)
-                    col.GetComponent<PlayerHealth_NET>().FreezePlayer();
+                    col.GetComponent<PlayerHealth_NET>().Freeze();
 
             }
         }
