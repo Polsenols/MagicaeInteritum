@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SpellMovement : MonoBehaviour {
 
-    private bool isFired = false;
+    public bool isFired = false;
     private Vector3 spellDir = Vector3.zero;
     private SpellData spellData;
     private Rigidbody rb;
     Vector3 lastPos;
-    public float distanceTravelled = 0;
+    private float distanceTravelled = 0;
     private double m_creationTime = 0;
     private Vector3 m_startPosition = Vector3.zero;
 

@@ -19,10 +19,10 @@ public class AbilityCoolDown : MonoBehaviour {
     private float nextReadyTime;
     private float coolDownTimeLeft;
 
-    private ShopScript shopScript;
-    private SpellManager spellManager;
-
-    private AbilityDataForUI abilityDataForUI;
+    public ShopScript shopScript;
+    public SpellManager spellManager;
+    public PhotonView m_PhotonView;
+    public AbilityDataForUI abilityDataForUI;
 
     public bool hasSpell;
 
@@ -31,16 +31,7 @@ public class AbilityCoolDown : MonoBehaviour {
     {
         coolDownText.text = "";
         darkMask.fillAmount = 0f;
-        abilityDataForUI = transform.root.GetComponent<AbilityDataForUI>();
         spellIcon = GetComponent<Image>();
-        PhotonView m_PhotonView = transform.root.GetComponent<PhotonView>();
-
-        if (m_PhotonView.isMine)
-        {
-            spellManager = transform.root.GetComponent<SpellManager>();
-            shopScript = transform.root.GetComponent<ShopScript>();
-        }
-
         hasSpell = false;
     }
 

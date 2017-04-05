@@ -6,8 +6,6 @@ using MovementEffects;
 
 public class PlayerHealth_NET : Photon.PunBehaviour
 {
-
-    public LayerMask mask;
     public Canvas canvas;
     PhotonView m_PhotonView;
     CharacterManager_NET lastAttackedByPlayer;

@@ -9,13 +9,12 @@ public class HealthBar : MonoBehaviour {
     private float currentHealth;
     private Image healthFill;
 
-    private PlayerHealth_NET playerStats;
+    public PlayerHealth_NET playerStats;
 
 	// Use this for initialization
 	void Start ()
     {
         healthFill = GetComponent<Image>();
-        playerStats = transform.root.GetComponent<PlayerHealth_NET>();
         healthFill.fillAmount = 1;
         maxHealth = playerStats.maxHealth;
         currentHealth = playerStats.getHealth();

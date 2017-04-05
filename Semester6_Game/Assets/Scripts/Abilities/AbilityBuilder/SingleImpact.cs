@@ -35,30 +35,47 @@ public class SingleImpact : MonoBehaviour {
 
     public void Impact(Collider other)
     {
-        CharacterManager_NET player = other.GetComponent<CharacterManager_NET>();
-        if (player.playerID != spellData.ownerID() && player.m_PhotonView.isMine)
+        if (other.CompareTag("Ability"))
         {
-            switch (damageType)
+            if (spellData.ownerID() == other.GetComponent<SpellData>().ownerID())
             {
-                case DamageType.DOT:
-                    player.playerHealth().TakeDamageOverTime(amountOfTicks, spellData.damage(), timeBetweenTicks, player, spellData.ownerID());
-                    break;
-                case DamageType.Instant:
-                    player.playerHealth().TakeDamage(spellData.damage(), spellData.ownerID(), player);
-                    break;
-                case DamageType.None:
-                    break;
+                return;
             }
-
-            if (canPush)
-                Push(other.GetComponent<Rigidbody>(), spellData.knockbackForce(), false);
-            if (canFreeze)
-                other.GetComponent<PlayerHealth_NET>().Freeze();
-            if (canSlow)
-                other.GetComponent<PlayerMovement>().slowPlayerMovementSpeed(spellData.slowMovementSpeed(), spellData.slowDuration());
-
             spellData.owner.SendAbilityHit(spellData.InstantiateID());
             Destroy(this.gameObject);
+        }
+        else if (other.CompareTag("Environmental"))
+        {
+            spellData.owner.SendAbilityHit(spellData.InstantiateID());
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            CharacterManager_NET player = other.GetComponent<CharacterManager_NET>();
+            if (player.playerID != spellData.ownerID() && player.m_PhotonView.isMine)
+            {
+                switch (damageType)
+                {
+                    case DamageType.DOT:
+                        player.playerHealth().TakeDamageOverTime(amountOfTicks, spellData.damage(), timeBetweenTicks, player, spellData.ownerID());
+                        break;
+                    case DamageType.Instant:
+                        player.playerHealth().TakeDamage(spellData.damage(), spellData.ownerID(), player);
+                        break;
+                    case DamageType.None:
+                        break;
+                }
+
+                if (canPush)
+                    Push(other.GetComponent<Rigidbody>(), spellData.knockbackForce(), false);
+                if (canFreeze)
+                    other.GetComponent<PlayerHealth_NET>().Freeze();
+                if (canSlow)
+                    other.GetComponent<PlayerMovement>().slowPlayerMovementSpeed(spellData.slowMovementSpeed(), spellData.slowDuration());
+
+                spellData.owner.SendAbilityHit(spellData.InstantiateID());
+                Destroy(this.gameObject);
+            }
         }
     }
 

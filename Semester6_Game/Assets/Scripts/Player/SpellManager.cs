@@ -7,7 +7,7 @@ using MovementEffects;
 public class SpellManager : Photon.MonoBehaviour
 {
 
-    private PhotonView m_photonView;
+    public PhotonView m_photonView;
     private MousePositionScript mousePos;
     public GameObject[] Spell;
     public SpellData[] m_spellData;
@@ -184,7 +184,6 @@ public class SpellManager : Photon.MonoBehaviour
 
     public void SendAbilityHit(int ID)
     {
-        Debug.Log("Ability hit sent!");
         m_photonView.RPC("OnAbilityHit", PhotonTargets.Others, ID);
     }
 
@@ -208,8 +207,6 @@ public class SpellManager : Photon.MonoBehaviour
     public void OnAbilityHit(int ID)
     {
         m_sceneAbilities.RemoveAll(item => item = null);
-
-        Debug.Log("Amount of abilities " + m_sceneAbilities.Count);
         SpellData spell = m_sceneAbilities.Find(item => item.InstantiateID() == ID);
 
         if (spell == null)
@@ -218,7 +215,6 @@ public class SpellManager : Photon.MonoBehaviour
         }
         if (spell != null)
         {
-            Debug.Log("Removing: " + ID);
             m_sceneAbilities.Remove(spell);
             Destroy(spell.gameObject);
         }
