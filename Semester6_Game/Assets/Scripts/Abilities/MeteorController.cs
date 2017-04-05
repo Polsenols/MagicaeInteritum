@@ -11,6 +11,7 @@ public class MeteorController : MonoBehaviour
     public GameObject explosion, cracks;
     public ParticleSystem debrisParticleSys, smokeParticleSys;
     public Transform meteorMesh;
+    private SpellData spellData;
     
 
     private bool meteorExploded = false;
@@ -18,6 +19,7 @@ public class MeteorController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        spellData = GetComponent<SpellData>();
         meteorMesh.position = new Vector3(transform.position.x, heightOffset, transform.position.z);
         smokeParticleSys.Play();
     }
@@ -27,7 +29,7 @@ public class MeteorController : MonoBehaviour
     {
         if (meteorMesh.position.y <= explosionY_Offset && !meteorExploded)
         {
-            GetComponent<AOEImpact>().damageNearbyEnemies(transform.position, true);
+            GetComponent<AOEImpact>().impactNearbyEnemies(transform.position, true, spellData.radius(),spellData);
             meteorExploded = true;
             explosion.SetActive(true);
             cracks.SetActive(true);

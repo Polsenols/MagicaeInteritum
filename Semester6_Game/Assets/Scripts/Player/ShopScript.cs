@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using MovementEffects;
 
 public class ShopScript : MonoBehaviour
 {
@@ -79,6 +80,7 @@ public class ShopScript : MonoBehaviour
     private bool isCurrentlyShopping = false;
     private PhotonView m_photonView;
     private SpellManager spellManager;
+
     void Awake()
     {
         spellManager = GetComponent<SpellManager>();
@@ -89,7 +91,7 @@ public class ShopScript : MonoBehaviour
             Destroy(this);
         }
         playerResource.CurrentResources = 50;
-        StartCoroutine(resourceProvider(playerResource.MoneyWaitTime));
+        Timing.RunCoroutine(_ResourceProvider(playerResource.MoneyWaitTime));
         canvasPlaceholder.SetActive(false);
 
         spellSchoolCanvas1.enabled = false;
@@ -389,12 +391,16 @@ public class ShopScript : MonoBehaviour
     //Display canvas to confirm a spell buy
     public void confirmSpellBuy()
     {
-        closeEnoughToShop = false;
-        toolTipCanvas.enabled = false;
-        buyingSpells = true;
-        buySpellCanvas.enabled = true;
-        buySpell.enabled = true;
-        dontBuySpell.enabled = true;
+
+        if (playerResource.CurrentResources >= spellCostArray[spellIndexer])
+        {
+            closeEnoughToShop = false;
+            toolTipCanvas.enabled = false;
+            buyingSpells = true;
+            buySpellCanvas.enabled = true;
+            buySpell.enabled = true;
+            dontBuySpell.enabled = true;
+        }
     }
 
     //In the event that a player presses "yes", then it should buy the spell
@@ -475,7 +481,7 @@ public class ShopScript : MonoBehaviour
     }
 
     //IEnumerator to control how fast players gain money over time; the inputted value in StartCoroutine will determine the rate of moneygain.
-    private IEnumerator resourceProvider(float waitTime)
+    private IEnumerator<float> _ResourceProvider(float waitTime)
     {
         while (true)
         {
@@ -483,7 +489,7 @@ public class ShopScript : MonoBehaviour
 
             checkAffordance();
 
-            yield return new WaitForSeconds(waitTime);
+            yield return Timing.WaitForSeconds(waitTime);
         }
     }
 

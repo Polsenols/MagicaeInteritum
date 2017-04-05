@@ -7,6 +7,7 @@ Properties {
 	_BumpAmt  ("Distortion", range (0,128)) = 10
 	_MainTex ("Tint Color (RGB)", 2D) = "white" {}
 	_BumpMap ("Normalmap", 2D) = "bump" {}
+	_Color ("Color", Color) = (1,1,1,1)
 }
 
 Category {
@@ -74,6 +75,7 @@ sampler2D _GrabTexture;
 float4 _GrabTexture_TexelSize;
 sampler2D _BumpMap;
 sampler2D _MainTex;
+float4 _Color;
 
 half4 frag (v2f i) : SV_Target
 {
@@ -93,6 +95,7 @@ half4 frag (v2f i) : SV_Target
 	half4 col = tex2Dproj( _GrabTexture, UNITY_PROJ_COORD(i.uvgrab));
 	half4 tint = tex2D(_MainTex, i.uvmain);
 	col *= tint;
+	col *= _Color;
 	UNITY_APPLY_FOG(i.fogCoord, col);
 	return col;
 }

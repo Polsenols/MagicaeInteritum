@@ -9,11 +9,11 @@ public class SpellMovement : MonoBehaviour {
     private SpellData spellData;
     private Rigidbody rb;
     Vector3 lastPos;
-    private float distanceTravelled = 0;
+    public float distanceTravelled = 0;
     private double m_creationTime = 0;
     private Vector3 m_startPosition = Vector3.zero;
 
-    public bool rotateTowardsDirection = false;
+    public bool rotateTowardsDirection = false; 
 
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -26,10 +26,12 @@ public class SpellMovement : MonoBehaviour {
         if (isFired)
         {
             distanceTravelled += Vector3.SqrMagnitude(transform.position - lastPos);
-            float timePassed = (float)(PhotonNetwork.time - m_creationTime);
-            transform.position = m_startPosition + spellDir * spellData.speed() * timePassed;
             lastPos = transform.position;
-            if (distanceTravelled >= spellData.travelDistance() * spellData.travelDistance())
+            Debug.Log(distanceTravelled);
+            float timePassed = (float)(PhotonNetwork.time - m_creationTime);
+            transform.position = m_startPosition + spellDir * spellData.speed() * timePassed;           
+
+            if (distanceTravelled >= spellData.travelDistance())
             {
                 Destroy(this.gameObject);
             }

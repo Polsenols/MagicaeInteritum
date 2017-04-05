@@ -19,7 +19,7 @@ public class Fireball : MonoBehaviour {
         CharacterManager_NET player = other.GetComponent<CharacterManager_NET>();
         if (player.playerID != spellData.ownerID() && player.m_PhotonView.isMine)
         {
-            impact.damageNearbyEnemies(transform.position, false);
+            impact.impactNearbyEnemies(transform.position, false, spellData.radius(), spellData);
             Instantiate(explosion, transform.position, Quaternion.identity);
             spellData.owner.SendAbilityHit(spellData.InstantiateID());
             Destroy(this.gameObject);

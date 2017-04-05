@@ -113,6 +113,20 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         Timing.RunCoroutine(_Die(2.0f));
     }
 
+    public void TakeDamageOverTime(int amountOfTicks, int damage, float timeBetweenTicks, CharacterManager_NET charMan, int playerID)
+    {
+        Timing.RunCoroutine(_TakeDamageOverTime(amountOfTicks, damage, timeBetweenTicks, charMan, playerID));
+    }
+
+    private IEnumerator<float> _TakeDamageOverTime(int amountOfTicks, int damage, float timeBetweenTicks, CharacterManager_NET charMan, int playerID)
+    {
+        for (int i = 0; i < amountOfTicks; i++)
+        {
+            TakeDamage(damage, playerID, charMan);
+            yield return Timing.WaitForSeconds(timeBetweenTicks);
+        }
+    }
+
     private IEnumerator<float> _Die(float respawnTime)
     {
         invulnurable = true;

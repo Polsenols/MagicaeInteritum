@@ -10,6 +10,10 @@ public class Sync : Photon.MonoBehaviour{
     public float lerpSpeed;
     Quaternion m_NetworkRotation;
     Rigidbody rb;
+    public bool teleportIfDistanceGreaterThan;
+    public float teleportDistance;
+    Vector3 m_NetworkPosition;
+    
 
     void Awake () {
         rb = GetComponent<Rigidbody>();
@@ -21,13 +25,30 @@ public class Sync : Photon.MonoBehaviour{
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
         if (!pv.isMine)
         {
-            transform.position = Vector3.Lerp(transform.position, trueLoc, Time.deltaTime * lerpSpeed);
-            UpdateNetworkedRotation();
+            UpdateTransform();
         }
 	}
+
+    void UpdateTransform()
+    {
+        transform.position = Vector3.Lerp(transform.position, trueLoc, Time.deltaTime * lerpSpeed);
+        UpdateNetworkedRotation();
+        if (teleportIfDistanceGreaterThan)
+        {
+            if (Vector3.Distance(transform.position, trueLoc) > teleportDistance)
+            {
+                transform.position = GetNetworkPosition();
+            }
+        }
+    }
+
+    Vector3 GetNetworkPosition()
+    {
+        return m_NetworkPosition;
+    }
 
     void UpdateNetworkedRotation()
     {
@@ -46,6 +67,7 @@ public class Sync : Photon.MonoBehaviour{
             if (!pv.isMine)
             {//do we own this photonView?????
                 trueLoc = (Vector3)stream.ReceiveNext();
+                m_NetworkPosition = trueLoc;
                 m_NetworkRotation = (Quaternion)stream.ReceiveNext();
             }
         }

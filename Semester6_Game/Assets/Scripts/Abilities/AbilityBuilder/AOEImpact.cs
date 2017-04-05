@@ -5,54 +5,64 @@ using MovementEffects;
 
 public class AOEImpact : MonoBehaviour {
 
-    private SpellData spellData;
+    public DamageType damageType = DamageType.Instant;
     public LayerMask mask;
     public bool canPush = false;
+    public bool canFreeze = false;
+    public bool canDamage = false;
     public bool screenshake = true;
 
-    void Start()
+    [Header("Damage over time")]
+    public int amountOfTicks = 0;
+    public float timeBetweenTicks = 0;
+
+    public enum DamageType
     {
-        spellData = GetComponent<SpellData>();
+        Instant,
+        DOT,
+        None
     }
 
-    public void damageNearbyEnemies(Vector3 origin, bool isDistanceBased)
+
+    public void impactNearbyEnemies(Vector3 origin, bool isDistanceBased, float radius, SpellData spellData)
     {
-        Collider[] hitCols = Physics.OverlapSphere(origin, spellData.radius(), mask);
-        foreach (Collider col in hitCols)
+        Collider[] hitCols = Physics.OverlapSphere(origin, radius, mask);
+        if (hitCols.Length > 0)
         {
-            CharacterManager_NET player = col.GetComponent<CharacterManager_NET>();
-
-            if (player.playerID != spellData.ownerID())
+            foreach (Collider col in hitCols)
             {
-                if (canPush)
-                    Push(player.GetComponent<Rigidbody>(), spellData.knockbackForce(), isDistanceBased);
+                CharacterManager_NET player = col.GetComponent<CharacterManager_NET>();
 
-                player.GetComponent<PlayerHealth_NET>().TakeDamage(spellData.damage(), spellData.ownerID(), player);
+                if (player.playerID != spellData.ownerID())
+                {
+                    if (player.m_PhotonView.isMine)
+                    {
+                        if (canPush)
+                            Push(player.GetComponent<Rigidbody>(), spellData.knockbackForce(), isDistanceBased);
+
+                        if (canFreeze)
+                        {
+                            player.playerHealth().Freeze();
+                        }
+
+                        switch (damageType)
+                        {
+                            case DamageType.DOT:
+                                player.playerHealth().TakeDamageOverTime(amountOfTicks, spellData.damage(), timeBetweenTicks, player, spellData.ownerID());
+                                break;
+                            case DamageType.Instant:
+                                player.playerHealth().TakeDamage(spellData.damage(), spellData.ownerID(), player);
+                                break;
+                            case DamageType.None:
+                                break;
+                        }
+                    }
+                }
             }
         }
+
         if (screenshake)
             ScreenEffects.Instance.screenShake();
-    }
-
-    public void freezeNearbyEnemies(Vector3 origin, bool isDistanceBased)
-    {
-        Collider[] hitCols = Physics.OverlapSphere(origin, spellData.radius(), mask);
-        foreach (Collider col in hitCols)
-        {
-            CharacterManager_NET player = col.GetComponent<CharacterManager_NET>();
-
-            if (player.playerID != spellData.ownerID())
-            {
-                if (canPush)
-                    Push(col.GetComponent<Rigidbody>(), spellData.knockbackForce(), isDistanceBased);
-
-                col.GetComponent<PlayerHealth_NET>().TakeDamage(spellData.damage(), spellData.ownerID(), player);
-
-                if (col.GetComponent<PlayerHealth_NET>() != null)
-                    col.GetComponent<PlayerHealth_NET>().Freeze();
-
-            }
-        }
     }
 
     public void Push(Rigidbody rb, float force, bool isDistanceBased)

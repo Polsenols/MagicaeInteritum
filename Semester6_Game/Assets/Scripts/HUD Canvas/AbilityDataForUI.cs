@@ -19,6 +19,10 @@ public class AbilityDataForUI : MonoBehaviour {
             Destroy(this);
             Destroy(abilityCanvas);
         }
+        else
+        {
+            abilityCanvas.transform.SetParent(null);
+        }
         spellsAvailability = new bool[15];
 
         for (int i = 0; i < spellsAvailability.Length; i++)

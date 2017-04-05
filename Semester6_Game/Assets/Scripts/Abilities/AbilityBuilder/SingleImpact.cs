@@ -5,11 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(SpellData))]
 public class SingleImpact : MonoBehaviour {
 
-    public bool doesDamage = false;
+    public DamageType damageType = DamageType.Instant;
     public bool canPush = false;
     public bool canFreeze = false;
     public GameObject impactEffect;
     public SpellData spellData;
+
+    [Header("Damage over time")]
+    public int amountOfTicks = 0;
+    public float timeBetweenTicks = 0;
+
+    public enum DamageType
+    {
+        Instant,
+        DOT,
+        None
+    }
 
     void Start()
     {
@@ -26,7 +37,18 @@ public class SingleImpact : MonoBehaviour {
         CharacterManager_NET player = other.GetComponent<CharacterManager_NET>();
         if (player.playerID != spellData.ownerID() && player.m_PhotonView.isMine)
         {
-            other.GetComponent<PlayerHealth_NET>().TakeDamage(spellData.damage(), spellData.ownerID(), player);
+            switch (damageType)
+            {
+                case DamageType.DOT:
+                    player.playerHealth().TakeDamageOverTime(amountOfTicks, spellData.damage(), timeBetweenTicks, player, spellData.ownerID());
+                    break;
+                case DamageType.Instant:
+                    player.playerHealth().TakeDamage(spellData.damage(), spellData.ownerID(), player);
+                    break;
+                case DamageType.None:
+                    break;
+            }
+
             if (canPush)
                 Push(other.GetComponent<Rigidbody>(), spellData.knockbackForce(), false);
             if (canFreeze)

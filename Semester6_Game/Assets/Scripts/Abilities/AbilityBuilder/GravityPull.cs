@@ -43,6 +43,11 @@ public class GravityPull : MonoBehaviour {
         {
             if (_player[i].m_PhotonView.isMine)
             {
+                if (!_player[i].gameObject.activeSelf)
+                {
+                    _player.Remove(_player[i]);
+                    return;
+                }
                 Vector3 forceDir = Vector3.Normalize(transform.position - _player[i].transform.position);
                 forceDir.y = 0;
                 _player[i].rigidBody().AddForce(forceDir * force);
