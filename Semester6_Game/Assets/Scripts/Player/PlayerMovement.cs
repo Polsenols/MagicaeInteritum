@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     public float movementSpeed = 15f;
     public float rotationSpeed = 10f;
-    public float force = 10f;
     public float distanceToStop;
+    private float originalSpeed;
 
     public bool moving;
 
@@ -22,8 +22,9 @@ public class PlayerMovement : MonoBehaviour
 
     //Freeze controls
     private bool canPlayerMove = true;
-
-
+    private float timeStamp = 0;
+    private float slowAmount;
+    private float slowDuration;
 
     private Rigidbody rb;
 
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
 
+        originalSpeed = movementSpeed;
         //If this script is not on the local player, destroy it.
         if (!m_PhotonView.isMine)
         {
@@ -88,6 +90,11 @@ public class PlayerMovement : MonoBehaviour
             }
             #endregion
         }
+
+        if(Time.time >= timeStamp + slowDuration)
+        {
+            movementSpeed = originalSpeed;
+        }
     }
 
     #region Move Towards A target
@@ -106,5 +113,11 @@ public class PlayerMovement : MonoBehaviour
     {
         return canPlayerMove = true;
     }
-    
+
+    public void slowPlayerMovementSpeed(float _slowMovementSpeed, float _slowDuration)
+    {
+        movementSpeed = _slowMovementSpeed;
+        slowDuration = _slowDuration;
+        timeStamp = Time.time;
+    }
 }

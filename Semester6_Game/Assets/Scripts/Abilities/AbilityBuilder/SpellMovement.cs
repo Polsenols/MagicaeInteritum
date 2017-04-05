@@ -27,7 +27,6 @@ public class SpellMovement : MonoBehaviour {
         {
             distanceTravelled += Vector3.SqrMagnitude(transform.position - lastPos);
             lastPos = transform.position;
-            Debug.Log(distanceTravelled);
             float timePassed = (float)(PhotonNetwork.time - m_creationTime);
             transform.position = m_startPosition + spellDir * spellData.speed() * timePassed;           
 

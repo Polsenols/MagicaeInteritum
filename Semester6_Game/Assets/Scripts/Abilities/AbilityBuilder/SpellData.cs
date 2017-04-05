@@ -24,6 +24,11 @@ public class SpellData : MonoBehaviour {
     private float _cooldown;
     [SerializeField]
     private int _InstantiateID;
+    [SerializeField]
+    [Range(8f, 10.0f)]
+    private float _slowMovementSpeed;
+    [SerializeField]
+    private float _slowDuration;
 
     public SpellManager owner;
 
@@ -87,9 +92,18 @@ public class SpellData : MonoBehaviour {
         return _cooldown;
     }
 
-
     public int InstantiateID()
     {
         return _InstantiateID;
+    }
+
+    public float slowMovementSpeed()
+    {
+        return _slowMovementSpeed;
+    }
+
+    public float slowDuration()
+    {
+        return _slowDuration;
     }
 }

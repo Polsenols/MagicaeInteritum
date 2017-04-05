@@ -8,6 +8,7 @@ public class SingleImpact : MonoBehaviour {
     public DamageType damageType = DamageType.Instant;
     public bool canPush = false;
     public bool canFreeze = false;
+    public bool canSlow = false;
     public GameObject impactEffect;
     public SpellData spellData;
 
@@ -53,6 +54,8 @@ public class SingleImpact : MonoBehaviour {
                 Push(other.GetComponent<Rigidbody>(), spellData.knockbackForce(), false);
             if (canFreeze)
                 other.GetComponent<PlayerHealth_NET>().Freeze();
+            if (canSlow)
+                other.GetComponent<PlayerMovement>().slowPlayerMovementSpeed(spellData.slowMovementSpeed(), spellData.slowDuration());
 
             spellData.owner.SendAbilityHit(spellData.InstantiateID());
             Destroy(this.gameObject);
