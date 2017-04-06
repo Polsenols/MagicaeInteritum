@@ -7,6 +7,8 @@ public class SpellData : MonoBehaviour {
     [SerializeField]
     private bool _isAOE;
     [SerializeField]
+    private bool _isUtility;
+    [SerializeField]
     private int _damage;
     [SerializeField]
     private int _range;
@@ -21,6 +23,8 @@ public class SpellData : MonoBehaviour {
     [SerializeField]
     private int _ownerID;
     [SerializeField]
+    private int _spellID;
+    [SerializeField]
     private float _cooldown;
     [SerializeField]
     private int _InstantiateID;
@@ -29,6 +33,8 @@ public class SpellData : MonoBehaviour {
     private float _slowMovementSpeed;
     [SerializeField]
     private float _slowDuration;
+    [SerializeField]
+    private GameObject _impactEffect;
 
     public SpellManager owner;
 
@@ -40,6 +46,11 @@ public class SpellData : MonoBehaviour {
     public bool isAOE()
     {
         return _isAOE;
+    }
+
+    public bool isUtility()
+    {
+        return _isUtility;
     }
 
     public int damage()
@@ -70,6 +81,11 @@ public class SpellData : MonoBehaviour {
     public float knockbackForce()
     {
         return _knockbackForce;
+    }
+
+    public int spellID()
+    {
+        return _spellID;
     }
 
     public int ownerID()
@@ -105,5 +121,25 @@ public class SpellData : MonoBehaviour {
     public float slowDuration()
     {
         return _slowDuration;
+    }
+
+    public void setSpellID(int ID)
+    {
+        _spellID = ID;
+    }
+
+    public GameObject getImpactEffect()
+    {
+        return _impactEffect;
+    }
+
+    public void setImpactEffect(GameObject impactEffect)
+    {
+        _impactEffect = impactEffect;
+    }
+
+    public void AbilityImpactEffect()
+    {
+        Instantiate(_impactEffect, transform.position, Quaternion.identity);
     }
 }

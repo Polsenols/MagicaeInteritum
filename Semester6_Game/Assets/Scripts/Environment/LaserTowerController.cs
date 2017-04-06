@@ -22,8 +22,8 @@ public class LaserTowerController : MonoBehaviour {
     {
         if (isActive)
         {
-            PhotonView test = other.GetComponent<PhotonView>();
-            if (test.isMine)
+            PhotonView m_photonView = other.GetComponent<PhotonView>();
+            if (m_photonView.isMine)
             {
                 PlayerHealth_NET playerHealth = other.GetComponent<PlayerHealth_NET>();
                 playerHealth.TakeDamage(playerHealth.maxHealth, -1, null);

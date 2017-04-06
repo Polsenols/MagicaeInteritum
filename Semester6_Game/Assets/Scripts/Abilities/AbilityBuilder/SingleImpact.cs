@@ -9,7 +9,6 @@ public class SingleImpact : MonoBehaviour {
     public bool canPush = false;
     public bool canFreeze = false;
     public bool canSlow = false;
-    public GameObject impactEffect;
     public SpellData spellData;
 
     [Header("Damage over time")]
@@ -41,15 +40,15 @@ public class SingleImpact : MonoBehaviour {
             {
                 return;
             }
-            spellData.owner.SendAbilityHit(spellData.InstantiateID());
+            spellData.owner.SendAbilityHit(spellData.InstantiateID(),true);
             Destroy(this.gameObject);
         }
         else if (other.CompareTag("Environmental"))
         {
-            spellData.owner.SendAbilityHit(spellData.InstantiateID());
+            spellData.owner.SendAbilityHit(spellData.InstantiateID(),true);
             Destroy(this.gameObject);
         }
-        else
+        else if (other.CompareTag("Player"))
         {
             CharacterManager_NET player = other.GetComponent<CharacterManager_NET>();
             if (player.playerID != spellData.ownerID() && player.m_PhotonView.isMine)
@@ -73,8 +72,9 @@ public class SingleImpact : MonoBehaviour {
                 if (canSlow)
                     other.GetComponent<PlayerMovement>().slowPlayerMovementSpeed(spellData.slowMovementSpeed(), spellData.slowDuration());
 
-                spellData.owner.SendAbilityHit(spellData.InstantiateID());
-                Destroy(this.gameObject);
+                //spellData.owner.SendAbilityHit(spellData.InstantiateID(),true);
+                //Destroy(this.gameObject);              
+                spellData.AbilityImpactEffect();
             }
         }
     }
@@ -88,11 +88,11 @@ public class SingleImpact : MonoBehaviour {
         rb.AddForce(pushDir.normalized * Mathf.Abs(force), ForceMode.Impulse);
     }
 
-    void OnDestroy()
+    /*void OnDestroy()
     {
-        if (impactEffect != null)
+        if (spellData.getImpactEffect() != null)
         {
-            Instantiate(impactEffect, transform.position, Quaternion.identity);
+            Instantiate(spellData.getImpactEffect(), transform.position, Quaternion.identity);
         }
-    }
+    }*/
 }

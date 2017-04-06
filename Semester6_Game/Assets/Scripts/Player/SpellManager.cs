@@ -23,7 +23,7 @@ public class SpellManager : Photon.MonoBehaviour
     public GameObject reticle_AOE;
     public GameObject reticle_Direction;
     public List<SpellData> m_sceneAbilities = new List<SpellData>();
-    private int m_LastInstantiatedID = 0;
+    public int m_LastInstantiatedID = 0;
     private bool canCastSpells = true;
     private float timeStampSpellCasted = 0;
 
@@ -119,16 +119,27 @@ public class SpellManager : Photon.MonoBehaviour
             {
                 lastKeySelected();
                 positionReticles();
-                if (Input.GetMouseButtonDown(0) && spellSelected)
+                for (int i = 0; i < keyCodes.Length; i++)
                 {
-                    for (int i = 0; i < keyCodes.Length; i++)
+                    if (currentKey == keyCodes[i] && mySpells.Count > i)
                     {
-                        if (currentKey == keyCodes[i] && mySpells.Count > i)
+                        if (m_spellData[mySpells[i]].isUtility())
                         {
-                            if (isSpellReady(i))
+                            if (Input.GetKeyDown(currentKey) && isSpellReady(i))
                             {
-                                ShoutSpell(mySpells[i]);
+                                ShoutSpell(mySpells[i], GetProjectileSpawnPos(), mousePos.getMouseWorldPoint());
                                 Timing.RunCoroutine(_StartCooldown(i));
+                            }
+                        }
+                        else
+                        {
+                            if (Input.GetMouseButtonDown(0) && spellSelected)
+                            {
+                                if (isSpellReady(i))
+                                {
+                                    ShoutSpell(mySpells[i], GetProjectileSpawnPos(), mousePos.getMouseWorldPoint());
+                                    Timing.RunCoroutine(_StartCooldown(i));
+                                }
                             }
                         }
                     }
@@ -173,29 +184,41 @@ public class SpellManager : Photon.MonoBehaviour
         myCooldownMax.Add(m_spellData[spell_ID].cooldown());
     }
 
-    public void ShoutSpell(int spell_ID)
+    public void ShoutSpell(int spell_ID, Vector3 origin, Vector3 target)
     {
         hideReticles();
         timeStampSpellCasted = Time.time;
         spellSelected = false;
         m_LastInstantiatedID++;
-        m_photonView.RPC("castSpell", PhotonTargets.All, spell_ID, GetProjectileSpawnPos(), mousePos.getMouseWorldPoint(), PhotonNetwork.player.ID, m_LastInstantiatedID);
+        m_photonView.RPC("castSpell", PhotonTargets.All, spell_ID, origin, target, PhotonNetwork.player.ID, m_LastInstantiatedID);
     }
 
-    public void SendAbilityHit(int ID)
+    public void SendAbilityHit(int ID, bool displayImpactEffect)
     {
-        m_photonView.RPC("OnAbilityHit", PhotonTargets.Others, ID);
+        m_photonView.RPC("OnAbilityHit", PhotonTargets.Others, ID, displayImpactEffect);
     }
 
     [PunRPC]
     void castSpell(int spellID, Vector3 startPos, Vector3 targetPos, int ownerID, int InstantiateID, PhotonMessageInfo info)
     {
         double timestamp = info.timestamp;
+        bool isUtility = m_spellData[spellID].isUtility();
 
         if (isAOE[spellID])
         {
             GameObject go = (GameObject)Instantiate(Spell[spellID], targetPos, Quaternion.identity);
-            go.GetComponent<SpellData>().setOwnerID(ownerID);
+            SpellData spellData = go.GetComponent<SpellData>();
+            spellData.setOwnerID(ownerID);
+            spellData.setOwner(this);
+            spellData.setSpellID(spellID);
+
+        }
+        else if (isUtility)
+        {
+            GameObject go = (GameObject)Instantiate(Spell[spellID], transform.position, Quaternion.identity);
+            SpellData spellData = go.GetComponent<SpellData>();
+            spellData.setOwnerID(ownerID);
+            spellData.setOwner(this);
         }
         else
         {
@@ -204,18 +227,20 @@ public class SpellManager : Photon.MonoBehaviour
     }
 
     [PunRPC]
-    public void OnAbilityHit(int ID)
+    public void OnAbilityHit(int ID, bool displayImpactEffect)
     {
         m_sceneAbilities.RemoveAll(item => item = null);
         SpellData spell = m_sceneAbilities.Find(item => item.InstantiateID() == ID);
 
         if (spell == null)
         {
-            Debug.Log("Spell is null");
+            Debug.Log("Something went wrong - spell is null");
         }
         if (spell != null)
         {
             m_sceneAbilities.Remove(spell);
+            if (displayImpactEffect)
+                spell.AbilityImpactEffect();
             Destroy(spell.gameObject);
         }
 
@@ -229,7 +254,6 @@ public class SpellManager : Photon.MonoBehaviour
         spellData.setOwnerID(ownerID);
         spellData.setOwner(this);
         spellData.setInstantiateID(instantiateID);
-        Debug.Log("Spell created with ID: " + instantiateID);
         projectileMovement.SetCreationTime(createTime);
         projectileMovement.SetStartPosition(startPos);
         projectileMovement.SetSpellDirection(startPos, targetPos);
@@ -237,7 +261,7 @@ public class SpellManager : Photon.MonoBehaviour
     }
 
 
-    Vector3 GetProjectileSpawnPos()
+    public Vector3 GetProjectileSpawnPos()
     {
         Vector3 spawnPos = transform.position;
         spawnPos.y = 0.64f;
@@ -247,12 +271,17 @@ public class SpellManager : Photon.MonoBehaviour
     private void displayReticle(int spellID)
     {
         bool isAOE = m_spellData[spellID].isAOE();
-        float AOEScale = m_spellData[spellID].radius() * 2;     
+        bool isUtility = m_spellData[spellID].isUtility();
+        float AOEScale = m_spellData[spellID].radius() * 2;
         if (isAOE)
         {
             reticle_Direction.SetActive(false);
             reticle_AOE.SetActive(true);
-            reticle_AOE.transform.localScale = new Vector3(AOEScale,AOEScale,AOEScale);
+            reticle_AOE.transform.localScale = new Vector3(AOEScale, AOEScale, AOEScale);
+        }
+        else if (isUtility)
+        {
+            return;
         }
         else
         {

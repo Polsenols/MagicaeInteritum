@@ -216,7 +216,6 @@
     <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SpellData.cs" />
     <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SpellMovement.cs" />
     <Compile Include="Assets\Scripts\Abilities\Ability_Dash.cs" />
-    <Compile Include="Assets\Scripts\Abilities\Fireball.cs" />
     <Compile Include="Assets\Scripts\Abilities\ForcePull.cs" />
     <Compile Include="Assets\Scripts\Abilities\ForcePullDrag.cs" />
     <Compile Include="Assets\Scripts\Abilities\FreezeSpikeMovementBehaviour.cs" />
@@ -225,8 +224,10 @@
     <Compile Include="Assets\Scripts\Abilities\LightFlicker.cs" />
     <Compile Include="Assets\Scripts\Abilities\MeteorController.cs" />
     <Compile Include="Assets\Scripts\Abilities\MeteorImpact_ NET.cs" />
+    <Compile Include="Assets\Scripts\Abilities\PoisonCloud.cs" />
     <Compile Include="Assets\Scripts\Abilities\PseudoVolumetricExplosion.cs" />
     <Compile Include="Assets\Scripts\Abilities\ScaleFlicker.cs" />
+    <Compile Include="Assets\Scripts\Abilities\ShieldReflect.cs" />
     <Compile Include="Assets\Scripts\Abilities\Swapper.cs" />
     <Compile Include="Assets\Scripts\Abilities\TextureScroller.cs" />
     <Compile Include="Assets\Scripts\Abilities\poisonDartbehaviour.cs" />

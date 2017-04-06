@@ -11,7 +11,7 @@ public class SpellMovement : MonoBehaviour {
     Vector3 lastPos;
     private float distanceTravelled = 0;
     private double m_creationTime = 0;
-    private Vector3 m_startPosition = Vector3.zero;
+    public Vector3 m_startPosition = Vector3.zero;
 
     public bool rotateTowardsDirection = false; 
 
@@ -32,7 +32,7 @@ public class SpellMovement : MonoBehaviour {
 
             if (distanceTravelled >= spellData.travelDistance())
             {
-                Destroy(this.gameObject);
+                //Destroy(this.gameObject);
             }
 
             if (rotateTowardsDirection)
@@ -51,6 +51,12 @@ public class SpellMovement : MonoBehaviour {
         targetPos.y = 0;
         spellDir = Vector3.Normalize(targetPos - castOrigin);
         isFired = true;
+        Debug.Log(spellDir);
+    }
+
+    public Vector3 GetSpellDir()
+    {
+        return spellDir;
     }
 
     public void SetCreationTime(double createTime)
