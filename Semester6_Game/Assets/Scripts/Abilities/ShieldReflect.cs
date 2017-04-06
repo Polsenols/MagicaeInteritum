@@ -16,39 +16,22 @@ public class ShieldReflect : MonoBehaviour
 
     void Update()
     {
-        //transform.position = originTransform.position;
+        transform.position = originTransform.position;
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ability"))
         {
-            /*SpellData enemySpellData = other.GetComponent<SpellData>();
-            if (enemySpellData.ownerID() != spellData.ownerID())
-            {
-                if (spellData.owner.m_photonView.isMine)
-                {
-                    Vector3 collisionTarget = other.transform.position;
-                    Vector3 normal = collisionTarget - transform.position;
-                    Vector3 reflectDir = Vector3.Reflect(other.GetComponent<SpellMovement>().GetSpellDir(), normal);
-                    reflectDir.Normalize();
-                    Vector3 pointOnDirection = transform.position + reflectDir * 100f;
-                    spellData.owner.ShoutSpell(enemySpellData.spellID(), collisionTarget, pointOnDirection);
-                    enemySpellData.owner.SendAbilityHit(enemySpellData.InstantiateID(), false);
-                }
-                Destroy(enemySpellData.gameObject);
-            }*/
-            
-            Debug.Log("Ability reflected!");
             SpellData enemySpellData = other.GetComponent<SpellData>();
-            if (enemySpellData.owner.m_photonView.isMine)
+            if (spellData.owner.m_photonView.isMine && enemySpellData.ownerID() != spellData.ownerID())
             {
-                Vector3 targetPos = enemySpellData.owner.transform.position;
-                enemySpellData.setOwnerID(spellData.ownerID());
-                enemySpellData.setOwner(spellData.owner);
-                other.GetComponent<SpellMovement>().isFired = false;
-                other.GetComponent<SpellMovement>().SetSpellDirection(transform.position, targetPos);
-                other.GetComponent<SpellMovement>().SetStartPosition(spellData.owner.GetProjectileSpawnPos());
+                Vector3 collisionPoint = other.transform.position;
+                Vector3 normal = collisionPoint - transform.position;
+                Vector3 reflectDir = Vector3.Reflect(other.GetComponent<SpellMovement>().GetSpellDir(), normal);
+                reflectDir.Normalize();
+                Vector3 pointOnDir = transform.position + reflectDir * 150f;
+                enemySpellData.owner.SetSpellDirection(enemySpellData.InstantiateID(), collisionPoint, pointOnDir, spellData.ownerID());
             }
         }
     }

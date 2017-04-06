@@ -8,6 +8,7 @@ public class SpellManager : Photon.MonoBehaviour
 {
 
     public PhotonView m_photonView;
+    private CharacterManager_NET charMananager;
     private MousePositionScript mousePos;
     public GameObject[] Spell;
     public SpellData[] m_spellData;
@@ -25,11 +26,11 @@ public class SpellManager : Photon.MonoBehaviour
     public List<SpellData> m_sceneAbilities = new List<SpellData>();
     public int m_LastInstantiatedID = 0;
     private bool canCastSpells = true;
-    private float timeStampSpellCasted = 0;
 
 
     void Awake()
     {
+        charMananager = GetComponent<CharacterManager_NET>();
         m_photonView = GetComponent<PhotonView>();
         mousePos = GetComponent<MousePositionScript>();
     }
@@ -110,7 +111,6 @@ public class SpellManager : Photon.MonoBehaviour
         reticle_Direction.transform.LookAt(new Vector3(targetTransform.x, 0.0f, targetTransform.z));
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (canCastSpells)
@@ -187,7 +187,6 @@ public class SpellManager : Photon.MonoBehaviour
     public void ShoutSpell(int spell_ID, Vector3 origin, Vector3 target)
     {
         hideReticles();
-        timeStampSpellCasted = Time.time;
         spellSelected = false;
         m_LastInstantiatedID++;
         m_photonView.RPC("castSpell", PhotonTargets.All, spell_ID, origin, target, PhotonNetwork.player.ID, m_LastInstantiatedID);
@@ -196,6 +195,36 @@ public class SpellManager : Photon.MonoBehaviour
     public void SendAbilityHit(int ID, bool displayImpactEffect)
     {
         m_photonView.RPC("OnAbilityHit", PhotonTargets.Others, ID, displayImpactEffect);
+    }
+
+    public void SetSpellDirection(int ID, Vector3 origin, Vector3 target, int OwnerID)
+    {
+        m_photonView.RPC("setNewSpellDir", PhotonTargets.All, origin, target, ID, OwnerID);
+    }
+
+    [PunRPC]
+    void setNewSpellDir(Vector3 origin, Vector3 target, int InstantiateID, int OwnerID, PhotonMessageInfo info)
+    {
+        double timestamp = info.timestamp;
+        m_sceneAbilities.RemoveAll(item => item = null);
+        SpellData spell = m_sceneAbilities.Find(item => item.InstantiateID() == InstantiateID);
+        if (spell == null)
+        {
+            Debug.Log("Spell is null!!!!");
+        }
+        SpellMovement spellMove = spell.GetComponent<SpellMovement>();
+        spell.setOwnerID(OwnerID);
+        for (int i = 0; i < charMananager.Players.Count; i++)
+        {
+            if (charMananager.Players[i].playerID == OwnerID)
+            {
+                spell.setOwner(charMananager.Players[i].GetComponent<SpellManager>());
+            }
+        }
+        spellMove.SetCreationTime(timestamp);
+        spellMove.SetStartPosition(origin);
+        spellMove.SetSpellDirection(origin, target);
+
     }
 
     [PunRPC]
@@ -252,7 +281,15 @@ public class SpellManager : Photon.MonoBehaviour
         SpellData spellData = go.GetComponent<SpellData>();
         SpellMovement projectileMovement = go.GetComponent<SpellMovement>();
         spellData.setOwnerID(ownerID);
-        spellData.setOwner(this);
+        if (ownerID == GetComponent<CharacterManager_NET>().playerID)
+        {
+            spellData.setOwner(this);
+        }
+        //spellData.setOwner(this);
+        for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+        {
+            Debug.Log("User ID: " + PhotonNetwork.playerList[i].UserId);
+        }
         spellData.setInstantiateID(instantiateID);
         projectileMovement.SetCreationTime(createTime);
         projectileMovement.SetStartPosition(startPos);

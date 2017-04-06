@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForcePullDrag : MonoBehaviour {
+public class ForcePullDrag : MonoBehaviour
+{
 
     private SpellData spellData;
     private Transform targetTransform;
@@ -13,6 +14,7 @@ public class ForcePullDrag : MonoBehaviour {
     private bool canPullTarget = false;
     private Vector3 pullDir;
     private float timestamp = 0;
+    private float time = 0;
 
     #region public vars
     public LineRenderer lr_one, lr_two;
@@ -24,18 +26,25 @@ public class ForcePullDrag : MonoBehaviour {
     public float heightOffset = 0.63f;
     #endregion
 
-    void Start () {
-        targetRb = targetTransform.GetComponent<Rigidbody>();
+    void Start()
+    {
         canPullTarget = targetTransform.GetComponent<SpellManager>().m_photonView.isMine;
         if (canPullTarget)
         {
+            targetRb = targetTransform.GetComponent<Rigidbody>();
             charMan = targetTransform.GetComponent<CharacterManager_NET>();
             targetHealth = targetTransform.GetComponent<PlayerHealth_NET>();
         }
-        Destroy(this.gameObject, duration); 
-	}
-	
-	void Update () {
+        //Destroy(this.gameObject, duration);
+    }
+
+    void Update()
+    {
+        time += Time.deltaTime;
+        if (time >= duration)
+        {
+            Destroy(this.gameObject);
+        }
         UpdateLineRenderPos();
         if (canPullTarget)
         {
@@ -45,7 +54,7 @@ public class ForcePullDrag : MonoBehaviour {
                 DamageOverTime();
             }
         }
-	}
+    }
 
     void DamageOverTime()
     {
@@ -57,11 +66,16 @@ public class ForcePullDrag : MonoBehaviour {
     {
         if (!targetTransform.gameObject.activeSelf)
         {
+            Debug.Log("Target not active - destroyed");
             Destroy(this.gameObject);
         }
-        if(pullDir != null && pullDir.sqrMagnitude > distanceToBreak)
+        if (pullDir != null)
         {
-            Destroy(this.gameObject);
+            if (pullDir.sqrMagnitude > distanceToBreak * distanceToBreak)
+            {
+                Debug.Log("Too far, broke" + pullDir.sqrMagnitude);
+                Destroy(this.gameObject);
+            }
         }
         origin = spellData.owner.transform.position;
         target = targetTransform.position;
@@ -80,7 +94,8 @@ public class ForcePullDrag : MonoBehaviour {
         targetRb.AddForce(pullDir.normalized * pullForce);
     }
 
-    public void SetSpellData(SpellData spellData) {
+    public void SetSpellData(SpellData spellData)
+    {
         this.spellData = spellData;
     }
 

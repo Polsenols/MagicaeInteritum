@@ -13,8 +13,8 @@ public class CharacterManager_NET : Photon.PunBehaviour {
     public int playerID;
     public string playerName;
     public int score;
-
     public float health;
+    public List<CharacterManager_NET> Players = new List<CharacterManager_NET>();
 	// Use this for initialization
     void Awake()
     {
@@ -26,6 +26,7 @@ public class CharacterManager_NET : Photon.PunBehaviour {
     }
 	void Start () {    
         SetScore(0);
+        m_PhotonView.RPC("AddPlayers", PhotonTargets.All);
 	}
 
     void Update()
@@ -59,6 +60,19 @@ public class CharacterManager_NET : Photon.PunBehaviour {
     public void SetID(int id)
     {
         playerID = id;
+    }
+
+    [PunRPC]
+    public void AddPlayers()
+    {
+        GameObject[] playersInScene = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < playersInScene.Length; i++)
+        {
+            CharacterManager_NET player = playersInScene[i].GetComponent<CharacterManager_NET>();
+            if (!Players.Contains(player)) {
+                Players.Add(player);
+            }
+        }
     }
 
     [PunRPC]

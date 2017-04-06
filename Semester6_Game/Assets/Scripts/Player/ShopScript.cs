@@ -112,10 +112,10 @@ public class ShopScript : MonoBehaviour
         closeEnoughToShop = false;
         isCurrentlyShopping = false;
 
-        for(int i = 0; i < spellTxt.Length; i++)
+        for (int i = 0; i < spellTxt.Length; i++)
         {
             spellTxt[i] = spellTxt[i].GetComponent<Text>();
-            spellTxt[i].text += " (Cost: " + spellCostArray[i] +")";
+            spellTxt[i].text += " (Cost: " + spellCostArray[i] + ")";
         }
 
     }
@@ -128,11 +128,20 @@ public class ShopScript : MonoBehaviour
         }
     }
 
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Shop")
+        {
+            //Set everything to "default" in respect to canvases (i.e. not changing the spell arrays)
+            ResetShop();
+        }
+    }
+
 
     void Update()
     {
         // Controls for entering the shop; player must press B to enter.
-        if (Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.Escape) && closeEnoughToShop)
+        if (closeEnoughToShop && (Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.Escape)))
         {
             if (isCurrentlyShopping == false)
             {
@@ -156,6 +165,10 @@ public class ShopScript : MonoBehaviour
         spellSchoolCanvas2.enabled = false;
         spellSchoolCanvas3.enabled = false;
         isCurrentlyShopping = true;
+
+        spellSchooButton1.enabled = false;
+        spellSchooButton2.enabled = true;
+        spellSchooButton3.enabled = true;
     }
 
     private void CloseShop()
@@ -165,15 +178,10 @@ public class ShopScript : MonoBehaviour
         spellSchoolCanvas2.enabled = false;
         spellSchoolCanvas3.enabled = false;
         isCurrentlyShopping = false;
-    }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Shop")
-        {
-            //Set everything to "default" in respect to canvases (i.e. not changing the spell arrays)
-            ResetShop();
-        }
+        spellSchooButton1.enabled = false;
+        spellSchooButton2.enabled = false;
+        spellSchooButton3.enabled = false;
     }
 
     public void SpellSchool1Press()
@@ -197,7 +205,7 @@ public class ShopScript : MonoBehaviour
         spellSchooButton2.enabled = false;
         spellSchooButton3.enabled = true;
     }
-    
+
     public void SpellSchool3Press()
     {
         spellSchoolCanvas1.enabled = false;
@@ -474,8 +482,8 @@ public class ShopScript : MonoBehaviour
         buySpellCanvas.enabled = false;
         buySpell.enabled = false;
         dontBuySpell.enabled = false;
-        buyingSpells = false;
         closeEnoughToShop = false;
+        buyingSpells = false;
         isCurrentlyShopping = false;
         Debug.Log("Shop Exited");
     }
@@ -485,7 +493,7 @@ public class ShopScript : MonoBehaviour
     {
         while (true)
         {
-            playerResource.CurrentResources+=3;
+            playerResource.CurrentResources += 3;
 
             checkAffordance();
 

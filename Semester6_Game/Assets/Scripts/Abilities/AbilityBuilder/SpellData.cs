@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellData : MonoBehaviour {
+public class SpellData : MonoBehaviour
+{
 
     [SerializeField]
     private bool _isAOE;
@@ -17,7 +18,7 @@ public class SpellData : MonoBehaviour {
     [SerializeField]
     private float _radius;
     [SerializeField]
-    private float _travelDistance;
+    private float _travelDuration;
     [SerializeField]
     private float _knockbackForce;
     [SerializeField]
@@ -53,6 +54,11 @@ public class SpellData : MonoBehaviour {
         return _isUtility;
     }
 
+    public float travelDuration()
+    {
+        return _travelDuration;
+    }
+
     public int damage()
     {
         return _damage;
@@ -71,11 +77,6 @@ public class SpellData : MonoBehaviour {
     public float radius()
     {
         return _radius;
-    }
-
-    public float travelDistance()
-    {
-        return _travelDistance;
     }
 
     public float knockbackForce()
@@ -140,6 +141,7 @@ public class SpellData : MonoBehaviour {
 
     public void AbilityImpactEffect()
     {
+        if(_impactEffect != null)
         Instantiate(_impactEffect, transform.position, Quaternion.identity);
     }
 }

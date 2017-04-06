@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpellData))]
-public class SingleImpact : MonoBehaviour {
+public class SingleImpact : MonoBehaviour
+{
 
     public DamageType damageType = DamageType.Instant;
     public bool canPush = false;
@@ -40,12 +41,14 @@ public class SingleImpact : MonoBehaviour {
             {
                 return;
             }
-            spellData.owner.SendAbilityHit(spellData.InstantiateID(),true);
+            spellData.owner.SendAbilityHit(spellData.InstantiateID(), true);
+            spellData.AbilityImpactEffect();
             Destroy(this.gameObject);
         }
         else if (other.CompareTag("Environmental"))
         {
-            spellData.owner.SendAbilityHit(spellData.InstantiateID(),true);
+            spellData.owner.SendAbilityHit(spellData.InstantiateID(), true);
+            spellData.AbilityImpactEffect();
             Destroy(this.gameObject);
         }
         else if (other.CompareTag("Player"))
@@ -72,8 +75,8 @@ public class SingleImpact : MonoBehaviour {
                 if (canSlow)
                     other.GetComponent<PlayerMovement>().slowPlayerMovementSpeed(spellData.slowMovementSpeed(), spellData.slowDuration());
 
-                spellData.owner.SendAbilityHit(spellData.InstantiateID(),true);
-                Destroy(this.gameObject);              
+                spellData.owner.SendAbilityHit(spellData.InstantiateID(), true);
+                Destroy(this.gameObject);
                 spellData.AbilityImpactEffect();
             }
         }
@@ -87,12 +90,4 @@ public class SingleImpact : MonoBehaviour {
             force -= pushDir.sqrMagnitude;
         rb.AddForce(pushDir.normalized * Mathf.Abs(force), ForceMode.Impulse);
     }
-
-    /*void OnDestroy()
-    {
-        if (spellData.getImpactEffect() != null)
-        {
-            Instantiate(spellData.getImpactEffect(), transform.position, Quaternion.identity);
-        }
-    }*/
 }

@@ -216,6 +216,7 @@
     <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SpellData.cs" />
     <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SpellMovement.cs" />
     <Compile Include="Assets\Scripts\Abilities\Ability_Dash.cs" />
+    <Compile Include="Assets\Scripts\Abilities\CurseBehaviour.cs" />
     <Compile Include="Assets\Scripts\Abilities\ForcePull.cs" />
     <Compile Include="Assets\Scripts\Abilities\ForcePullDrag.cs" />
     <Compile Include="Assets\Scripts\Abilities\FreezeSpikeMovementBehaviour.cs" />

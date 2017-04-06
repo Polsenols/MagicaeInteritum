@@ -1,0 +1,127 @@
+Initialize engine version: 5.5.1f1 (88d00a7498cd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 860M (ID=0x1392)
+    Vendor:   NVIDIA
+    VRAM:     1980 MB
+    Driver:   10.18.10.3574
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+- Completed reload, in  0.049 seconds
+Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Game_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 2.983732 ms
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Failed to Instantiate prefab: Player. Client should be in a room. Current connectionStateDetailed: PeerCreated
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 117c -> priority: 1 
+  Thread -> id: 17d4 -> priority: 1 
+DemoAnimator/Launcher: OnConnectedToMaster() was called by PUN
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Operation failed: OperationResponse 225: ReturnCode: 32760 (No match found). Parameters: {}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DemoAnimator/Launcher:OnPhotonRandomJoinFailed() was called by PUN. No random room available, so we create one.
+Calling: PhotonNetwork.CreateRoom(null, new RoomOptions() {maxPlayers = 4}, null);
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+DemoAnimator/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.470549 ms
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 2563.
+Total: 1.647745 ms (FindLiveObjects: 0.455022 ms CreateObjectMapping: 0.101353 ms MarkObjects: 1.055019 ms  DeleteObjects: 0.017533 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 6 worker threads for Enlighten.
+  Thread -> id: d78 -> priority: 1 
+  Thread -> id: 1a38 -> priority: 1 
+  Thread -> id: 2040 -> priority: 1 
+  Thread -> id: 29e8 -> priority: 1 
+  Thread -> id: fb4 -> priority: 1 
+  Thread -> id: 2fb4 -> priority: 1 
+OnPhotonPlayerConnected() 8====D
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+OnPhotonPlayerConnected isMasterClient True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.Component.GetComponent[Image] () [0x00000] in <filename unknown>:0 
+  at ShopScript.checkAffordance () [0x00000] in <filename unknown>:0 
+  at ShopScript+<_ResourceProvider>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
+  at MovementEffects.Timing.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+You Bought a Spell!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+ArgumentOutOfRangeException: Argument is out of range.
+Parameter name: index
+  at System.Collections.Generic.List`1[System.Int32].get_Item (Int32 index) [0x00000] in <filename unknown>:0 
+  at SpellManager.lastKeySelected () [0x00000] in <filename unknown>:0 
+  at SpellManager.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+User ID: 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+User ID: ayyylmao
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Target not active - destroyed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+User ID: 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+User ID: ayyylmao
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
