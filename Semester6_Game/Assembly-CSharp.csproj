@@ -175,6 +175,7 @@
      <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SpellData.cs" />
      <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SpellMovement.cs" />
      <Compile Include="Assets\Scripts\Abilities\Ability_Dash.cs" />
+     <Compile Include="Assets\Scripts\Abilities\CurseBehaviour.cs" />
      <Compile Include="Assets\Scripts\Abilities\ForcePull.cs" />
      <Compile Include="Assets\Scripts\Abilities\ForcePullDrag.cs" />
      <Compile Include="Assets\Scripts\Abilities\FreezeSpikeMovementBehaviour.cs" />
@@ -221,7 +222,6 @@
      <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\SingleTon.cs" />
      <Compile Include="Assets\Scripts\Sync.cs" />
-     <Compile Include="Assets\TEMPORARY\CurseBehaviour.cs" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
