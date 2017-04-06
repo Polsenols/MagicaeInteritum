@@ -32,7 +32,7 @@ public class SpellMovement : MonoBehaviour {
 
             if (distanceTravelled >= spellData.travelDistance())
             {
-                //Destroy(this.gameObject);
+                Destroy(this.gameObject);
             }
 
             if (rotateTowardsDirection)

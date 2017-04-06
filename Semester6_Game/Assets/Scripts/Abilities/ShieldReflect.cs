@@ -16,14 +16,14 @@ public class ShieldReflect : MonoBehaviour
 
     void Update()
     {
-        transform.position = originTransform.position;
+        //transform.position = originTransform.position;
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ability"))
         {
-            SpellData enemySpellData = other.GetComponent<SpellData>();
+            /*SpellData enemySpellData = other.GetComponent<SpellData>();
             if (enemySpellData.ownerID() != spellData.ownerID())
             {
                 if (spellData.owner.m_photonView.isMine)
@@ -37,15 +37,19 @@ public class ShieldReflect : MonoBehaviour
                     enemySpellData.owner.SendAbilityHit(enemySpellData.InstantiateID(), false);
                 }
                 Destroy(enemySpellData.gameObject);
-            }
+            }*/
             
-            /*Debug.Log("Ability reflected!");
+            Debug.Log("Ability reflected!");
             SpellData enemySpellData = other.GetComponent<SpellData>();
-            Vector3 targetPos = enemySpellData.owner.transform.position;
-            enemySpellData.setOwnerID(spellData.ownerID());
-            enemySpellData.setOwner(spellData.owner);
-            other.GetComponent<SpellMovement>().m_startPosition = transform.position;
-            other.GetComponent<SpellMovement>().SetSpellDirection(transform.position, targetPos);*/
+            if (enemySpellData.owner.m_photonView.isMine)
+            {
+                Vector3 targetPos = enemySpellData.owner.transform.position;
+                enemySpellData.setOwnerID(spellData.ownerID());
+                enemySpellData.setOwner(spellData.owner);
+                other.GetComponent<SpellMovement>().isFired = false;
+                other.GetComponent<SpellMovement>().SetSpellDirection(transform.position, targetPos);
+                other.GetComponent<SpellMovement>().SetStartPosition(spellData.owner.GetProjectileSpawnPos());
+            }
         }
     }
 }

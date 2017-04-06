@@ -72,8 +72,8 @@ public class SingleImpact : MonoBehaviour {
                 if (canSlow)
                     other.GetComponent<PlayerMovement>().slowPlayerMovementSpeed(spellData.slowMovementSpeed(), spellData.slowDuration());
 
-                //spellData.owner.SendAbilityHit(spellData.InstantiateID(),true);
-                //Destroy(this.gameObject);              
+                spellData.owner.SendAbilityHit(spellData.InstantiateID(),true);
+                Destroy(this.gameObject);              
                 spellData.AbilityImpactEffect();
             }
         }

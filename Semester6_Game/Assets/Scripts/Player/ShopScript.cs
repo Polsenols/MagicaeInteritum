@@ -90,7 +90,7 @@ public class ShopScript : MonoBehaviour
             Destroy(canvasPlaceholder);
             Destroy(this);
         }
-        playerResource.CurrentResources = 100;
+        playerResource.CurrentResources = 300;
         Timing.RunCoroutine(_ResourceProvider(playerResource.MoneyWaitTime));
         canvasPlaceholder.SetActive(false);
 
