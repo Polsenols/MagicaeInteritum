@@ -102,7 +102,7 @@ public class SpellManager : Photon.MonoBehaviour
         //AOE
         Vector3 reticlePos = mousePos.getMouseWorldPoint();
         reticle_AOE.transform.position = reticlePos;
-        reticle_AOE.transform.Rotate(Vector3.back * Time.deltaTime * 20f);
+        reticle_AOE.transform.Rotate(Vector3.up * Time.deltaTime * 20f);
 
         //Directional
         reticle_Direction.transform.position = transform.position;
@@ -247,11 +247,12 @@ public class SpellManager : Photon.MonoBehaviour
     private void displayReticle(int spellID)
     {
         bool isAOE = m_spellData[spellID].isAOE();
+        float AOEScale = m_spellData[spellID].radius() * 2;     
         if (isAOE)
         {
             reticle_Direction.SetActive(false);
             reticle_AOE.SetActive(true);
-            reticle_AOE.GetComponent<Projector>().orthographicSize = m_spellData[spellID].radius();
+            reticle_AOE.transform.localScale = new Vector3(AOEScale,AOEScale,AOEScale);
         }
         else
         {
