@@ -9,9 +9,9 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     public Canvas canvas;
     PhotonView m_PhotonView;
     CharacterManager_NET lastAttackedByPlayer;
-    public int maxHealth;
+    public float maxHealth;
     public float healthBarHeight;
-    private int health;
+    private float health;
     private Image healthBar;
 
     public GameObject ragdoll;
@@ -22,9 +22,12 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     public bool invulnurable = false;
     private float timeStamp1 = 0;
     private float timeStamp2 = 0;
+    private float timeStamp3 = 0;
     private float deathTimer = 3;
     public float freezeAmount = 2.0f;
-    public GameObject iceBlock;
+    public float curseDuration = 4.0f;
+    public float damageAdjuster = 1;
+    public GameObject iceBlock, curseMarker;
     private LineRenderer myLine;
 
     void Awake()
@@ -43,14 +46,15 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         myLine = this.GetComponent<LineRenderer>();
         setName();
         iceBlock.SetActive(false);
+        curseMarker.SetActive(false);
     }
 
-    public int getHealth()
+    public float getHealth()
     {
         return health;
     }
 
-    public void setHealth(int amount)
+    public void setHealth(float amount)
     {
         health = amount;
     }
@@ -84,6 +88,13 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         {
             UnfreezePlayer();
         }
+
+
+        if (Time.time > timeStamp3 + curseDuration)
+        {
+            UnCursePlayer();
+        }
+
 
     }
 
@@ -143,6 +154,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         healthbarUI.SetActive(true);
         this.gameObject.SetActive(true);
         UnfreezePlayer();
+        UnCursePlayer();
         myLine.enabled = false;
         //Timing.RunCoroutine(_Invul(3.0f));
     }
@@ -155,7 +167,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         invulnurable = false;
     }
 
-    public void TakeDamage(int damage, int playerID, CharacterManager_NET charMan)
+    public void TakeDamage(float damage, int playerID, CharacterManager_NET charMan)
     {
         if (!invulnurable)
         {
@@ -166,7 +178,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
             }
 
             Debug.Log("Player " + playerID + " attacked me");
-            health -= damage;
+            health -= damage * damageAdjuster;
             healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
             if (health <= 0)
             {
@@ -181,6 +193,31 @@ public class PlayerHealth_NET : Photon.PunBehaviour
             Debug.Log("I now have health: " + health);
         }
     }
+
+    public void Curse()
+    {
+        m_PhotonView.RPC("CursePlayer", PhotonTargets.All);
+    }
+
+    [PunRPC]
+    void CursePlayer()
+    {
+        Debug.Log("Curse Player");
+        if (!invulnurable)
+        {
+            damageAdjuster = 2.0f; // 1.2 = 20% dmg, 1.5 = 50% and so forth.
+            curseMarker.SetActive(true);
+            timeStamp3 = Time.time;
+        }
+    }
+
+    private void UnCursePlayer()
+    {
+        damageAdjuster = 1;
+        timeStamp3 = 0;
+        curseMarker.SetActive(false);
+    }
+
 
     public void Freeze()
     {
@@ -210,5 +247,6 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         if (this.GetComponent<SpellManager>() != null)
             this.GetComponent<SpellManager>().UnfreezePlayerSpellCasting();
         iceBlock.SetActive(false);
+        timeStamp2 = 0;
     }
 }

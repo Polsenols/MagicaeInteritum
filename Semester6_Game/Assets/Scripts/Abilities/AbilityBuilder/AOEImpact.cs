@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using MovementEffects;
 
-public class AOEImpact : MonoBehaviour {
+public class AOEImpact : MonoBehaviour
+{
 
     public DamageType damageType = DamageType.Instant;
     public LayerMask mask;
     public bool canPush = false;
     public bool canFreeze = false;
     public bool canDamage = false;
+    public bool canCurse = false;
     public bool screenshake = true;
 
     [Header("Damage over time")]
@@ -41,9 +43,10 @@ public class AOEImpact : MonoBehaviour {
                             Push(player.GetComponent<Rigidbody>(), spellData.knockbackForce(), isDistanceBased);
 
                         if (canFreeze)
-                        {
                             player.playerHealth().Freeze();
-                        }
+
+                        if (canCurse)
+                            player.playerHealth().Curse();
 
                         switch (damageType)
                         {

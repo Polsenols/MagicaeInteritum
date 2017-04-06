@@ -14,7 +14,7 @@ public class CharacterManager_NET : Photon.PunBehaviour {
     public string playerName;
     public int score;
 
-    public int health;
+    public float health;
 	// Use this for initialization
     void Awake()
     {
@@ -50,7 +50,7 @@ public class CharacterManager_NET : Photon.PunBehaviour {
         }
         else
         {
-            health = (int)stream.ReceiveNext();
+            health = (float)stream.ReceiveNext();
             anim.SetFloat("m_MoveSpeed", (float)stream.ReceiveNext());
         }
     }
