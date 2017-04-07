@@ -35,7 +35,7 @@ public class ForcePullDrag : MonoBehaviour
             charMan = targetTransform.GetComponent<CharacterManager_NET>();
             targetHealth = targetTransform.GetComponent<PlayerHealth_NET>();
         }
-        //Destroy(this.gameObject, duration);
+        Destroy(this.gameObject, duration);
     }
 
     void Update()

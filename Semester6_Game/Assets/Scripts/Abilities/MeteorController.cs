@@ -23,7 +23,7 @@ public class MeteorController : MonoBehaviour
         meteorMesh.position = new Vector3(transform.position.x, heightOffset, transform.position.z);
         smokeParticleSys.Play();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -35,6 +35,7 @@ public class MeteorController : MonoBehaviour
             cracks.SetActive(true);
             debrisParticleSys.Play();
             Timing.RunCoroutine(_CleanUp(2));
+            Timing.RunCoroutine(ScreenEffects.Instance.screenShake());
         }
         meteorMesh.Translate(Vector3.down * Time.fixedDeltaTime * speed, Space.World);
     }

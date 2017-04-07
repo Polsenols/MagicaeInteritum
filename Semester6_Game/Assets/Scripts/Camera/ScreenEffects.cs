@@ -25,6 +25,7 @@ public class ScreenEffects : SingleTon<ScreenEffects>
 
     public IEnumerator<float> screenShake()
     {
+        Debug.Log("Shaking!");
         if (isShakeRunning == false)
         {
             //OriginalPos = transform.position;

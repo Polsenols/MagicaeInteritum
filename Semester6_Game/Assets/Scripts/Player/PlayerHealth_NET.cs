@@ -27,6 +27,8 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     public float freezeAmount = 2.0f;
     public float curseDuration = 4.0f;
     public float damageAdjuster = 1;
+    public int resourceKillAmount = 5;
+    public int scoreKillAmount = 10;
     public GameObject iceBlock, curseMarker;
     private LineRenderer myLine;
 
@@ -174,23 +176,25 @@ public class PlayerHealth_NET : Photon.PunBehaviour
             if (playerID > 0)
             {
                 lastAttackedByID = playerID;
-                lastAttackedByPlayer = charMan;
+                for (int i = 0; i < charMan.Players.Count; i++)
+                {
+                    if (charMan.Players[i].playerID == playerID)
+                    {
+                        lastAttackedByPlayer = charMan.Players[i];
+                    }
+                }
             }
 
-            Debug.Log("Player " + playerID + " attacked me");
             health -= damage * damageAdjuster;
             healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
             if (health <= 0)
             {
                 if (lastAttackedByPlayer != null)
                 {
-                    lastAttackedByPlayer.ShoutScore();
+                    lastAttackedByPlayer.ShoutScore(scoreKillAmount, resourceKillAmount);                   
                 }
                 Die();
-                Debug.Log("I died");
             }
-
-            Debug.Log("I now have health: " + health);
         }
     }
 

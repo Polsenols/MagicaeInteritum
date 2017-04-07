@@ -42,6 +42,8 @@ public class ShopScript : MonoBehaviour
     int spellIndexer;
 
     PlayerResources playerResource = new PlayerResources();
+    public int startResourceAmount = 100;
+    public int resourcePerTick = 3;
 
     #region Canvas Related Variables
     public GameObject canvasPlaceholder;
@@ -90,7 +92,7 @@ public class ShopScript : MonoBehaviour
             Destroy(canvasPlaceholder);
             Destroy(this);
         }
-        playerResource.CurrentResources = 300;
+        playerResource.CurrentResources = startResourceAmount;
         Timing.RunCoroutine(_ResourceProvider(playerResource.MoneyWaitTime));
         canvasPlaceholder.SetActive(false);
 
@@ -154,7 +156,7 @@ public class ShopScript : MonoBehaviour
         }
 
         resourcesDisplay.GetComponent<Text>().text = playerResource.CurrentResources.ToString();
-        resourcesHUDDisplay.GetComponent<Text>().text = "Resources: " + playerResource.CurrentResources.ToString();
+        resourcesHUDDisplay.GetComponent<Text>().text = playerResource.CurrentResources.ToString();
 
     }
 
@@ -493,7 +495,7 @@ public class ShopScript : MonoBehaviour
     {
         while (true)
         {
-            playerResource.CurrentResources += 3;
+            playerResource.CurrentResources += resourcePerTick;
 
             checkAffordance();
 
@@ -515,5 +517,15 @@ public class ShopScript : MonoBehaviour
                 mySpellImages[i].GetComponent<Image>().color = Color.white;
             }
         }
+    }
+
+    public int CurrentResource()
+    {
+        return playerResource.CurrentResources;
+    }
+
+    public void AddResource(int amount)
+    {
+        playerResource.CurrentResources += amount;
     }
 }

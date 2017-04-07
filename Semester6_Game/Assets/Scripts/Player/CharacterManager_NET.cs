@@ -8,6 +8,7 @@ public class CharacterManager_NET : Photon.PunBehaviour {
     public PhotonView m_PhotonView;
     private Animator anim;
     private PlayerHealth_NET _playerHealth;
+    private ShopScript playerShop;
     public SpellManager spellManager;
     private Rigidbody _rigidbody;
     public int playerID;
@@ -18,6 +19,7 @@ public class CharacterManager_NET : Photon.PunBehaviour {
 	// Use this for initialization
     void Awake()
     {
+        playerShop = GetComponent<ShopScript>();
         spellManager = GetComponent<SpellManager>();
         _playerHealth = GetComponent<PlayerHealth_NET>();
         _rigidbody = GetComponent<Rigidbody>();
@@ -25,8 +27,13 @@ public class CharacterManager_NET : Photon.PunBehaviour {
         m_PhotonView = GetComponent<PhotonView>();
     }
 	void Start () {    
-        SetScore(0);
+        SetScore(0,0);
         m_PhotonView.RPC("AddPlayers", PhotonTargets.All);
+        if (m_PhotonView.isMine)
+        {
+            PhotonNetwork.sendRate = 40;
+            PhotonNetwork.sendRateOnSerialize = 40;
+        }
 	}
 
     void Update()
@@ -91,14 +98,15 @@ public class CharacterManager_NET : Photon.PunBehaviour {
         return _playerHealth;
     }
 
-    public void ShoutScore()
+    public void ShoutScore(int score, int resourceGain)
     {
-        m_PhotonView.RPC("SetScore", PhotonTargets.All, 10);
+        m_PhotonView.RPC("SetScore", PhotonTargets.All, score, resourceGain);
     }
 
     [PunRPC]
-    public void SetScore(int score)
+    public void SetScore(int score, int resourceGain)
     {
+        playerShop.AddResource(resourceGain);
         this.score += score;
         string scoreText = playerName + " : " + this.score.ToString();
         GameObject.Find("Player" + playerID).GetComponent<Text>().text = scoreText;

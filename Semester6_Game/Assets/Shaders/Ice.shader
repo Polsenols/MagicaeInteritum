@@ -1,15 +1,18 @@
 // Shader created with Shader Forge v1.35 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.35;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,lico:1,lgpr:1,limd:1,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:False,hqlp:False,rprd:False,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:3,bdst:7,dpts:2,wrdp:False,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False;n:type:ShaderForge.SFN_Final,id:4013,x:32825,y:32699,varname:node_4013,prsc:2|diff-398-RGB,spec-9850-OUT,gloss-9850-OUT,normal-8070-RGB,emission-7781-OUT,alpha-1971-OUT,refract-2528-OUT;n:type:ShaderForge.SFN_Vector1,id:4806,x:32381,y:32651,varname:node_4806,prsc:2,v1:1;n:type:ShaderForge.SFN_Vector1,id:4783,x:32426,y:32883,varname:node_4783,prsc:2,v1:1;n:type:ShaderForge.SFN_Tex2d,id:8070,x:32143,y:32897,ptovrint:False,ptlb:Refraction,ptin:_Refraction,varname:node_8070,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:bbab0a6f7bae9cf42bf057d8ee2755f6,ntxv:3,isnm:True;n:type:ShaderForge.SFN_ComponentMask,id:5941,x:32327,y:32947,varname:node_5941,prsc:2,cc1:1,cc2:-1,cc3:-1,cc4:-1|IN-8070-RGB;n:type:ShaderForge.SFN_Multiply,id:2528,x:32545,y:33015,varname:node_2528,prsc:2|A-5941-OUT,B-2986-OUT;n:type:ShaderForge.SFN_Slider,id:7160,x:32065,y:33124,ptovrint:False,ptlb:node_7160,ptin:_node_7160,varname:node_7160,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.7863248,max:1;n:type:ShaderForge.SFN_Multiply,id:2986,x:32402,y:33155,varname:node_2986,prsc:2|A-7160-OUT,B-5972-OUT;n:type:ShaderForge.SFN_Vector1,id:5972,x:32155,y:33239,varname:node_5972,prsc:2,v1:0.2;n:type:ShaderForge.SFN_Multiply,id:3620,x:32250,y:32677,varname:node_3620,prsc:2|A-3365-RGB,B-4806-OUT;n:type:ShaderForge.SFN_Slider,id:1658,x:32042,y:32792,ptovrint:False,ptlb:node_7160_copy,ptin:_node_7160_copy,varname:_node_7160_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.6666667,max:3;n:type:ShaderForge.SFN_Vector1,id:9850,x:32500,y:32750,varname:node_9850,prsc:2,v1:0.5;n:type:ShaderForge.SFN_Multiply,id:1971,x:32500,y:32883,varname:node_1971,prsc:2|A-3620-OUT,B-4783-OUT;n:type:ShaderForge.SFN_Tex2d,id:3365,x:32339,y:32491,ptovrint:False,ptlb:node_3365,ptin:_node_3365,varname:node_3365,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:d12288d3fa93be244801fd352e64fe62,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Vector1,id:863,x:32500,y:32689,varname:node_863,prsc:2,v1:1;n:type:ShaderForge.SFN_Tex2d,id:398,x:32588,y:32510,ptovrint:False,ptlb:node_398,ptin:_node_398,varname:node_398,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Multiply,id:7781,x:32638,y:32760,varname:node_7781,prsc:2|A-1971-OUT,B-1658-OUT;proporder:8070-7160-1658-3365-398;pass:END;sub:END;*/
+/*SF_DATA;ver:1.35;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,lico:1,lgpr:1,limd:1,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:False,hqlp:False,rprd:False,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:3,bdst:7,dpts:2,wrdp:False,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False;n:type:ShaderForge.SFN_Final,id:4013,x:32899,y:32645,varname:node_4013,prsc:2|diff-6353-RGB,spec-6794-OUT,gloss-8657-OUT,normal-8070-RGB,emission-7781-OUT,alpha-1971-OUT,refract-2528-OUT;n:type:ShaderForge.SFN_Tex2d,id:8070,x:32166,y:32888,ptovrint:False,ptlb:Refraction,ptin:_Refraction,varname:node_8070,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:bbab0a6f7bae9cf42bf057d8ee2755f6,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Multiply,id:2528,x:32486,y:32998,varname:node_2528,prsc:2|A-8070-RGB,B-7160-OUT;n:type:ShaderForge.SFN_Slider,id:7160,x:32145,y:33076,ptovrint:False,ptlb:Refraction Amount,ptin:_RefractionAmount,varname:node_7160,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.7863248,max:1;n:type:ShaderForge.SFN_Slider,id:1658,x:32032,y:32796,ptovrint:False,ptlb:Emission,ptin:_Emission,varname:_node_7160_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:3;n:type:ShaderForge.SFN_Multiply,id:1971,x:32475,y:32873,varname:node_1971,prsc:2|A-3365-RGB,B-26-OUT;n:type:ShaderForge.SFN_Tex2d,id:3365,x:32220,y:32552,ptovrint:False,ptlb:OpacityTex,ptin:_OpacityTex,varname:node_3365,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:d12288d3fa93be244801fd352e64fe62,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Multiply,id:7781,x:32702,y:32793,varname:node_7781,prsc:2|A-1971-OUT,B-1658-OUT;n:type:ShaderForge.SFN_Slider,id:26,x:31911,y:32668,ptovrint:False,ptlb:Transparency,ptin:_Transparency,varname:_node_7160_copy_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1.410256,max:3;n:type:ShaderForge.SFN_Slider,id:6794,x:32332,y:32752,ptovrint:False,ptlb:Specular,ptin:_Specular,varname:_Emission_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1.46154,max:3;n:type:ShaderForge.SFN_Slider,id:8657,x:32421,y:32686,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:node_8657,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1,max:1;n:type:ShaderForge.SFN_Color,id:6353,x:32469,y:32490,ptovrint:False,ptlb:Color,ptin:_Color,varname:node_6353,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.1176471,c2:0.4523327,c3:1,c4:1;proporder:8070-7160-1658-3365-26-6794-8657-6353;pass:END;sub:END;*/
 
 Shader "Shader Forge/Ice" {
     Properties {
         _Refraction ("Refraction", 2D) = "bump" {}
-        _node_7160 ("node_7160", Range(0, 1)) = 0.7863248
-        _node_7160_copy ("node_7160_copy", Range(0, 3)) = 0.6666667
-        _node_3365 ("node_3365", 2D) = "white" {}
-        _node_398 ("node_398", 2D) = "white" {}
+        _RefractionAmount ("Refraction Amount", Range(0, 1)) = 0.7863248
+        _Emission ("Emission", Range(0, 3)) = 0
+        _OpacityTex ("OpacityTex", 2D) = "white" {}
+        _Transparency ("Transparency", Range(0, 3)) = 1.410256
+        _Specular ("Specular", Range(0, 3)) = 1.46154
+        _Gloss ("Gloss", Range(0, 1)) = 1
+        _Color ("Color", Color) = (0.1176471,0.4523327,1,1)
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
     }
     SubShader {
@@ -39,10 +42,13 @@ Shader "Shader Forge/Ice" {
             uniform float4 _LightColor0;
             uniform sampler2D _GrabTexture;
             uniform sampler2D _Refraction; uniform float4 _Refraction_ST;
-            uniform float _node_7160;
-            uniform float _node_7160_copy;
-            uniform sampler2D _node_3365; uniform float4 _node_3365_ST;
-            uniform sampler2D _node_398; uniform float4 _node_398_ST;
+            uniform float _RefractionAmount;
+            uniform float _Emission;
+            uniform sampler2D _OpacityTex; uniform float4 _OpacityTex_ST;
+            uniform float _Transparency;
+            uniform float _Specular;
+            uniform float _Gloss;
+            uniform float4 _Color;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -86,8 +92,7 @@ Shader "Shader Forge/Ice" {
                 float3 _Refraction_var = UnpackNormal(tex2D(_Refraction,TRANSFORM_TEX(i.uv0, _Refraction)));
                 float3 normalLocal = _Refraction_var.rgb;
                 float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
-                float node_2528 = (_Refraction_var.rgb.g*(_node_7160*0.2));
-                float2 sceneUVs = float2(1,grabSign)*i.screenPos.xy*0.5+0.5 + float2(node_2528,node_2528);
+                float2 sceneUVs = float2(1,grabSign)*i.screenPos.xy*0.5+0.5 + (_Refraction_var.rgb*_RefractionAmount).rg;
                 float4 sceneColor = tex2D(_GrabTexture, sceneUVs);
                 float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
                 float3 lightColor = _LightColor0.rgb;
@@ -96,12 +101,11 @@ Shader "Shader Forge/Ice" {
                 float attenuation = 1;
                 float3 attenColor = attenuation * _LightColor0.xyz;
 ///////// Gloss:
-                float node_9850 = 0.5;
-                float gloss = node_9850;
+                float gloss = _Gloss;
                 float specPow = exp2( gloss * 10.0+1.0);
 ////// Specular:
                 float NdotL = saturate(dot( normalDirection, lightDirection ));
-                float3 specularColor = float3(node_9850,node_9850,node_9850);
+                float3 specularColor = float3(_Specular,_Specular,_Specular);
                 float3 directSpecular = attenColor * pow(max(0,dot(halfDirection,normalDirection)),specPow)*specularColor;
                 float3 specular = directSpecular;
 /////// Diffuse:
@@ -109,13 +113,12 @@ Shader "Shader Forge/Ice" {
                 float3 directDiffuse = max( 0.0, NdotL) * attenColor;
                 float3 indirectDiffuse = float3(0,0,0);
                 indirectDiffuse += UNITY_LIGHTMODEL_AMBIENT.rgb; // Ambient Light
-                float4 _node_398_var = tex2D(_node_398,TRANSFORM_TEX(i.uv0, _node_398));
-                float3 diffuseColor = _node_398_var.rgb;
+                float3 diffuseColor = _Color.rgb;
                 float3 diffuse = (directDiffuse + indirectDiffuse) * diffuseColor;
 ////// Emissive:
-                float4 _node_3365_var = tex2D(_node_3365,TRANSFORM_TEX(i.uv0, _node_3365));
-                float3 node_1971 = ((_node_3365_var.rgb*1.0)*1.0);
-                float3 emissive = (node_1971*_node_7160_copy);
+                float4 _OpacityTex_var = tex2D(_OpacityTex,TRANSFORM_TEX(i.uv0, _OpacityTex));
+                float3 node_1971 = (_OpacityTex_var.rgb*_Transparency);
+                float3 emissive = (node_1971*_Emission);
 /// Final Color:
                 float3 finalColor = diffuse + specular + emissive;
                 fixed4 finalRGBA = fixed4(lerp(sceneColor.rgb, finalColor,node_1971),1);
@@ -145,10 +148,13 @@ Shader "Shader Forge/Ice" {
             uniform float4 _LightColor0;
             uniform sampler2D _GrabTexture;
             uniform sampler2D _Refraction; uniform float4 _Refraction_ST;
-            uniform float _node_7160;
-            uniform float _node_7160_copy;
-            uniform sampler2D _node_3365; uniform float4 _node_3365_ST;
-            uniform sampler2D _node_398; uniform float4 _node_398_ST;
+            uniform float _RefractionAmount;
+            uniform float _Emission;
+            uniform sampler2D _OpacityTex; uniform float4 _OpacityTex_ST;
+            uniform float _Transparency;
+            uniform float _Specular;
+            uniform float _Gloss;
+            uniform float4 _Color;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -194,8 +200,7 @@ Shader "Shader Forge/Ice" {
                 float3 _Refraction_var = UnpackNormal(tex2D(_Refraction,TRANSFORM_TEX(i.uv0, _Refraction)));
                 float3 normalLocal = _Refraction_var.rgb;
                 float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
-                float node_2528 = (_Refraction_var.rgb.g*(_node_7160*0.2));
-                float2 sceneUVs = float2(1,grabSign)*i.screenPos.xy*0.5+0.5 + float2(node_2528,node_2528);
+                float2 sceneUVs = float2(1,grabSign)*i.screenPos.xy*0.5+0.5 + (_Refraction_var.rgb*_RefractionAmount).rg;
                 float4 sceneColor = tex2D(_GrabTexture, sceneUVs);
                 float3 lightDirection = normalize(lerp(_WorldSpaceLightPos0.xyz, _WorldSpaceLightPos0.xyz - i.posWorld.xyz,_WorldSpaceLightPos0.w));
                 float3 lightColor = _LightColor0.rgb;
@@ -204,24 +209,22 @@ Shader "Shader Forge/Ice" {
                 float attenuation = LIGHT_ATTENUATION(i);
                 float3 attenColor = attenuation * _LightColor0.xyz;
 ///////// Gloss:
-                float node_9850 = 0.5;
-                float gloss = node_9850;
+                float gloss = _Gloss;
                 float specPow = exp2( gloss * 10.0+1.0);
 ////// Specular:
                 float NdotL = saturate(dot( normalDirection, lightDirection ));
-                float3 specularColor = float3(node_9850,node_9850,node_9850);
+                float3 specularColor = float3(_Specular,_Specular,_Specular);
                 float3 directSpecular = attenColor * pow(max(0,dot(halfDirection,normalDirection)),specPow)*specularColor;
                 float3 specular = directSpecular;
 /////// Diffuse:
                 NdotL = max(0.0,dot( normalDirection, lightDirection ));
                 float3 directDiffuse = max( 0.0, NdotL) * attenColor;
-                float4 _node_398_var = tex2D(_node_398,TRANSFORM_TEX(i.uv0, _node_398));
-                float3 diffuseColor = _node_398_var.rgb;
+                float3 diffuseColor = _Color.rgb;
                 float3 diffuse = directDiffuse * diffuseColor;
 /// Final Color:
                 float3 finalColor = diffuse + specular;
-                float4 _node_3365_var = tex2D(_node_3365,TRANSFORM_TEX(i.uv0, _node_3365));
-                float3 node_1971 = ((_node_3365_var.rgb*1.0)*1.0);
+                float4 _OpacityTex_var = tex2D(_OpacityTex,TRANSFORM_TEX(i.uv0, _OpacityTex));
+                float3 node_1971 = (_OpacityTex_var.rgb*_Transparency);
                 fixed4 finalRGBA = fixed4(finalColor * node_1971,0);
                 UNITY_APPLY_FOG(i.fogCoord, finalRGBA);
                 return finalRGBA;

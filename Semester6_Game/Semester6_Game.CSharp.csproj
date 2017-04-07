@@ -263,6 +263,7 @@
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\SingleTon.cs" />
     <Compile Include="Assets\Scripts\Sync.cs" />
+    <Compile Include="Assets\Scripts\SyncRotation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
