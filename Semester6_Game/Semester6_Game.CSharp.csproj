@@ -264,6 +264,7 @@
     <Compile Include="Assets\Scripts\SingleTon.cs" />
     <Compile Include="Assets\Scripts\Sync.cs" />
     <Compile Include="Assets\Scripts\SyncRotation.cs" />
+    <Compile Include="Assets\Scripts\TurnOnDepthBuffer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
@@ -312,7 +313,9 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
+    <None Include="Assets\Shaders\Additive.shader" />
     <None Include="Assets\Shaders\AlphaBlended.shader" />
+    <None Include="Assets\Shaders\Highlight.shader" />
     <None Include="Assets\Shaders\Ice.shader" />
     <None Include="Assets\Shaders\ProjectorBlended.shader" />
     <None Include="Assets\Shaders\VolumetricExplosion.shader" />
