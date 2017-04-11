@@ -10,7 +10,7 @@ public class SpellData : MonoBehaviour
     [SerializeField]
     private bool _isUtility;
     [SerializeField]
-    private int _damage;
+    private float _damage;
     [SerializeField]
     private int _range;
     [SerializeField]
@@ -34,6 +34,14 @@ public class SpellData : MonoBehaviour
     private float _slowMovementSpeed;
     [SerializeField]
     private float _slowDuration;
+    [SerializeField]
+    private float _curseDuration;
+    [SerializeField]
+    private float _curseDmgAdjuster;
+    [SerializeField]
+    private float _freezeDuration;
+    [SerializeField]
+    private float _lifeStealAmount;
     [SerializeField]
     private GameObject _impactEffect;
     public SpellManager owner;
@@ -59,7 +67,7 @@ public class SpellData : MonoBehaviour
         return _travelDuration;
     }
 
-    public int damage()
+    public float damage()
     {
         return _damage;
     }
@@ -122,6 +130,26 @@ public class SpellData : MonoBehaviour
     public float slowDuration()
     {
         return _slowDuration;
+    }
+
+    public float curseDuration()
+    {
+        return _curseDuration;
+    }
+
+    public float curseDmgAdjuster()
+    {
+        return _curseDmgAdjuster;
+    }
+
+    public float freezeDuration()
+    {
+        return _freezeDuration;
+    }
+
+    public float lifeStealAmount()
+    {
+        return _lifeStealAmount;
     }
 
     public void setSpellID(int ID)

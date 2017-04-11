@@ -10,6 +10,9 @@ public class SingleImpact : MonoBehaviour
     public bool canPush = false;
     public bool canFreeze = false;
     public bool canSlow = false;
+    public bool canLifeSteal = false;
+    public bool canCurse = false;
+    public bool destroyOnImpact = true;
     public SpellData spellData;
 
     [Header("Damage over time")]
@@ -70,14 +73,28 @@ public class SingleImpact : MonoBehaviour
 
                 if (canPush)
                     Push(other.GetComponent<Rigidbody>(), spellData.knockbackForce(), false);
+
                 if (canFreeze)
-                    other.GetComponent<PlayerHealth_NET>().Freeze();
+                    other.GetComponent<PlayerHealth_NET>().Freeze(spellData.freezeDuration());
+
                 if (canSlow)
                     other.GetComponent<PlayerMovement>().slowPlayerMovementSpeed(spellData.slowMovementSpeed(), spellData.slowDuration());
 
+                if (canLifeSteal)
+                    spellData.owner.GetComponent<PlayerHealth_NET>().AddLife(spellData.damage() * spellData.lifeStealAmount());
+
+                if (canCurse)
+                    player.playerHealth().Curse(spellData.curseDuration(), spellData.curseDmgAdjuster());
+
                 spellData.owner.SendAbilityHit(spellData.InstantiateID(), true, true);
-                Destroy(this.gameObject);
+
+                if (destroyOnImpact)
+                {
+                    Destroy(this.gameObject);
+                }
+
                 spellData.AbilityImpactEffect();
+
             }
         }
     }

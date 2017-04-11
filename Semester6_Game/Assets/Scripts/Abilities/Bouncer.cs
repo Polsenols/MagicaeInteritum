@@ -12,6 +12,8 @@ public class Bouncer : MonoBehaviour
     public bool canPush = false;
     public bool canFreeze = false;
     public bool canSlow = false;
+    public bool canCurse = false;
+    public bool canLifeSteal = false;
     public SpellData spellData;
     public List<PlayerHealth_NET> Players = new List<PlayerHealth_NET>();
     public PlayerHealth_NET lastPlayerTarget;
@@ -91,9 +93,13 @@ public class Bouncer : MonoBehaviour
                         if (canPush)
                             Push(other.GetComponent<Rigidbody>(), spellData.knockbackForce(), false);
                         if (canFreeze)
-                            other.GetComponent<PlayerHealth_NET>().Freeze();
+                            other.GetComponent<PlayerHealth_NET>().Freeze(spellData.freezeDuration());
                         if (canSlow)
                             other.GetComponent<PlayerMovement>().slowPlayerMovementSpeed(spellData.slowMovementSpeed(), spellData.slowDuration());
+                        if (canLifeSteal)
+                            spellData.owner.GetComponent<PlayerHealth_NET>().AddLife(spellData.damage() * spellData.lifeStealAmount());
+                        if (canCurse)
+                            player.playerHealth().Curse(spellData.curseDuration(), spellData.curseDmgAdjuster());
                     }
 
                     if (currentBounceCount >= amountOfBounces)

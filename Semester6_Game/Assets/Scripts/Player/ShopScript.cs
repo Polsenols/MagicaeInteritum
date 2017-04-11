@@ -6,27 +6,30 @@ using MovementEffects;
 
 public class ShopScript : MonoBehaviour
 {
-    /*
-        Spell Index Lookup:
-        -------------------
-        0 = Fireball
-        1 = Meteor
-        2 = Frostbolt
-        3 = Icespike
-        4 = Tornado
-        -------------------
-        5 = Shield
-        6 = Dash
-        7 = Gravity Orb
-        8 = Telekinesis
-        9 = Force Push
-        -------------------
-        10 = Poison Bolt
-        11 = Gas Cloud
-        12 = Life Steal
-        13 = Raise Zombie
-        14 = Curse
-        -------------------
+
+    /* Spell Index Lookup: (Update to fit new spells (11th of april) - in correct order)
+    -----------
+    Elemental spells:
+    Fireball
+    Meteor
+    Frostbolt
+    Ice Spikes
+    Freeze Spikes
+    -----------
+    Kinematic spells:
+    Shield
+    Gravity orb
+    Bouncer
+    Force wall
+    Force pull
+    -----------
+    Dark spells:
+    Poison Arrow
+    Gas Cloud
+    Life Steal
+    Place Swapper
+    Curse
+    ----------- 
     */
 
     // Array to determine the cost of a spell at a given index
@@ -42,7 +45,7 @@ public class ShopScript : MonoBehaviour
     int spellIndexer;
 
     PlayerResources playerResource = new PlayerResources();
-    public int startResourceAmount = 100;
+    public int startResourceAmount = 500;
     public int resourcePerTick = 3;
 
     #region Canvas Related Variables
@@ -119,7 +122,6 @@ public class ShopScript : MonoBehaviour
             spellTxt[i] = spellTxt[i].GetComponent<Text>();
             spellTxt[i].text += " (Cost: " + spellCostArray[i] + ")";
         }
-
     }
 
     void OnTriggerEnter(Collider other)
@@ -265,14 +267,14 @@ public class ShopScript : MonoBehaviour
         }
     }
 
-    public void TooltipTornado(int spellIndexLocator)
+    public void TooltipFreezeSpike(int spellIndexLocator)
     {
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Tornado: Hurls a tornado in a direction " +
-                System.Environment.NewLine + "that draws in enemies along the way";
-            SpellTooltipInfo("Tornado", setSpellDescipTxt, spellCostArray[4], 10, 2, 10, 5);
+            string setSpellDescipTxt = "Freeze Spike: Hurls a cluster of frostbolts" +
+                System.Environment.NewLine + "that freezes and damanges on impact";
+            SpellTooltipInfo("Freeze Spike", setSpellDescipTxt, spellCostArray[4], 10, 2, 10, 5);
         }
     }
     #endregion
@@ -283,23 +285,11 @@ public class ShopScript : MonoBehaviour
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Shield: Creates a kinetic shield around you " +
-                System.Environment.NewLine + "that makes you immune for a brief while";
-            SpellTooltipInfo("Shield", setSpellDescipTxt, spellCostArray[5], 10, 0, 0, 2);
+            string setSpellDescipTxt = "Reflective Shield: Creates a shield around you that " +
+                System.Environment.NewLine + "reflects spells and makes you immune";
+            SpellTooltipInfo("Reflective Shield", setSpellDescipTxt, spellCostArray[5], 10, 0, 0, 2);
         }
     }
-
-    public void TooltipDash(int spellIndexLocator)
-    {
-        if (!buyingSpells)
-        {
-            spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Dash: Use your kinetic energy to dash " +
-                System.Environment.NewLine + "forward in a specific direction";
-            SpellTooltipInfo("Dash", setSpellDescipTxt, spellCostArray[6], 10, 0, 0, 0);
-        }
-    }
-
     public void TooltipOrbOfGravity(int spellIndexLocator)
     {
         if (!buyingSpells)
@@ -307,41 +297,53 @@ public class ShopScript : MonoBehaviour
             spellIndexer = spellIndexLocator;
             string setSpellDescipTxt = "Gravity Orb: create a static gravity orb that pulls in " +
                 System.Environment.NewLine + "your enemies and shoots them out afterwards";
-            SpellTooltipInfo("Gravity Orb", setSpellDescipTxt, spellCostArray[7], 10, 0, 0, 3);
+            SpellTooltipInfo("Gravity Orb", setSpellDescipTxt, spellCostArray[6], 10, 0, 0, 3);
         }
     }
 
-    public void TooltipTelekinesis(int spellIndexLocator)
+    public void TooltipBouncer(int spellIndexLocator)
     {
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Telekinesis: pick up debris around you and " +
-                System.Environment.NewLine + "and shoot them after your enemies";
-            SpellTooltipInfo("Telekinesis", setSpellDescipTxt, spellCostArray[8], 5, 10, 3, 0);
+            string setSpellDescipTxt = "Bouncer: Shoots a projectile that bounces" +
+                System.Environment.NewLine + "between enemies upon impact on each";
+            SpellTooltipInfo("Bouncer", setSpellDescipTxt, spellCostArray[7], 10, 0, 0, 0);
         }
     }
 
-    public void TooltipForcePush(int spellIndexLocator)
+
+    public void TooltipForceWall(int spellIndexLocator)
     {
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Force Push: use your jedi force and push away " +
-                System.Environment.NewLine + "your enemies while damaging them";
-            SpellTooltipInfo("Force Push", setSpellDescipTxt, spellCostArray[9], 5, 20, 0, 0);
+            string setSpellDescipTxt = "Force Wall: shoots a kinematic wall that " +
+                System.Environment.NewLine + "forces enemies in a specific direction";
+            SpellTooltipInfo("Force Wall", setSpellDescipTxt, spellCostArray[8], 5, 10, 3, 0);
+        }
+    }
+
+    public void TooltipForcePull(int spellIndexLocator)
+    {
+        if (!buyingSpells)
+        {
+            spellIndexer = spellIndexLocator;
+            string setSpellDescipTxt = "Force Pull: Draws enemies in along the line " +
+                System.Environment.NewLine + "forcing them in a specific direction";
+            SpellTooltipInfo("Force Pull", setSpellDescipTxt, spellCostArray[9], 5, 20, 0, 0);
         }
     }
     #endregion
 
     #region Dark Spells Region
-    public void TooltipPoisonBolt(int spellIndexLocator)
+    public void TooltipPoisonArrow(int spellIndexLocator)
     {
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Poison Bolt: Shoots a bolt of poison at your " +
-                System.Environment.NewLine + "enemies that damages over time";
+            string setSpellDescipTxt = "Poison Arrow: Shoots a poison arrow that " +
+                System.Environment.NewLine + "slows and damanges the enemy over time";
             SpellTooltipInfo("Poison Bolt", setSpellDescipTxt, spellCostArray[10], 4, 20, 0, 0);
         }
     }
@@ -362,20 +364,20 @@ public class ShopScript : MonoBehaviour
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Life Steal: target an enemy who will get his life " +
-                System.Environment.NewLine + "damaged over time while giving you life";
+            string setSpellDescipTxt = "Life Steal: shoots a life stealing skull that " +
+                System.Environment.NewLine + "will seek enemies and steal life on impact";
             SpellTooltipInfo("Life Steal", setSpellDescipTxt, spellCostArray[12], 10, 15, 0, 5);
         }
     }
 
-    public void TooltipRaiseZombie(int spellIndexLocator)
+    public void TooltipPlaceSwapper(int spellIndexLocator)
     {
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Raise Zombie: summons a zombie to fight for you! " +
-                System.Environment.NewLine + "The zombie will attack foes at random";
-            SpellTooltipInfo("Raise Zombie", setSpellDescipTxt, spellCostArray[13], 25, 2, 0, 60);
+            string setSpellDescipTxt = "Place Swapper: shoots a projectile that will " +
+                System.Environment.NewLine + "make you swap position with another player";
+            SpellTooltipInfo("Place Swapper", setSpellDescipTxt, spellCostArray[13], 25, 2, 0, 60);
         }
     }
 
@@ -441,11 +443,6 @@ public class ShopScript : MonoBehaviour
 
             /****************** Added for HUD to work ******************/
         }
-        else
-        {
-            //Here goes the code for "pop" up saying insufficient fonds; still to be implemented.
-            Debug.Log("NOT ENOUGH MONEY OR ALREADY GOT SPELL");
-        }
     }
 
     //If the player presses "No", just return to the shop
@@ -474,7 +471,7 @@ public class ShopScript : MonoBehaviour
     }
 
     //Reset the canvas shop back to default (e.g. when exiting the shop)
-    void ResetShop()
+    public void ResetShop()
     {
         canvasPlaceholder.SetActive(false);
         spellSchoolCanvas1.enabled = false;

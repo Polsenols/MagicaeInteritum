@@ -12,6 +12,8 @@ public class AOEImpact : MonoBehaviour
     public bool canFreeze = false;
     public bool canDamage = false;
     public bool canCurse = false;
+    public bool canSlow = false;
+    public bool canLifeSteal = false;
     public bool screenshake = true;
 
     [Header("Damage over time")]
@@ -43,10 +45,16 @@ public class AOEImpact : MonoBehaviour
                             Push(player.GetComponent<Rigidbody>(), isDistanceBased, spellData);
 
                         if (canFreeze)
-                            player.playerHealth().Freeze();
+                            player.playerHealth().Freeze(spellData.freezeDuration());
 
                         if (canCurse)
-                            player.playerHealth().Curse();
+                            player.playerHealth().Curse(spellData.curseDuration(), spellData.curseDmgAdjuster());
+
+                        if (canSlow)
+                            player.GetComponent<PlayerMovement>().slowPlayerMovementSpeed(spellData.slowMovementSpeed(), spellData.slowDuration());
+
+                        if (canLifeSteal)
+                            spellData.owner.GetComponent<PlayerHealth_NET>().AddLife(spellData.damage() * spellData.lifeStealAmount());
 
                         switch (damageType)
                         {
