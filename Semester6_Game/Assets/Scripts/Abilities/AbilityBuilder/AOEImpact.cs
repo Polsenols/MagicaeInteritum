@@ -40,7 +40,7 @@ public class AOEImpact : MonoBehaviour
                     if (player.m_PhotonView.isMine)
                     {
                         if (canPush)
-                            Push(player.GetComponent<Rigidbody>(), spellData.knockbackForce(), isDistanceBased);
+                            Push(player.GetComponent<Rigidbody>(), isDistanceBased, spellData);
 
                         if (canFreeze)
                             player.playerHealth().Freeze();
@@ -54,7 +54,7 @@ public class AOEImpact : MonoBehaviour
                                 player.playerHealth().TakeDamageOverTime(amountOfTicks, spellData.damage(), timeBetweenTicks, player, spellData.ownerID());
                                 break;
                             case DamageType.Instant:
-                                player.playerHealth().TakeDamage(spellData.damage(), spellData.ownerID(), player);
+                                player.playerHealth().TakeDamage(spellData.damage(), spellData.ownerID(), player, transform, spellData.knockbackForce());
                                 break;
                             case DamageType.None:
                                 break;
@@ -68,12 +68,20 @@ public class AOEImpact : MonoBehaviour
             ScreenEffects.Instance.screenShake();
     }
 
-    public void Push(Rigidbody rb, float force, bool isDistanceBased)
+    private float Remap(float value, float from1, float to1, float from2, float to2)
     {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+
+    public void Push(Rigidbody rb, bool isDistanceBased, SpellData spellData)
+    {        
         Vector3 pushDir = rb.transform.position - transform.position;
         pushDir.y = 0;
-        if (isDistanceBased)
-            force -= pushDir.sqrMagnitude;
+        float force = 0;
+        if (isDistanceBased) {
+            float distance = pushDir.magnitude;
+            force = Remap(distance, 0, spellData.knockbackForce(), spellData.radius(), spellData.knockbackForce()*0.2f);
+        }
         rb.AddForce(pushDir.normalized * Mathf.Abs(force), ForceMode.Impulse);
     }
 

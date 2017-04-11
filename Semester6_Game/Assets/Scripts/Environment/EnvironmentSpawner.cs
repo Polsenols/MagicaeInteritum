@@ -11,7 +11,7 @@ public class EnvironmentSpawner : Photon.MonoBehaviour {
 	void Start () {
         if (PhotonNetwork.isMasterClient)
         {
-            Timing.RunCoroutine(_SpawnElement(LaserTower, 2.0f, laserSpawnPos.position));
+            Timing.RunCoroutine(_SpawnElement(LaserTower, 8.0f, laserSpawnPos.position));
         }
 	}
 	
@@ -19,5 +19,7 @@ public class EnvironmentSpawner : Photon.MonoBehaviour {
     {
         yield return Timing.WaitForSeconds(waitTime);
         PhotonNetwork.Instantiate(element.name, pos, Quaternion.identity, 0);
+        //LaserTower.SetActive(true);
+        yield return 0f;
     }
 }

@@ -66,14 +66,12 @@ public class ForcePullDrag : MonoBehaviour
     {
         if (!targetTransform.gameObject.activeSelf)
         {
-            Debug.Log("Target not active - destroyed");
             Destroy(this.gameObject);
         }
         if (pullDir != null)
         {
             if (pullDir.sqrMagnitude > distanceToBreak * distanceToBreak)
             {
-                Debug.Log("Too far, broke" + pullDir.sqrMagnitude);
                 Destroy(this.gameObject);
             }
         }

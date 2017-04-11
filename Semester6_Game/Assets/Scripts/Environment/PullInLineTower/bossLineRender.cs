@@ -6,7 +6,6 @@ public class bossLineRender : MonoBehaviour {
 
 
     private LineRenderer lineRenderer;
-    private bool displayLine = false;
 
 
     void Start()
@@ -24,7 +23,6 @@ public class bossLineRender : MonoBehaviour {
     {
         if(other.gameObject.tag == "Environmental")
         {
-            displayLine = true;
             lineRenderer.enabled = true;
             lineRenderer.SetPosition(1, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z));
         }

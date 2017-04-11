@@ -7,12 +7,10 @@ public class LaserTowerController : MonoBehaviour {
     public float rotationSpeed;
     public bool isActive = false;
     public GameObject laser_rays;
-    private PhotonView m_photonView;
     private SyncRotation syncRotate;
     public
 	// Use this for initialization
 	void Start () {
-        m_photonView = transform.parent.GetComponent<PhotonView>();
         syncRotate = transform.parent.GetComponent<SyncRotation>();
         if(PhotonNetwork.isMasterClient)
         Timing.RunCoroutine(_ActivateLaser(5f));
@@ -31,7 +29,6 @@ public class LaserTowerController : MonoBehaviour {
             {
                 PlayerHealth_NET playerHealth = other.GetComponent<PlayerHealth_NET>();
                 playerHealth.TakeDamage(playerHealth.maxHealth, -1, null);
-                Debug.Log("Hit player");
             }
     }
 

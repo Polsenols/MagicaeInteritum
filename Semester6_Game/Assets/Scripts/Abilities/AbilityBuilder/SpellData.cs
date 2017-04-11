@@ -36,8 +36,8 @@ public class SpellData : MonoBehaviour
     private float _slowDuration;
     [SerializeField]
     private GameObject _impactEffect;
-
     public SpellManager owner;
+    public PlayerHealth_NET lastPlayerTarget;
 
     public void setOwner(SpellManager _owner)
     {

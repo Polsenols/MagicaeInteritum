@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 
@@ -11,17 +11,10 @@ public class GameManager : Photon.PunBehaviour
 
     [Tooltip("The prefab to use for representing the player")]
     public GameObject playerPrefab;
-
+    public Transform spawnPos;
+    public float spawnHeight = 1;
+    public float spawnRadius = 1;
     #region Photon Messages
-
-
-    /// <summary>
-    /// Called when the local player left the room. We need to load the launcher scene.
-    /// </summary>
-    public void OnLeftRoom()
-    {
-        SceneManager.LoadScene(0);
-    }
 
 
     #endregion
@@ -41,9 +34,16 @@ public class GameManager : Photon.PunBehaviour
         {
             Debug.Log("We are Instantiating LocalPlayer from Game");
             // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-            GameObject go = (GameObject)PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+            GameObject go = (GameObject)PhotonNetwork.Instantiate(this.playerPrefab.name, SpawnPos(), Quaternion.identity, 0);
             SetupPlayer(go);
         }
+    }
+
+    Vector3 SpawnPos()
+    {
+        Vector3 randomPos = spawnPos.position + Random.insideUnitSphere * spawnRadius;
+        randomPos.y = spawnHeight;
+        return randomPos;
     }
 
     public void LeaveRoom()

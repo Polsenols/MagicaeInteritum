@@ -4,6 +4,8 @@
 Shader "Projector/Light" {
 	Properties {
 		_Color ("Main Color", Color) = (1,1,1,1)
+		_Fade("Fade", Range(0,1)) = 0
+		_Intensity("Intensity", Range(1,2)) = 1
 		_ShadowTex ("Cookie", 2D) = "" {}
 		_FalloffTex ("FallOff", 2D) = "" {}
 	}
@@ -43,6 +45,8 @@ Shader "Projector/Light" {
 			}
 			
 			fixed4 _Color;
+			uniform float _Fade;
+			uniform float _Intensity;
 			sampler2D _ShadowTex;
 			sampler2D _FalloffTex;
 			
@@ -53,7 +57,7 @@ Shader "Projector/Light" {
 				texS.a = 1.0-texS.a;
 	
 				fixed4 texF = tex2Dproj (_FalloffTex, UNITY_PROJ_COORD(i.uvFalloff));
-				fixed4 res = texS * texF.a * 2;
+				fixed4 res = texS * texF.a * _Intensity * _Fade;
 
 				UNITY_APPLY_FOG_COLOR(i.fogCoord, res, fixed4(0,0,0,0));
 				return res;

@@ -78,6 +78,8 @@ public class CharacterManager_NET : Photon.PunBehaviour {
             CharacterManager_NET player = playersInScene[i].GetComponent<CharacterManager_NET>();
             if (!Players.Contains(player)) {
                 Players.Add(player);
+                if (!SpawnManager.Instance.Players.Contains(player.GetComponent<PlayerHealth_NET>()))
+                    SpawnManager.Instance.Players.Add(player.GetComponent<PlayerHealth_NET>());
             }
         }
     }

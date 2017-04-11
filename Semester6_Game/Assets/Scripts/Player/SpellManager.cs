@@ -8,7 +8,8 @@ public class SpellManager : Photon.MonoBehaviour
 {
 
     public PhotonView m_photonView;
-    private CharacterManager_NET charMananager;
+    public CharacterManager_NET charMananager;
+    public PlayerHealth_NET playerHealth;
     private MousePositionScript mousePos;
     public GameObject[] Spell;
     public SpellData[] m_spellData;
@@ -30,6 +31,7 @@ public class SpellManager : Photon.MonoBehaviour
 
     void Awake()
     {
+        playerHealth = GetComponent<PlayerHealth_NET>();
         charMananager = GetComponent<CharacterManager_NET>();
         m_photonView = GetComponent<PhotonView>();
         mousePos = GetComponent<MousePositionScript>();
@@ -192,14 +194,33 @@ public class SpellManager : Photon.MonoBehaviour
         m_photonView.RPC("castSpell", PhotonTargets.All, spell_ID, origin, target, PhotonNetwork.player.ID, m_LastInstantiatedID);
     }
 
-    public void SendAbilityHit(int ID, bool displayImpactEffect)
+    public void SendAbilityHit(int ID, bool displayImpactEffect, bool destroyAbility)
     {
-        m_photonView.RPC("OnAbilityHit", PhotonTargets.Others, ID, displayImpactEffect);
+        m_photonView.RPC("OnAbilityHit", PhotonTargets.Others, ID, displayImpactEffect, destroyAbility);
     }
 
-    public void SetSpellDirection(int ID, Vector3 origin, Vector3 target, int OwnerID)
+    public void SetSpellDirection(int Instantiate_ID, Vector3 origin, Vector3 target, int OwnerID)
     {
-        m_photonView.RPC("setNewSpellDir", PhotonTargets.All, origin, target, ID, OwnerID);
+        m_photonView.RPC("setNewSpellDir", PhotonTargets.All, origin, target, Instantiate_ID, OwnerID);
+    }
+
+    public void SetLastPlayerHit(int InstantiateID, int index)
+    {
+        m_photonView.RPC("lastPlayerHit", PhotonTargets.All, InstantiateID, index);
+    }
+
+    [PunRPC]
+    public void lastPlayerHit(int InstantiateID, int playerhitID)
+    {
+        m_sceneAbilities.RemoveAll(item => item = null);
+        SpellData spell = m_sceneAbilities.Find(item => item.InstantiateID() == InstantiateID);
+        for (int i = 0; i < charMananager.Players.Count; i++)
+        {
+            if (charMananager.Players[i].playerID == playerhitID)
+            {
+                spell.lastPlayerTarget = charMananager.Players[i].playerHealth();
+            }
+        }
     }
 
     [PunRPC]
@@ -256,7 +277,7 @@ public class SpellManager : Photon.MonoBehaviour
     }
 
     [PunRPC]
-    public void OnAbilityHit(int ID, bool displayImpactEffect)
+    public void OnAbilityHit(int ID, bool displayImpactEffect, bool destroyAbility)
     {
         m_sceneAbilities.RemoveAll(item => item = null);
         SpellData spell = m_sceneAbilities.Find(item => item.InstantiateID() == ID);
@@ -267,10 +288,17 @@ public class SpellManager : Photon.MonoBehaviour
         }
         if (spell != null)
         {
-            m_sceneAbilities.Remove(spell);
-            if (displayImpactEffect)
+            if (destroyAbility)
+            {
+                m_sceneAbilities.Remove(spell);
+                if (displayImpactEffect)
+                    spell.AbilityImpactEffect();
+                Destroy(spell.gameObject);
+            }
+            else
+            {
                 spell.AbilityImpactEffect();
-            Destroy(spell.gameObject);
+            }
         }
 
     }
@@ -284,11 +312,6 @@ public class SpellManager : Photon.MonoBehaviour
         if (ownerID == GetComponent<CharacterManager_NET>().playerID)
         {
             spellData.setOwner(this);
-        }
-        //spellData.setOwner(this);
-        for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
-        {
-            Debug.Log("User ID: " + PhotonNetwork.playerList[i].UserId);
         }
         spellData.setInstantiateID(instantiateID);
         projectileMovement.SetCreationTime(createTime);

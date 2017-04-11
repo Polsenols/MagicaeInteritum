@@ -8,7 +8,6 @@ public class SpellMovement : MonoBehaviour
     public bool isFired = false;
     private Vector3 spellDir = Vector3.zero;
     private SpellData spellData;
-    private Rigidbody rb;
     private double m_creationTime = 0;
     public Vector3 m_startPosition = Vector3.zero;
     private float timeSinceStart;
@@ -17,7 +16,6 @@ public class SpellMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         spellData = GetComponent<SpellData>();
         transform.position = m_startPosition;
         //transform.position += spellDir * 1.25f;
@@ -30,7 +28,7 @@ public class SpellMovement : MonoBehaviour
             timeSinceStart += Time.deltaTime;
             if (timeSinceStart > spellData.travelDuration())
             {
-                spellData.owner.SendAbilityHit(spellData.InstantiateID(), true);
+                spellData.owner.SendAbilityHit(spellData.InstantiateID(), true, true);
                 spellData.AbilityImpactEffect();
                 Destroy(this.gameObject);
             }

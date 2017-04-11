@@ -7,18 +7,18 @@ using MovementEffects;
 public class PlayerHealth_NET : Photon.PunBehaviour
 {
     public Canvas canvas;
-    PhotonView m_PhotonView;
+    public PhotonView m_PhotonView;
     CharacterManager_NET lastAttackedByPlayer;
+    CharacterManager_NET playerManager;
     public float maxHealth;
     public float healthBarHeight;
     private float health;
     private Image healthBar;
-
+    public int playerID;
     public GameObject ragdoll;
     public GameObject meteor;
     public GameObject healthbarUI_prefab;
     private GameObject healthbarUI;
-    private int lastAttackedByID;
     public bool invulnurable = false;
     private float timeStamp1 = 0;
     private float timeStamp2 = 0;
@@ -40,6 +40,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
 
     void Start()
     {
+        playerManager = GetComponent<CharacterManager_NET>();
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         healthbarUI = Instantiate(healthbarUI_prefab) as GameObject;
         healthBar = healthbarUI.transform.GetChild(0).GetComponent<Image>();
@@ -49,6 +50,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         setName();
         iceBlock.SetActive(false);
         curseMarker.SetActive(false);
+        playerID = GetComponent<CharacterManager_NET>().playerID;
     }
 
     public float getHealth()
@@ -104,7 +106,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     {
         Vector3 healthBarPos = new Vector3(transform.position.x, transform.position.y + healthBarHeight, transform.position.z);
         Vector3 screenPos = Camera.main.WorldToScreenPoint(healthBarPos);
-        healthbarUI.transform.position = screenPos;
+        healthbarUI.transform.position = Vector3.Lerp(healthbarUI.transform.position,screenPos,Time.deltaTime * 8.0f);
         healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
     }
 
@@ -116,11 +118,28 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         }
     }
 
+    public void Die(Transform hitPos, float force)
+    {
+        if (m_PhotonView.isMine)
+        {
+            m_PhotonView.RPC("RespawnOverride", PhotonTargets.All, hitPos.position, force);
+        }
+    }
+
+    [PunRPC]
+    void RespawnOverride(Vector3 hitPos, float force)
+    {
+        Debug.Log("Ragdoll gogogogo");
+        GameObject go = (GameObject)Instantiate(ragdoll, transform.position, ragdoll.transform.rotation);
+        go.GetComponent<RagdollControl>().PushRagdoll(hitPos, force * 1000f);
+        Timing.RunCoroutine(_Die(2.0f));
+    }
+
     [PunRPC]
     public void Respawn()
     {
         GameObject go = (GameObject)Instantiate(ragdoll, transform.position, ragdoll.transform.rotation);
-        go.GetComponent<RagdollControl>().PushRagdoll(transform.position);
+        go.GetComponent<RagdollControl>().PushRagdoll(transform.position, 5.0f);
         Timing.RunCoroutine(_Die(2.0f));
     }
 
@@ -145,13 +164,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         healthbarUI.SetActive(false);
         yield return Timing.WaitForSeconds(respawnTime);
         setHealth(maxHealth);
-        #region Temporary transform respawner
-        Vector3 spawnPos = Vector3.up;
-        Vector3 random = Random.insideUnitSphere * 10.0f;
-        random.y = 1;
-        Vector3 itempos = spawnPos + 1.0f * random;
-        transform.position = itempos;
-        #endregion
+        transform.position = SpawnManager.Instance.GetSpawnPos();
         timeStamp1 = Time.time + deathTimer;
         healthbarUI.SetActive(true);
         this.gameObject.SetActive(true);
@@ -173,10 +186,9 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     {
         if (!invulnurable)
         {
-            if (playerID > 0)
+            if (playerID > 0) //Environmental kills have ID of negative value
             {
-                lastAttackedByID = playerID;
-                for (int i = 0; i < charMan.Players.Count; i++)
+                for (int i = 0; i < playerManager.Players.Count; i++)
                 {
                     if (charMan.Players[i].playerID == playerID)
                     {
@@ -187,6 +199,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
 
             health -= damage * damageAdjuster;
             healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
+            Debug.Log("Took damage health now " + health);
             if (health <= 0)
             {
                 if (lastAttackedByPlayer != null)
@@ -194,6 +207,35 @@ public class PlayerHealth_NET : Photon.PunBehaviour
                     lastAttackedByPlayer.ShoutScore(scoreKillAmount, resourceKillAmount);                   
                 }
                 Die();
+            }
+        }
+    }
+
+    public void TakeDamage(float damage, int playerID, CharacterManager_NET charMan, Transform hitPos, float force)
+    {
+        if (!invulnurable)
+        {
+            if (playerID > 0) //Environmental kills have ID of negative value
+            {
+                for (int i = 0; i < playerManager.Players.Count; i++)
+                {
+                    if (charMan.Players[i].playerID == playerID)
+                    {
+                        lastAttackedByPlayer = charMan.Players[i];
+                    }
+                }
+            }
+
+            health -= damage * damageAdjuster;
+            healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
+            Debug.Log("Took damage health now " + health);
+            if (health <= 0)
+            {
+                if (lastAttackedByPlayer != null)
+                {
+                    lastAttackedByPlayer.ShoutScore(scoreKillAmount, resourceKillAmount);
+                }
+                Die(hitPos, force);
             }
         }
     }

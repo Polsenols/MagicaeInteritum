@@ -209,13 +209,13 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
-    <Compile Include="Assets\Scripts\Abilities\AOE.cs" />
     <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\AOEImpact.cs" />
     <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\GravityPull.cs" />
     <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SingleImpact.cs" />
     <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SpellData.cs" />
     <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SpellMovement.cs" />
     <Compile Include="Assets\Scripts\Abilities\Ability_Dash.cs" />
+    <Compile Include="Assets\Scripts\Abilities\Bouncer.cs" />
     <Compile Include="Assets\Scripts\Abilities\CurseBehaviour.cs" />
     <Compile Include="Assets\Scripts\Abilities\ForcePull.cs" />
     <Compile Include="Assets\Scripts\Abilities\ForcePullDrag.cs" />
@@ -236,6 +236,7 @@
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Camera\HealthbarUI.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenEffects.cs" />
+    <Compile Include="Assets\Scripts\Environment\DeathCircleController.cs" />
     <Compile Include="Assets\Scripts\Environment\EnvironmentSpawner.cs" />
     <Compile Include="Assets\Scripts\Environment\LaserOscillation.cs" />
     <Compile Include="Assets\Scripts\Environment\LaserTowerController.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="Assets\Scripts\HUD Canvas\AbilityDataForUI.cs" />
     <Compile Include="Assets\Scripts\HUD Canvas\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Launcher.cs" />
+    <Compile Include="Assets\Scripts\LightAnimation.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterManager_NET.cs" />
     <Compile Include="Assets\Scripts\Player\MousePositionScript.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth_NET.cs" />
@@ -258,10 +260,10 @@
     <Compile Include="Assets\Scripts\Player\ShopScript.cs" />
     <Compile Include="Assets\Scripts\Player\SpellManager.cs" />
     <Compile Include="Assets\Scripts\PlayerNameInputField.cs" />
-    <Compile Include="Assets\Scripts\ProjectorFadeOut.cs" />
     <Compile Include="Assets\Scripts\RagdollControl.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\SingleTon.cs" />
+    <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\Sync.cs" />
     <Compile Include="Assets\Scripts\SyncRotation.cs" />
     <Compile Include="Assets\Scripts\TurnOnDepthBuffer.cs" />
@@ -318,6 +320,7 @@
     <None Include="Assets\Shaders\Highlight.shader" />
     <None Include="Assets\Shaders\Ice.shader" />
     <None Include="Assets\Shaders\ProjectorBlended.shader" />
+    <None Include="Assets\Shaders\UnlitTransparent.shader" />
     <None Include="Assets\Shaders\VolumetricExplosion.shader" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />

@@ -244,6 +244,7 @@
     <None Include="Assets\Shaders\Highlight.shader" />
     <None Include="Assets\Shaders\Ice.shader" />
     <None Include="Assets\Shaders\ProjectorBlended.shader" />
+    <None Include="Assets\Shaders\UnlitTransparent.shader" />
     <None Include="Assets\Shaders\VolumetricExplosion.shader" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />

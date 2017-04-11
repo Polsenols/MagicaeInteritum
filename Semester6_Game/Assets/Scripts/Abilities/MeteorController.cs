@@ -12,6 +12,7 @@ public class MeteorController : MonoBehaviour
     public ParticleSystem debrisParticleSys, smokeParticleSys;
     public Transform meteorMesh;
     private SpellData spellData;
+    private AOEImpact aoeImpact;
     
 
     private bool meteorExploded = false;
@@ -19,17 +20,17 @@ public class MeteorController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        aoeImpact = GetComponent<AOEImpact>();
         spellData = GetComponent<SpellData>();
         meteorMesh.position = new Vector3(transform.position.x, heightOffset, transform.position.z);
         smokeParticleSys.Play();
     }
     
-    // Update is called once per frame
     void Update()
     {
         if (meteorMesh.position.y <= explosionY_Offset && !meteorExploded)
         {
-            GetComponent<AOEImpact>().impactNearbyEnemies(transform.position, true, spellData.radius(),spellData);
+            aoeImpact.impactNearbyEnemies(transform.position, true, spellData.radius(),spellData);
             meteorExploded = true;
             explosion.SetActive(true);
             cracks.SetActive(true);
@@ -37,7 +38,7 @@ public class MeteorController : MonoBehaviour
             Timing.RunCoroutine(_CleanUp(2));
             Timing.RunCoroutine(ScreenEffects.Instance.screenShake());
         }
-        meteorMesh.Translate(Vector3.down * Time.fixedDeltaTime * speed, Space.World);
+        meteorMesh.Translate(Vector3.down * Time.deltaTime * speed, Space.World);
     }
 
     public IEnumerator<float> _CleanUp(float duration)

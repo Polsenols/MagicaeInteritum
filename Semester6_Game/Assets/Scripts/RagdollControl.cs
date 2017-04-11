@@ -5,15 +5,15 @@ using UnityEngine;
 public class RagdollControl : MonoBehaviour {
 
     public Rigidbody hip;
-    public float force;
     void Start()
     {
-        PushRagdoll(transform.position);
+        //PushRagdoll(transform.position);
     }
 
-    public void PushRagdoll(Vector3 pos)
+    public void PushRagdoll(Vector3 pos, float force)
     {
+        Debug.Log("Pushing ragdoll boi force: " + force);
         pos.y = -0.5f;
-        hip.AddExplosionForce(force, pos, 10.0f);
+        hip.AddExplosionForce(force, pos, 10);
     }
 }
