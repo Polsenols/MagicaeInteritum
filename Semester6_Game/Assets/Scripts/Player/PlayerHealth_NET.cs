@@ -108,7 +108,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     {
         Vector3 healthBarPos = new Vector3(transform.position.x, transform.position.y + healthBarHeight, transform.position.z);
         Vector3 screenPos = Camera.main.WorldToScreenPoint(healthBarPos);
-        healthbarUI.transform.position = Vector3.Lerp(healthbarUI.transform.position,screenPos,Time.deltaTime * 8.0f);
+        healthbarUI.transform.position = Vector3.Lerp(healthbarUI.transform.position, screenPos, Time.deltaTime * 8.0f);
         healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
     }
 
@@ -164,7 +164,6 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         invulnurable = true;
         this.gameObject.SetActive(false);
         healthbarUI.SetActive(false);
-        myShopping.ResetShop();
         yield return Timing.WaitForSeconds(respawnTime);
         setHealth(maxHealth);
         transform.position = SpawnManager.Instance.GetSpawnPos();
@@ -174,6 +173,8 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         UnfreezePlayer();
         UnCursePlayer();
         myLine.enabled = false;
+        if (myShopping != null)
+            myShopping.ResetShop();
         //Timing.RunCoroutine(_Invul(3.0f));
     }
 
@@ -208,7 +209,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
             {
                 if (lastAttackedByPlayer != null)
                 {
-                    lastAttackedByPlayer.ShoutScore(scoreKillAmount, resourceKillAmount);                   
+                    lastAttackedByPlayer.ShoutScore(scoreKillAmount, resourceKillAmount);
                 }
                 Die();
             }
