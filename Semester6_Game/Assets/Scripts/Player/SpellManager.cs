@@ -44,7 +44,7 @@ public class SpellManager : Photon.MonoBehaviour
         if (m_photonView.isMine)
         {
             reticle_AOE = (GameObject)Instantiate(reticle_AOE, transform.position, reticle_AOE.transform.rotation);
-            reticle_Direction = (GameObject)Instantiate(reticle_Direction, new Vector3(transform.position.x, transform.position.y + 100, transform.position.x), reticle_Direction.transform.rotation);
+            reticle_Direction = (GameObject)Instantiate(reticle_Direction, new Vector3(transform.position.x, transform.position.y, transform.position.x), reticle_Direction.transform.rotation);
         }
     }
 
@@ -110,7 +110,7 @@ public class SpellManager : Photon.MonoBehaviour
         //Directional
         reticle_Direction.transform.position = transform.position;
         Vector3 targetTransform = mousePos.getMouseWorldPoint();
-        reticle_Direction.transform.LookAt(new Vector3(targetTransform.x, 0.0f, targetTransform.z));
+        reticle_Direction.transform.LookAt(new Vector3(targetTransform.x, targetTransform.y, targetTransform.z));
     }
 
     void Update()

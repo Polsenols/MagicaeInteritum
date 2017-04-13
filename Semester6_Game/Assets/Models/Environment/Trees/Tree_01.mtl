@@ -1,0 +1,28 @@
+#
+# mtl file for Tree_01.obj obj file
+#
+
+newmtl world_expansion05_doodads_tanaanjungle_doodads_6tj_patchswamp_rootstree_c01.m2_Geoset_002
+illum 2
+Kd 1.000000 1.000000 1.000000
+Ka 0.250000 0.250000 0.250000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ns 0.000000
+map_Kd Tree_01_6tj_patchswamp_treetrunk.png
+newmtl world_expansion05_doodads_tanaanjungle_doodads_6tj_patchswamp_rootstree_c01.m2_Geoset_000_Dbl
+illum 2
+Kd 1.000000 1.000000 1.000000
+Ka 0.250000 0.250000 0.250000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ns 0.000000
+map_Kd Tree_01_6tj_patchswamp_treebranches.png
+newmtl world_expansion05_doodads_tanaanjungle_doodads_6tj_patchswamp_rootstree_c01.m2_Geoset_001_Dbl
+illum 2
+Kd 1.000000 1.000000 1.000000
+Ka 0.250000 0.250000 0.250000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ns 0.000000
+map_Kd Tree_01_6tj_patchswamp_treejunk.png

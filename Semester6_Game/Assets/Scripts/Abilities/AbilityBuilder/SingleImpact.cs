@@ -65,7 +65,7 @@ public class SingleImpact : MonoBehaviour
                         player.playerHealth().TakeDamageOverTime(amountOfTicks, spellData.damage(), timeBetweenTicks, player, spellData.ownerID());
                         break;
                     case DamageType.Instant:
-                        player.playerHealth().TakeDamage(spellData.damage(), spellData.ownerID(), player);
+                        player.playerHealth().TakeDamage(spellData.damage(), spellData.ownerID(), player, transform, spellData.knockbackForce());
                         break;
                     case DamageType.None:
                         break;

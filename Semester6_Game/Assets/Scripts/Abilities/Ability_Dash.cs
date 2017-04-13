@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MovementEffects;
 
 public class Ability_Dash : MonoBehaviour {
 
@@ -14,32 +15,47 @@ public class Ability_Dash : MonoBehaviour {
     {
         m_PhotonView = GetComponent<PhotonView>();
     }
-	// Use this for initialization
+
 	void Start () {
-        if (!m_PhotonView.isMine)
+        if (m_PhotonView.isMine)
         {
-            Destroy(this);
-            return;
+            playerMove = GetComponent<PlayerMovement>();
+            rb = GetComponent<Rigidbody>();
         }
-        playerMove = GetComponent<PlayerMovement>();
-        rb = GetComponent<Rigidbody>();
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
-        if (Input.GetButtonDown("Jump"))
+        if (m_PhotonView.isMine)
         {
-            rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
-            dashParticleSys.startRotation3D = new Vector3(0, transform.localEulerAngles.y * Mathf.Deg2Rad, 0);
-            StartCoroutine(Dash());
-            playerMove.moving = false;
+            if (Input.GetButtonDown("Jump"))
+            {
+                rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
+                Vector3 particleRotation = new Vector3(0, transform.localEulerAngles.y * Mathf.Deg2Rad, 0);
+                DisplayDashVisual(particleRotation);
+                playerMove.moving = false;
+            }
         }
 	}
 
-    IEnumerator Dash()
+    public void DisplayDashVisual(Vector3 rotation)
     {
+        m_PhotonView.RPC("StartDashEnum", PhotonTargets.All, rotation);
+    }
+
+    [PunRPC]
+    void StartDashEnum(Vector3 rotation)
+    {
+        Timing.RunCoroutine(Dash(rotation));
+    }
+
+    IEnumerator<float> Dash(Vector3 rotation)
+    {
+        Debug.Log("startDash");
+        dashParticleSys.startRotation3D = rotation;
         dashParticleSys.Play();
-        yield return new WaitForSeconds(0.85f);
+        yield return Timing.WaitForSeconds(0.85f);
         dashParticleSys.Stop();
+        Debug.Log("stopDash");
     }
 }

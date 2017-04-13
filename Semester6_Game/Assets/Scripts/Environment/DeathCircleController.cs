@@ -20,6 +20,8 @@ public class DeathCircleController : MonoBehaviour
     public float damagePerTick = 1;
     public float tickInterval;
     public Transform circleObj;
+    public float width;
+    public float height;
     #endregion
 
     #region Private variables
@@ -28,7 +30,9 @@ public class DeathCircleController : MonoBehaviour
     private float fadeAmount = 0;
     private bool fadeInComplete = false;
     private bool canStart = false;
+    private bool canStop = false;
     private bool scaleInComplete = false;
+    private bool moving = false;
     private bool movementStopped = false;
     private bool startMoveTrigger = false;
     private float startMoveTimestamp = 0;
@@ -85,12 +89,24 @@ public class DeathCircleController : MonoBehaviour
             {
                 if (scaleInComplete && timeSinceMoveStart < startMoveTimestamp)
                 {
-
+                    if (!moving)
+                    {
+                        Moving();
+                        moving = true;
+                    }
                     MoveCircle();
                 }
+                if(scaleInComplete && timeSinceMoveStart > startMoveTimestamp)
+                {
+                    StartFadeOut();
+                }
             }
-            if (movementStopped)
+            if (canStop)
                 FadeOut();
+            if (moving)
+            {
+                SpawnManager.Instance.SetSpawnOrigin(transform.position);
+            }
         }
     }
 
@@ -155,17 +171,35 @@ public class DeathCircleController : MonoBehaviour
 
     private void StartFadeOut()
     {
-        m_photonView.RPC("FadeOut", PhotonTargets.AllBuffered);
+        m_photonView.RPC("FadeOutTrigger", PhotonTargets.AllBuffered);
+    }
+
+    private void Moving()
+    {
+        m_photonView.RPC("SetMoving", PhotonTargets.OthersBuffered);
     }
 
     #endregion
+    [PunRPC]
+    private void FadeOutTrigger()
+    {
+        canStop = true;
+        moving = false;
+    }
+
+    [PunRPC]
+    private void SetMoving()
+    {
+        moving = true;
+    }
 
     private void ScaleIn()
     {
         circleObj.localScale = Vector3.MoveTowards(circleObj.localScale, new Vector3(scaleTarget, scaleTarget, scaleTarget), Time.deltaTime);
-        SpawnManager.Instance.SetSpawnRadius(circleObj.localScale.x);
+        SpawnManager.Instance.SetSpawnRadius(circleObj.localScale.x);    
         if (circleObj.localScale.x < scaleTarget + 0.1f && scaleInComplete == false)
         {
+            timeSinceMoveStart = Time.time;
             scaleInComplete = true;
             startMoveTrigger = true;
         }
@@ -174,25 +208,26 @@ public class DeathCircleController : MonoBehaviour
     public void Reset()
     {
         SpawnManager.Instance.InitializeOriginalState();
+        Destroy(this.gameObject);
     }
 
     private void MoveCircle()
     {
         float circleRadius = circleObj.localScale.x;
         transform.position += new Vector3(xDir, 0, zDir) * Time.deltaTime * moveSpeed;
-        if (transform.position.x >= 12.5 - circleRadius)
+        if (transform.position.x >= width - circleRadius)
         {
             xDir = -Mathf.Abs(xDir);
         }
-        else if (transform.position.x <= -12.5 + circleRadius)
+        else if (transform.position.x <= -width + circleRadius)
         {
             xDir = Mathf.Abs(xDir);
         }
-        if (transform.position.z >= 12.5 - circleRadius)
+        if (transform.position.z >= height - circleRadius)
         {
             zDir = -Mathf.Abs(zDir);
         }
-        else if (transform.position.z <= -12.5 + circleRadius)
+        else if (transform.position.z <= -height + circleRadius)
         {
             zDir = Mathf.Abs(zDir);
         }
@@ -201,13 +236,14 @@ public class DeathCircleController : MonoBehaviour
 
     private void FadeOut()
     {
+
         if (fadeAmount >= 0)
         {
             fadeAmount -= Time.deltaTime / fadeOutDampenSpeed;
             projectorMat.SetFloat("_Fade", fadeAmount);
             edgeMat.SetFloat("_Fade", fadeAmount);
         }
-        else if (mainLight.intensity >= originalLightIntensity)
+        else if (mainLight.intensity <= originalLightIntensity)
         {
             mainLight.intensity += Time.deltaTime / fadeOutDampenSpeed;
         }

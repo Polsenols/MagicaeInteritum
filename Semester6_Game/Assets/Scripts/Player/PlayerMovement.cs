@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float currentSpeed = 0;
     private Vector3 targetPosition = Vector3.zero;
+    private Vector3 targetPosRotation;
     private Quaternion targetRotation;
 
     private float distance;
@@ -64,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1))
         {
             targetPosition = mouseController.getMouseWorldPoint();
+            targetPosRotation = targetPosition;
             moving = true;
         }
         #endregion
@@ -85,8 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (distance > 0.1f && moving)
             {
-                targetRotation = Quaternion.LookRotation(targetPosition - transform.position, Vector3.up);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+                RotateToPos();
             }
             #endregion
         }
@@ -103,6 +104,16 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(moveDir.normalized * speed);
     }
     #endregion
+
+    private void RotateToPos()
+    {
+        targetPosRotation.y = 0;
+        Vector3 myPos = transform.position;
+        myPos.y = 0;
+        targetRotation = Quaternion.LookRotation(targetPosRotation - myPos, Vector3.up);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+
+    }
 
     public bool FreezePlayerMovement()
     {
