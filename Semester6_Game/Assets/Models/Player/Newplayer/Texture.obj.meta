@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 07b18ec05747ef243b5d675fd86e13d5
+timeCreated: 1492115731
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: character_human_male_humanmale_hd.m2_Geoset_000-Main
+    100002: character_human_male_humanmale_hd.m2_Geoset_001-Main
+    100004: character_human_male_humanmale_hd.m2_Geoset_002-Main
+    100006: character_human_male_humanmale_hd.m2_Geoset_003-Main
+    100008: character_human_male_humanmale_hd.m2_Geoset_004-Main
+    100010: character_human_male_humanmale_hd.m2_Geoset_022-Facial1
+    100012: character_human_male_humanmale_hd.m2_Geoset_023-Facial2
+    100014: character_human_male_humanmale_hd.m2_Geoset_024-Facial3
+    100016: character_human_male_humanmale_hd.m2_Geoset_025-Braces
+    100018: character_human_male_humanmale_hd.m2_Geoset_029-Boots
+    100020: character_human_male_humanmale_hd.m2_Geoset_036-Wristbands
+    100022: character_human_male_humanmale_hd.m2_Geoset_045-Trousers
+    100024: character_human_male_humanmale_hd.m2_Geoset_046-Trousers
+    100026: character_human_male_humanmale_hd.m2_Geoset_047-Cape
+    100028: character_human_male_humanmale_hd.m2_Geoset_058-Belt
+    100030: character_human_male_humanmale_hd.m2_Geoset_063-Feet
+    100032: item_objectcomponents_head_helm_robe_c_01_hum.m2_Geoset_000
+    100034: item_objectcomponents_weapon_stave_2h_other_b_01.m2_Geoset_000
+    100036: item_objectcomponents_weapon_stave_2h_other_b_01.m2_Geoset_001
+    100038: //RootNode
+    400000: character_human_male_humanmale_hd.m2_Geoset_000-Main
+    400002: character_human_male_humanmale_hd.m2_Geoset_001-Main
+    400004: character_human_male_humanmale_hd.m2_Geoset_002-Main
+    400006: character_human_male_humanmale_hd.m2_Geoset_003-Main
+    400008: character_human_male_humanmale_hd.m2_Geoset_004-Main
+    400010: character_human_male_humanmale_hd.m2_Geoset_022-Facial1
+    400012: character_human_male_humanmale_hd.m2_Geoset_023-Facial2
+    400014: character_human_male_humanmale_hd.m2_Geoset_024-Facial3
+    400016: character_human_male_humanmale_hd.m2_Geoset_025-Braces
+    400018: character_human_male_humanmale_hd.m2_Geoset_029-Boots
+    400020: character_human_male_humanmale_hd.m2_Geoset_036-Wristbands
+    400022: character_human_male_humanmale_hd.m2_Geoset_045-Trousers
+    400024: character_human_male_humanmale_hd.m2_Geoset_046-Trousers
+    400026: character_human_male_humanmale_hd.m2_Geoset_047-Cape
+    400028: character_human_male_humanmale_hd.m2_Geoset_058-Belt
+    400030: character_human_male_humanmale_hd.m2_Geoset_063-Feet
+    400032: item_objectcomponents_head_helm_robe_c_01_hum.m2_Geoset_000
+    400034: item_objectcomponents_weapon_stave_2h_other_b_01.m2_Geoset_000
+    400036: item_objectcomponents_weapon_stave_2h_other_b_01.m2_Geoset_001
+    400038: //RootNode
+    2300000: character_human_male_humanmale_hd.m2_Geoset_000-Main
+    2300002: character_human_male_humanmale_hd.m2_Geoset_001-Main
+    2300004: character_human_male_humanmale_hd.m2_Geoset_002-Main
+    2300006: character_human_male_humanmale_hd.m2_Geoset_003-Main
+    2300008: character_human_male_humanmale_hd.m2_Geoset_004-Main
+    2300010: character_human_male_humanmale_hd.m2_Geoset_022-Facial1
+    2300012: character_human_male_humanmale_hd.m2_Geoset_023-Facial2
+    2300014: character_human_male_humanmale_hd.m2_Geoset_024-Facial3
+    2300016: character_human_male_humanmale_hd.m2_Geoset_025-Braces
+    2300018: character_human_male_humanmale_hd.m2_Geoset_029-Boots
+    2300020: character_human_male_humanmale_hd.m2_Geoset_036-Wristbands
+    2300022: character_human_male_humanmale_hd.m2_Geoset_045-Trousers
+    2300024: character_human_male_humanmale_hd.m2_Geoset_046-Trousers
+    2300026: character_human_male_humanmale_hd.m2_Geoset_047-Cape
+    2300028: character_human_male_humanmale_hd.m2_Geoset_058-Belt
+    2300030: character_human_male_humanmale_hd.m2_Geoset_063-Feet
+    2300032: item_objectcomponents_head_helm_robe_c_01_hum.m2_Geoset_000
+    2300034: item_objectcomponents_weapon_stave_2h_other_b_01.m2_Geoset_000
+    2300036: item_objectcomponents_weapon_stave_2h_other_b_01.m2_Geoset_001
+    3300000: character_human_male_humanmale_hd.m2_Geoset_000-Main
+    3300002: character_human_male_humanmale_hd.m2_Geoset_001-Main
+    3300004: character_human_male_humanmale_hd.m2_Geoset_002-Main
+    3300006: character_human_male_humanmale_hd.m2_Geoset_003-Main
+    3300008: character_human_male_humanmale_hd.m2_Geoset_004-Main
+    3300010: character_human_male_humanmale_hd.m2_Geoset_022-Facial1
+    3300012: character_human_male_humanmale_hd.m2_Geoset_023-Facial2
+    3300014: character_human_male_humanmale_hd.m2_Geoset_024-Facial3
+    3300016: character_human_male_humanmale_hd.m2_Geoset_025-Braces
+    3300018: character_human_male_humanmale_hd.m2_Geoset_029-Boots
+    3300020: character_human_male_humanmale_hd.m2_Geoset_036-Wristbands
+    3300022: character_human_male_humanmale_hd.m2_Geoset_045-Trousers
+    3300024: character_human_male_humanmale_hd.m2_Geoset_046-Trousers
+    3300026: character_human_male_humanmale_hd.m2_Geoset_047-Cape
+    3300028: character_human_male_humanmale_hd.m2_Geoset_058-Belt
+    3300030: character_human_male_humanmale_hd.m2_Geoset_063-Feet
+    3300032: item_objectcomponents_head_helm_robe_c_01_hum.m2_Geoset_000
+    3300034: item_objectcomponents_weapon_stave_2h_other_b_01.m2_Geoset_000
+    3300036: item_objectcomponents_weapon_stave_2h_other_b_01.m2_Geoset_001
+    4300000: character_human_male_humanmale_hd.m2_Geoset_000-Main
+    4300002: character_human_male_humanmale_hd.m2_Geoset_001-Main
+    4300004: character_human_male_humanmale_hd.m2_Geoset_002-Main
+    4300006: character_human_male_humanmale_hd.m2_Geoset_003-Main
+    4300008: character_human_male_humanmale_hd.m2_Geoset_004-Main
+    4300010: character_human_male_humanmale_hd.m2_Geoset_022-Facial1
+    4300012: character_human_male_humanmale_hd.m2_Geoset_023-Facial2
+    4300014: character_human_male_humanmale_hd.m2_Geoset_024-Facial3
+    4300016: character_human_male_humanmale_hd.m2_Geoset_025-Braces
+    4300018: character_human_male_humanmale_hd.m2_Geoset_029-Boots
+    4300020: character_human_male_humanmale_hd.m2_Geoset_036-Wristbands
+    4300022: character_human_male_humanmale_hd.m2_Geoset_045-Trousers
+    4300024: character_human_male_humanmale_hd.m2_Geoset_046-Trousers
+    4300026: character_human_male_humanmale_hd.m2_Geoset_047-Cape
+    4300028: character_human_male_humanmale_hd.m2_Geoset_058-Belt
+    4300030: character_human_male_humanmale_hd.m2_Geoset_063-Feet
+    4300032: item_objectcomponents_head_helm_robe_c_01_hum.m2_Geoset_000
+    4300034: item_objectcomponents_weapon_stave_2h_other_b_01.m2_Geoset_000
+    4300036: item_objectcomponents_weapon_stave_2h_other_b_01.m2_Geoset_001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -11,6 +11,8 @@ public class SpellManager : Photon.MonoBehaviour
     public CharacterManager_NET charMananager;
     public PlayerHealth_NET playerHealth;
     private MousePositionScript mousePos;
+    private PlayerMovement playerMove;
+    private Animator playerAnim;
     public GameObject[] Spell;
     public SpellData[] m_spellData;
     public Transform spellOrigin;
@@ -28,6 +30,11 @@ public class SpellManager : Photon.MonoBehaviour
     public int m_LastInstantiatedID = 0;
     private bool canCastSpells = true;
 
+    #region animation
+    private float animTimestamp;
+
+    #endregion
+
 
     void Awake()
     {
@@ -35,6 +42,7 @@ public class SpellManager : Photon.MonoBehaviour
         charMananager = GetComponent<CharacterManager_NET>();
         m_photonView = GetComponent<PhotonView>();
         mousePos = GetComponent<MousePositionScript>();
+        playerAnim = GetComponent<Animator>();
     }
 
     void Start()
@@ -43,6 +51,7 @@ public class SpellManager : Photon.MonoBehaviour
         getSpellTypes();
         if (m_photonView.isMine)
         {
+            playerMove = GetComponent<PlayerMovement>();
             reticle_AOE = (GameObject)Instantiate(reticle_AOE, transform.position, reticle_AOE.transform.rotation);
             reticle_Direction = (GameObject)Instantiate(reticle_Direction, new Vector3(transform.position.x, transform.position.y, transform.position.x), reticle_Direction.transform.rotation);
         }
@@ -115,6 +124,10 @@ public class SpellManager : Photon.MonoBehaviour
 
     void Update()
     {
+        if(animTimestamp <= Time.time)
+        {
+            playerAnim.SetBool("Cast", false);
+        }
         if (canCastSpells)
         {
             if (m_photonView.isMine)
@@ -129,6 +142,7 @@ public class SpellManager : Photon.MonoBehaviour
                         {
                             if (Input.GetKeyDown(currentKey) && isSpellReady(i))
                             {
+                                CastAnim(false);
                                 ShoutSpell(mySpells[i], GetProjectileSpawnPos(), mousePos.getMouseWorldPoint());
                                 Timing.RunCoroutine(_StartCooldown(i));
                             }
@@ -139,6 +153,7 @@ public class SpellManager : Photon.MonoBehaviour
                             {
                                 if (isSpellReady(i))
                                 {
+                                    CastAnim(true);
                                     ShoutSpell(mySpells[i], GetProjectileSpawnPos(), mousePos.getMouseWorldPoint());
                                     Timing.RunCoroutine(_StartCooldown(i));
                                 }
@@ -207,6 +222,25 @@ public class SpellManager : Photon.MonoBehaviour
     public void SetLastPlayerHit(int InstantiateID, int index)
     {
         m_photonView.RPC("lastPlayerHit", PhotonTargets.All, InstantiateID, index);
+    }
+
+    public void CastAnim(bool stopMovement)
+    {
+        playerAnim.SetBool("Cast", false);
+        playerAnim.SetBool("Cast", true);
+        animTimestamp = Time.time + 0.5f;
+        if (stopMovement)
+        {
+            playerMove.SetTargetRotationPos(mousePos.getMouseWorldPoint());
+            playerMove.moving = false;
+        }
+        m_photonView.RPC("SetCastAnimTimestamp", PhotonTargets.OthersBuffered);
+    }
+
+    [PunRPC]
+    void SetCastAnimTimestamp()
+    {
+        animTimestamp = Time.time + 0.5f;
     }
 
     [PunRPC]

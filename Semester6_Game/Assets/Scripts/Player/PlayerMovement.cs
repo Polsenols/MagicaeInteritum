@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        anim = GetComponent<Animator>();
         mouseController = GetComponent<MousePositionScript>();
         m_PhotonView = GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
@@ -40,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-
+        anim = GetComponent<Animator>();
         originalSpeed = movementSpeed;
         //If this script is not on the local player, destroy it.
         if (!m_PhotonView.isMine)
@@ -67,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
             targetPosition = mouseController.getMouseWorldPoint();
             targetPosRotation = targetPosition;
             moving = true;
+            anim.SetBool("Cast", false);
         }
         #endregion
 
@@ -85,10 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
             }
 
-            if (distance > 0.1f && moving)
-            {
                 RotateToPos();
-            }
             #endregion
         }
 
@@ -123,6 +120,11 @@ public class PlayerMovement : MonoBehaviour
     public bool UnfreezePlayerMovemenet()
     {
         return canPlayerMove = true;
+    }
+
+    public void SetTargetRotationPos(Vector3 pos)
+    {
+        targetPosRotation = pos;
     }
 
     public void slowPlayerMovementSpeed(float _slowMovementSpeed, float _slowDuration)

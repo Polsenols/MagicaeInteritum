@@ -55,11 +55,13 @@ public class CharacterManager_NET : Photon.PunBehaviour {
         {
             stream.SendNext(health);
             stream.SendNext(anim.GetFloat("m_MoveSpeed"));
+            stream.SendNext(anim.GetBool("Cast"));
         }
         else
         {
             health = (float)stream.ReceiveNext();
             anim.SetFloat("m_MoveSpeed", (float)stream.ReceiveNext());
+            anim.SetBool("Cast", (bool)stream.ReceiveNext());
         }
     }
 
