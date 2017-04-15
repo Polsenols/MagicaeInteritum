@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CharacterManager_NET : Photon.PunBehaviour {
 
     public PhotonView m_PhotonView;
+    public GameObject audioFollower;
     private Animator anim;
     private PlayerHealth_NET _playerHealth;
     private ShopScript playerShop;
@@ -16,7 +17,8 @@ public class CharacterManager_NET : Photon.PunBehaviour {
     public int score;
     public float health;
     public List<CharacterManager_NET> Players = new List<CharacterManager_NET>();
-	// Use this for initialization
+
+
     void Awake()
     {
         playerShop = GetComponent<ShopScript>();
@@ -26,13 +28,14 @@ public class CharacterManager_NET : Photon.PunBehaviour {
         anim = GetComponent<Animator>();
         m_PhotonView = GetComponent<PhotonView>();
     }
+
 	void Start () {    
         SetScore(0,0);
         m_PhotonView.RPC("AddPlayers", PhotonTargets.All);
         if (m_PhotonView.isMine)
         {
-            PhotonNetwork.sendRate = 40;
-            PhotonNetwork.sendRateOnSerialize = 40;
+            GameObject go = (GameObject)Instantiate(audioFollower, transform.position, audioFollower.transform.rotation);
+            go.GetComponent<AudioSourceFollow>().target = transform;   
         }
 	}
 

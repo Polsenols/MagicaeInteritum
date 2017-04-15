@@ -13,6 +13,7 @@ public class SingleImpact : MonoBehaviour
     public bool canLifeSteal = false;
     public bool canCurse = false;
     public bool destroyOnImpact = true;
+    public bool canSwapPos = false;
     public SpellData spellData;
 
     [Header("Damage over time")]
@@ -57,44 +58,58 @@ public class SingleImpact : MonoBehaviour
         else if (other.CompareTag("Player"))
         {
             CharacterManager_NET player = other.GetComponent<CharacterManager_NET>();
-            if (player.playerID != spellData.ownerID() && player.m_PhotonView.isMine)
+            if (player.m_PhotonView.isMine)
             {
-                switch (damageType)
+                Debug.Log("playeRID" + player.playerID);
+                Debug.Log("spell ID" + spellData.ownerID());
+                if (player.playerID != spellData.ownerID())
                 {
-                    case DamageType.DOT:
-                        player.playerHealth().TakeDamageOverTime(amountOfTicks, spellData.damage(), timeBetweenTicks, player, spellData.ownerID());
-                        break;
-                    case DamageType.Instant:
-                        player.playerHealth().TakeDamage(spellData.damage(), spellData.ownerID(), player, transform, spellData.knockbackForce());
-                        break;
-                    case DamageType.None:
-                        break;
+                    switch (damageType)
+                    {
+                        case DamageType.DOT:
+                            player.playerHealth().TakeDamageOverTime(amountOfTicks, spellData.damage(), timeBetweenTicks, player, spellData.ownerID());
+                            break;
+                        case DamageType.Instant:
+                            player.playerHealth().TakeDamage(spellData.damage(), spellData.ownerID(), player, transform, spellData.knockbackForce());
+                            break;
+                        case DamageType.None:
+                            break;
+                    }
+
+                    if (canPush)
+                        Push(other.GetComponent<Rigidbody>(), spellData.knockbackForce(), false);
+
+                    if (canFreeze)
+                        other.GetComponent<PlayerHealth_NET>().Freeze(spellData.freezeDuration());
+
+                    if (canSlow)
+                        other.GetComponent<PlayerMovement>().slowPlayerMovementSpeed(spellData.slowMovementSpeed(), spellData.slowDuration());
+
+                    if (canLifeSteal)
+                        spellData.owner.GetComponent<PlayerHealth_NET>().AddLife(spellData.damage() * spellData.lifeStealAmount());
+
+                    if (canCurse)
+                        player.playerHealth().Curse(spellData.curseDuration(), spellData.curseDmgAdjuster());
+                    if (canSwapPos)
+                    {
+                        Vector3 hitPlayerPos = other.transform.position;
+                        other.transform.position = spellData.owner.transform.position;
+                        spellData.owner.transform.position = hitPlayerPos;
+                    }
+
+                    spellData.owner.SendAbilityHit(spellData.InstantiateID(), true, true);
+                    if (destroyOnImpact)
+                    {
+                        Destroy(this.gameObject);
+                    }
+
+                    spellData.AbilityImpactEffect();
+
                 }
-
-                if (canPush)
-                    Push(other.GetComponent<Rigidbody>(), spellData.knockbackForce(), false);
-
-                if (canFreeze)
-                    other.GetComponent<PlayerHealth_NET>().Freeze(spellData.freezeDuration());
-
-                if (canSlow)
-                    other.GetComponent<PlayerMovement>().slowPlayerMovementSpeed(spellData.slowMovementSpeed(), spellData.slowDuration());
-
-                if (canLifeSteal)
-                    spellData.owner.GetComponent<PlayerHealth_NET>().AddLife(spellData.damage() * spellData.lifeStealAmount());
-
-                if (canCurse)
-                    player.playerHealth().Curse(spellData.curseDuration(), spellData.curseDmgAdjuster());
-
-                spellData.owner.SendAbilityHit(spellData.InstantiateID(), true, true);
-
-                if (destroyOnImpact)
+                else
                 {
-                    Destroy(this.gameObject);
+                    return;
                 }
-
-                spellData.AbilityImpactEffect();
-
             }
         }
     }

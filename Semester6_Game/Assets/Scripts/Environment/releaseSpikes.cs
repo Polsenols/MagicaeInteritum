@@ -7,6 +7,7 @@ public class releaseSpikes : MonoBehaviour
 {
     public Transform spike;
     public float waitTime = 0.5f;
+    private AudioSource audio;
     // animate the game object from -1 to +1 and back
     float minimum;
     float maximum;
@@ -23,6 +24,7 @@ public class releaseSpikes : MonoBehaviour
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         minimum = spike.transform.position.y;
         maximum = minimum + offset;
     }
@@ -72,18 +74,23 @@ public class releaseSpikes : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         Timing.RunCoroutine(_ActivateTrap());
+    }
+
+    void OnTriggerStay(Collider other)
+    {
         if(activateTrap == true)
         {
-            other.GetComponent<PlayerHealth_NET>().TakeDamage(100, -1, null);
+            other.GetComponent<PlayerHealth_NET>().TakeDamage(100, -1, null, transform, 5.0f);
         }
     }
 
     IEnumerator<float> _ActivateTrap()
     {
         yield return Timing.WaitForSeconds(waitTime);
+        audio.Play();  
         activateTrap = true;
     }
 }

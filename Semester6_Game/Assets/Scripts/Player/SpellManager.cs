@@ -12,6 +12,7 @@ public class SpellManager : Photon.MonoBehaviour
     public PlayerHealth_NET playerHealth;
     private MousePositionScript mousePos;
     private PlayerMovement playerMove;
+    private AudioSource audio;
     private Animator playerAnim;
     public GameObject[] Spell;
     public SpellData[] m_spellData;
@@ -38,6 +39,7 @@ public class SpellManager : Photon.MonoBehaviour
 
     void Awake()
     {
+        audio = GetComponent<AudioSource>();
         playerHealth = GetComponent<PlayerHealth_NET>();
         charMananager = GetComponent<CharacterManager_NET>();
         m_photonView = GetComponent<PhotonView>();
@@ -292,6 +294,7 @@ public class SpellManager : Photon.MonoBehaviour
         {
             GameObject go = (GameObject)Instantiate(Spell[spellID], targetPos, Quaternion.identity);
             SpellData spellData = go.GetComponent<SpellData>();
+            audio.PlayOneShot(spellData.CastSound());
             spellData.setOwnerID(ownerID);
             spellData.setOwner(this);
             spellData.setSpellID(spellID);
@@ -301,6 +304,7 @@ public class SpellManager : Photon.MonoBehaviour
         {
             GameObject go = (GameObject)Instantiate(Spell[spellID], transform.position, Quaternion.identity);
             SpellData spellData = go.GetComponent<SpellData>();
+            audio.PlayOneShot(spellData.CastSound());
             spellData.setOwnerID(ownerID);
             spellData.setOwner(this);
         }
@@ -341,6 +345,7 @@ public class SpellManager : Photon.MonoBehaviour
     {
         GameObject go = (GameObject)Instantiate(Spell[spellID], startPos, Quaternion.identity);
         SpellData spellData = go.GetComponent<SpellData>();
+        audio.PlayOneShot(spellData.CastSound());
         SpellMovement projectileMovement = go.GetComponent<SpellMovement>();
         spellData.setOwnerID(ownerID);
         if (ownerID == GetComponent<CharacterManager_NET>().playerID)

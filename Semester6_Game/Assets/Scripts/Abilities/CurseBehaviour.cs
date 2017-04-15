@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CurseBehaviour : AOEImpact
 {
-
     SpellData spellData;
     // Use this for initialization
     void Start()

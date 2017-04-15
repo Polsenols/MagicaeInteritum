@@ -44,8 +44,19 @@ public class SpellData : MonoBehaviour
     private float _lifeStealAmount;
     [SerializeField]
     private GameObject _impactEffect;
+    [SerializeField]
+    private AudioClip castSound;
+    [SerializeField]
+    private AudioClip impactSound;
+
+    public new AudioSource audio;
     public SpellManager owner;
     public PlayerHealth_NET lastPlayerTarget;
+
+    void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
 
     public void setOwner(SpellManager _owner)
     {
@@ -171,5 +182,20 @@ public class SpellData : MonoBehaviour
     {
         if(_impactEffect != null)
         Instantiate(_impactEffect, transform.position, Quaternion.identity);
+    }
+
+    public void PlayLoopSound()
+    {
+        audio.Play();
+    }
+
+    public void PlayImpactSound()
+    {
+        audio.PlayOneShot(impactSound);
+    }
+
+    public AudioClip CastSound()
+    {
+        return castSound;
     }
 }

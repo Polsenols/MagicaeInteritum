@@ -8,7 +8,8 @@ public class Icespikes : AOEImpact {
     SpellData spellData;
     public GameObject icespikes;
     public float startDelay;
-	// Use this for initialization
+    public AudioClip impactSound;
+    
 	void Start () {
         spellData = GetComponent<SpellData>();
         Timing.RunCoroutine(_StartEvent());
@@ -16,6 +17,7 @@ public class Icespikes : AOEImpact {
 
     IEnumerator<float> _StartEvent()
     {
+        spellData.audio.PlayOneShot(impactSound);
         yield return Timing.WaitForSeconds(startDelay);
         icespikes.SetActive(true);
         impactNearbyEnemies(transform.position, false, spellData.radius(),spellData);
