@@ -46,6 +46,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AudioSourceFollow.cs" />
+     <Compile Include="Assets\DisplayPing.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
@@ -113,16 +115,6 @@
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\ButtonInsideScrollList.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextButtonTransition.cs" />
      <Compile Include="Assets\Photon Unity Networking\UtilityScripts\UI\TextToggleIsOnTransition.cs" />
-     <Compile Include="Assets\PhotonChatApi\ChatChannel.cs" />
-     <Compile Include="Assets\PhotonChatApi\ChatClient.cs" />
-     <Compile Include="Assets\PhotonChatApi\ChatDisconnectCause.cs" />
-     <Compile Include="Assets\PhotonChatApi\ChatEventCode.cs" />
-     <Compile Include="Assets\PhotonChatApi\ChatOperationCode.cs" />
-     <Compile Include="Assets\PhotonChatApi\ChatParameterCode.cs" />
-     <Compile Include="Assets\PhotonChatApi\ChatPeer.cs" />
-     <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
-     <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
-     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -173,7 +165,6 @@
      <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SingleImpact.cs" />
      <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SpellData.cs" />
      <Compile Include="Assets\Scripts\Abilities\AbilityBuilder\SpellMovement.cs" />
-     <Compile Include="Assets\Scripts\Abilities\Ability_Dash.cs" />
      <Compile Include="Assets\Scripts\Abilities\Bouncer.cs" />
      <Compile Include="Assets\Scripts\Abilities\CurseBehaviour.cs" />
      <Compile Include="Assets\Scripts\Abilities\ForcePull.cs" />
@@ -201,6 +192,7 @@
      <Compile Include="Assets\Scripts\Environment\DeathCircleController.cs" />
      <Compile Include="Assets\Scripts\Environment\EnvironmentSpawner.cs" />
      <Compile Include="Assets\Scripts\Environment\LaserOscillation.cs" />
+     <Compile Include="Assets\Scripts\Environment\LaserRay.cs" />
      <Compile Include="Assets\Scripts\Environment\LaserTowerController.cs" />
      <Compile Include="Assets\Scripts\Environment\PullInLineTower\PullTowerBehaviour.cs" />
      <Compile Include="Assets\Scripts\Environment\PullInLineTower\PullTowerLineRender.cs" />
@@ -214,7 +206,9 @@
      <Compile Include="Assets\Scripts\HUD Canvas\HealthBar.cs" />
      <Compile Include="Assets\Scripts\Launcher.cs" />
      <Compile Include="Assets\Scripts\LightAnimation.cs" />
+     <Compile Include="Assets\Scripts\Player\Ability_Dash.cs" />
      <Compile Include="Assets\Scripts\Player\CharacterManager_NET.cs" />
+     <Compile Include="Assets\Scripts\Player\DashAbilityController.cs" />
      <Compile Include="Assets\Scripts\Player\MousePositionScript.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerHealth_NET.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
@@ -229,6 +223,9 @@
      <Compile Include="Assets\Scripts\Sync.cs" />
      <Compile Include="Assets\Scripts\SyncRotation.cs" />
      <Compile Include="Assets\Scripts\TurnOnDepthBuffer.cs" />
+     <Compile Include="Assets\TEMPORARY\ShopTeleportationFrom.cs" />
+     <Compile Include="Assets\TEMPORARY\ShopTeleportationTo.cs" />
+     <Compile Include="Assets\Terrain\Water (Basic)\Scripts\WaterBasic.cs" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
@@ -246,6 +243,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
+     <None Include="Assets\Shaders\WaterHomemade.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceRaytrace.cginc" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
@@ -294,6 +292,7 @@
      <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
      <None Include="Assets\Shaders\AlphaBlended.shader" />
+     <None Include="Assets\Terrain\Water (Basic)\Shaders\FXWaterBasic.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
