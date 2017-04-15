@@ -140,27 +140,27 @@ public class SpellManager : Photon.MonoBehaviour
                 {
                     if (currentKey == keyCodes[i] && mySpells.Count > i)
                     {
-                        if (m_spellData[mySpells[i]].isUtility())
-                        {
-                            if (Input.GetKeyDown(currentKey) && isSpellReady(i))
+                            if (m_spellData[mySpells[i]].isUtility())
                             {
-                                CastAnim(false);
-                                ShoutSpell(mySpells[i], GetProjectileSpawnPos(), mousePos.getMouseWorldPoint());
-                                Timing.RunCoroutine(_StartCooldown(i));
-                            }
-                        }
-                        else
-                        {
-                            if (Input.GetMouseButtonDown(0) && spellSelected)
-                            {
-                                if (isSpellReady(i))
+                                if (Input.GetKeyDown(currentKey) && isSpellReady(i))
                                 {
-                                    CastAnim(true);
+                                    CastAnim(false);
                                     ShoutSpell(mySpells[i], GetProjectileSpawnPos(), mousePos.getMouseWorldPoint());
                                     Timing.RunCoroutine(_StartCooldown(i));
                                 }
                             }
-                        }
+                            else
+                            {
+                                if (Input.GetMouseButtonDown(0) && spellSelected)
+                                {
+                                    if (isSpellReady(i))
+                                    {
+                                        CastAnim(true);
+                                        ShoutSpell(mySpells[i], GetProjectileSpawnPos(), mousePos.getMouseWorldPoint());
+                                        Timing.RunCoroutine(_StartCooldown(i));
+                                    }
+                                }
+                            }                        
                     }
                 }
             }
@@ -180,7 +180,7 @@ public class SpellManager : Photon.MonoBehaviour
                 }
                 else
                 {
-                    if (mySpells.Count > 0)
+                    if (mySpells.Count > i)
                     {
                         displayReticle(mySpells[i]);
                         spellSelected = true;

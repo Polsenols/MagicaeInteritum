@@ -9,11 +9,13 @@ public class seekNearbyPlayers : MonoBehaviour
     SpellData spellData;
 
     private float timestamp = 0;
+    private Vector3 direction;
 
     void Start()
     {
         spellData = GetComponentInParent<SpellData>();
         _spellMovement = GetComponentInParent<SpellMovement>();
+        direction = _spellMovement.GetSpellDir();
     }
 
     void SeekPlayers(Transform targetThisObject)
@@ -24,9 +26,15 @@ public class seekNearbyPlayers : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         CharacterManager_NET player = other.GetComponent<CharacterManager_NET>();
-        if (other.CompareTag("Player") && player.playerID != spellData.ownerID())
+        if (player.m_PhotonView.isMine)
         {
-            SeekPlayers(other.transform);
+            if (direction == _spellMovement.GetSpellDir())
+            {
+                if (other.CompareTag("Player") && player.playerID != spellData.ownerID())
+                {
+                    SeekPlayers(other.transform);
+                }
+            }
         }
     }
 }

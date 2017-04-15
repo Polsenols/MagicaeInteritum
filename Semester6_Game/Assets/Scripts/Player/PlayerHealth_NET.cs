@@ -131,7 +131,6 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     [PunRPC]
     void RespawnOverride(Vector3 hitPos, float force)
     {
-        Debug.Log("Ragdoll gogogogo");
         GameObject go = (GameObject)Instantiate(ragdoll, transform.position, ragdoll.transform.rotation);
         go.GetComponent<RagdollControl>().PushRagdoll(hitPos, force * 1000f);
         Timing.RunCoroutine(_Die(2.0f));
@@ -204,7 +203,6 @@ public class PlayerHealth_NET : Photon.PunBehaviour
 
             health -= damage * damageAdjuster;
             healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
-            Debug.Log("Took damage health now " + health);
             if (health <= 0)
             {
                 if (lastAttackedByPlayer != null)
@@ -233,7 +231,6 @@ public class PlayerHealth_NET : Photon.PunBehaviour
 
             health -= damage * damageAdjuster;
             healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
-            Debug.Log("Took damage health now " + health);
             if (health <= 0)
             {
                 if (lastAttackedByPlayer != null)
@@ -273,7 +270,6 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     [PunRPC]
     void CursePlayer(float playerCurseDuration, float playerCurseDmgAplifi)
     {
-        Debug.Log("Curse Player");
         if (!invulnurable)
         {
             damageAdjuster = playerCurseDmgAplifi; // 1.2 = 20% dmg, 1.5 = 50% and so forth.
@@ -298,7 +294,6 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     [PunRPC]
     void FreezePlayer(float _freezeDuration)
     {
-        Debug.Log("Freeze player");
         if (!invulnurable)
         {
             if (this.GetComponent<PlayerMovement>() != null)

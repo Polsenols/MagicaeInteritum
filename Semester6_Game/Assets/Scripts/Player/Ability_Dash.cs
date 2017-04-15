@@ -49,11 +49,9 @@ public class Ability_Dash : MonoBehaviour {
 
     IEnumerator<float> Dash(Vector3 rotation)
     {
-        Debug.Log("startDash");
         dashParticleSys.startRotation3D = rotation;
         dashParticleSys.Play();
         yield return Timing.WaitForSeconds(0.85f);
         dashParticleSys.Stop();
-        Debug.Log("stopDash");
     }
 }

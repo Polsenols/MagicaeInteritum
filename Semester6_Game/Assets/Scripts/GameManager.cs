@@ -24,8 +24,8 @@ public class GameManager : Photon.PunBehaviour
 
     public void Start()
     {
-        PhotonNetwork.sendRate = 45;
-        PhotonNetwork.sendRateOnSerialize = 35;
+        PhotonNetwork.sendRate = 30;
+        PhotonNetwork.sendRateOnSerialize = 20;
         if (playerPrefab == null)
         {
             Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);

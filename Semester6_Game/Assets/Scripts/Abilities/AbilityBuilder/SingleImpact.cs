@@ -60,8 +60,6 @@ public class SingleImpact : MonoBehaviour
             CharacterManager_NET player = other.GetComponent<CharacterManager_NET>();
             if (player.m_PhotonView.isMine)
             {
-                Debug.Log("playeRID" + player.playerID);
-                Debug.Log("spell ID" + spellData.ownerID());
                 if (player.playerID != spellData.ownerID())
                 {
                     switch (damageType)
