@@ -233,6 +233,7 @@
     <Compile Include="Assets\Scripts\Environment\DeathCircleController.cs" />
     <Compile Include="Assets\Scripts\Environment\EnvironmentSpawner.cs" />
     <Compile Include="Assets\Scripts\Environment\LaserOscillation.cs" />
+    <Compile Include="Assets\Scripts\Environment\LaserRay.cs" />
     <Compile Include="Assets\Scripts\Environment\LaserTowerController.cs" />
     <Compile Include="Assets\Scripts\Environment\PullInLineTower\PullTowerBehaviour.cs" />
     <Compile Include="Assets\Scripts\Environment\PullInLineTower\PullTowerLineRender.cs" />

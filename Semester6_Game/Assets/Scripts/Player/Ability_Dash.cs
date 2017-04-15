@@ -8,6 +8,8 @@ public class Ability_Dash : MonoBehaviour {
     public float dashForce = 50f;
     public int coolDownTime = 5;
     public ParticleSystem dashParticleSys;
+    public AudioClip dashAudio;
+    private AudioSource playerAudio;
     private Rigidbody rb;
     private PlayerMovement playerMove;
     private PhotonView m_PhotonView;
@@ -18,6 +20,7 @@ public class Ability_Dash : MonoBehaviour {
     }
 
 	void Start () {
+        playerAudio = GetComponent<AudioSource>();
         if (m_PhotonView.isMine)
         {
             playerMove = GetComponent<PlayerMovement>();
@@ -49,6 +52,7 @@ public class Ability_Dash : MonoBehaviour {
 
     IEnumerator<float> Dash(Vector3 rotation)
     {
+        playerAudio.PlayOneShot(dashAudio);
         dashParticleSys.startRotation3D = rotation;
         dashParticleSys.Play();
         yield return Timing.WaitForSeconds(0.85f);

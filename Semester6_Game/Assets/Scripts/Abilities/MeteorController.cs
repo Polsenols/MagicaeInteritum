@@ -11,6 +11,7 @@ public class MeteorController : MonoBehaviour
     public GameObject explosion, cracks;
     public ParticleSystem debrisParticleSys, smokeParticleSys;
     public Transform meteorMesh;
+    public AudioSource meteorAudio;
     private SpellData spellData;
     private AOEImpact aoeImpact;
     
@@ -33,8 +34,9 @@ public class MeteorController : MonoBehaviour
             aoeImpact.impactNearbyEnemies(transform.position, true, spellData.radius(),spellData);
             meteorExploded = true;
             explosion.SetActive(true);
-            cracks.SetActive(true);
+            //cracks.SetActive(true); Disabled until we find better looking texture
             debrisParticleSys.Play();
+            meteorAudio.Stop();
             Timing.RunCoroutine(_CleanUp(2));
             Timing.RunCoroutine(ScreenEffects.Instance.screenShake());
         }

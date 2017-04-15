@@ -14,6 +14,7 @@ public class GameManager : Photon.PunBehaviour
     public Transform spawnPos;
     public float spawnHeight = 1;
     public float spawnRadius = 1;
+    public Texture2D mouseTexture;
     #region Photon Messages
 
 
@@ -24,6 +25,7 @@ public class GameManager : Photon.PunBehaviour
 
     public void Start()
     {
+        Cursor.SetCursor(mouseTexture, Vector2.zero, CursorMode.Auto);
         PhotonNetwork.sendRate = 30;
         PhotonNetwork.sendRateOnSerialize = 20;
         if (playerPrefab == null)
