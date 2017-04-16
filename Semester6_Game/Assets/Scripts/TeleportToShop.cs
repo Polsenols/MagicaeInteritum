@@ -6,14 +6,15 @@ public class TeleportToShop : Photon.MonoBehaviour
 {
 
     public PhotonView m_photonView;
-    public GameObject teleportPosition;
+    public GameObject magicShopPosition;
     public GameObject teleportIndicator;
     private GameObject myIndicator;
-    private Vector3 teleportVectorPoint;
+    private Vector3[] teleportVectorPoints = new Vector3[5];
 
-    private PlayerHealth_NET _playerHealth;
-    //private SpellManager _spellManager;
-    //private PlayerMovement _playerMovement;
+    public float bigRecallOffset = 2.5f;
+    public float smallRecallOffset = 1.5f;
+
+    private PlayerMovement _playerMovement;
 
     public float recallCastDuration = 5;
     public bool teleportingToShop = false;
@@ -21,29 +22,36 @@ public class TeleportToShop : Photon.MonoBehaviour
     void Awake()
     {
         m_photonView = GetComponent<PhotonView>();
-        _playerHealth = GetComponent<PlayerHealth_NET>();
-        //_spellManager = GetComponent<SpellManager>();
-        //_playerMovement = GetComponent<PlayerMovement>();
+        _playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Start()
     {
-        teleportVectorPoint = teleportPosition.GetComponent<Transform>().position;
+        for (int i = 0; i < teleportVectorPoints.Length; i++)
+            teleportVectorPoints[i] = magicShopPosition.GetComponent<Transform>().position;
+
+        teleportVectorPoints[0] = new Vector3(teleportVectorPoints[0].x, teleportVectorPoints[0].y, teleportVectorPoints[0].z - bigRecallOffset);
+        teleportVectorPoints[1] = new Vector3(teleportVectorPoints[1].x + bigRecallOffset, teleportVectorPoints[1].y, teleportVectorPoints[1].z);
+        teleportVectorPoints[2] = new Vector3(teleportVectorPoints[2].x - bigRecallOffset, teleportVectorPoints[2].y, teleportVectorPoints[2].z);
+        teleportVectorPoints[3] = new Vector3(teleportVectorPoints[3].x - smallRecallOffset, teleportVectorPoints[3].y, teleportVectorPoints[3].z - smallRecallOffset);
+        teleportVectorPoints[4] = new Vector3(teleportVectorPoints[4].x + smallRecallOffset, teleportVectorPoints[4].y, teleportVectorPoints[4].z - smallRecallOffset);
     }
 
     void Update()
     {
-        if (myIndicator != null)
-            myIndicator.transform.position = transform.position;
-
-        if (Input.GetKeyDown("x") && teleportingToShop == false)
+        if (m_photonView.isMine)
         {
-            RecallToShop();
-        }
+            if (myIndicator != null)
+                myIndicator.transform.position = transform.position;
 
-        if (Input.GetKeyDown("z"))
-        {
-            StopPlayerRecall();
+            if (Input.GetKeyDown("x") && teleportingToShop == false)
+            {
+                RecallToShop();
+            }
+            else if (((Input.GetKeyDown("x")) || Input.GetKeyDown(KeyCode.Escape)) && teleportingToShop == true)
+            {
+                StopPlayerRecall();
+            }
         }
     }
 
@@ -66,39 +74,29 @@ public class TeleportToShop : Photon.MonoBehaviour
     [PunRPC]
     void _stopPlayerRecall()
     {
-        StopCoroutine("_recall");
-        if (myIndicator != null) //hence the photon I guess
-            Destroy(myIndicator);
+        if (m_photonView.isMine)
+        {
+            StopCoroutine("_recall");
 
-        //unfreeeze....eeeezeee....
-        /*
-        if (this.GetComponent<PlayerMovement>() != null)
-            this.GetComponent<PlayerMovement>().UnfreezePlayerMovemenet();
-        if (this.GetComponent<SpellManager>() != null)
-            this.GetComponent<SpellManager>().UnfreezePlayerSpellCasting();
-        */
-        teleportingToShop = false;
+            if (myIndicator != null)
+                Destroy(myIndicator);
+
+            teleportingToShop = false;
+        }
     }
 
     IEnumerator _recall()
     {
-        Debug.Log("Teleporting to Shop");
-        teleportingToShop = true;
-
-        /*
-        if (this.GetComponent<PlayerMovement>() != null)
-            this.GetComponent<PlayerMovement>().FreezePlayerMovement();
-        if (this.GetComponent<SpellManager>() != null)
-            this.GetComponent<SpellManager>().FreezePlayerSpellCasting();
-        */
-
-        _playerHealth.Freeze(recallCastDuration);
-
-        myIndicator = Instantiate(teleportIndicator, transform.position, Quaternion.identity);
-        Destroy(myIndicator, recallCastDuration);
-        yield return new WaitForSeconds(recallCastDuration);
-        transform.position = new Vector3(teleportVectorPoint.x, teleportVectorPoint.y, teleportVectorPoint.z + 2.5f);
-        teleportingToShop = false;
-        yield break;
+        if (m_photonView.isMine)
+        {
+            teleportingToShop = true;
+            _playerMovement.moving = false;
+            myIndicator = (GameObject)Instantiate(teleportIndicator, transform.position, Quaternion.identity);
+            Destroy(myIndicator, recallCastDuration);
+            yield return new WaitForSeconds(recallCastDuration);
+            transform.position = teleportVectorPoints[m_photonView.ownerId - 1];
+            teleportingToShop = false;
+            yield break;
+        }
     }
 }

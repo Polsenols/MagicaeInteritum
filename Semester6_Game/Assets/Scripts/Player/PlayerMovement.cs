@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool moving;
 
+    TeleportToShop _teleportToShop;
+
     public float currentSpeed = 0;
     private Vector3 targetPosition = Vector3.zero;
     private Vector3 targetPosRotation;
@@ -35,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         mouseController = GetComponent<MousePositionScript>();
         m_PhotonView = GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
+        _teleportToShop = GetComponent<TeleportToShop>();
     }
 
     void Start()
@@ -63,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
         #region Key pressed action
         if (Input.GetKey(KeyCode.Mouse1))
         {
+            if (_teleportToShop.teleportingToShop)
+                _teleportToShop.StopPlayerRecall();
             targetPosition = mouseController.getMouseWorldPoint();
             targetPosRotation = targetPosition;
             moving = true;
@@ -85,11 +90,11 @@ public class PlayerMovement : MonoBehaviour
 
             }
 
-                RotateToPos();
+            RotateToPos();
             #endregion
         }
 
-        if(Time.time >= timeStamp + slowDuration)
+        if (Time.time >= timeStamp + slowDuration)
         {
             movementSpeed = originalSpeed;
         }

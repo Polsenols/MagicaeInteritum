@@ -29,7 +29,7 @@ public class SpellManager : Photon.MonoBehaviour
     public GameObject reticle_Direction;
     public List<SpellData> m_sceneAbilities = new List<SpellData>();
     public int m_LastInstantiatedID = 0;
-    private bool canCastSpells = true;
+    public bool canCastSpells = true;
 
     #region animation
     private float animTimestamp;

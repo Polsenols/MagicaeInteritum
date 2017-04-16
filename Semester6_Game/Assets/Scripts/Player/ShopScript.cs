@@ -47,6 +47,7 @@ public class ShopScript : MonoBehaviour
     PlayerResources playerResource = new PlayerResources();
     public int startResourceAmount = 500;
     public int resourcePerTick = 3;
+    public int originalResourcePerTick;
 
     #region Canvas Related Variables
     public GameObject canvasPlaceholder;
@@ -116,6 +117,8 @@ public class ShopScript : MonoBehaviour
         buyingSpells = false;
         closeEnoughToShop = false;
         isCurrentlyShopping = false;
+        
+        originalResourcePerTick = resourcePerTick;
 
         for (int i = 0; i < spellTxt.Length; i++)
         {

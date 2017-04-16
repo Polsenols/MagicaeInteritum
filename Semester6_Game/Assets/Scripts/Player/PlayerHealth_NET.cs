@@ -32,10 +32,12 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     public int scoreKillAmount = 10;
     public GameObject iceBlock, curseMarker;
     private LineRenderer myLine;
+    TeleportToShop _teleportToShop;
 
     void Awake()
     {
         m_PhotonView = GetComponent<PhotonView>();
+        _teleportToShop = GetComponent<TeleportToShop>();
 
     }
 
@@ -152,6 +154,8 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         for (int i = 0; i < amountOfTicks; i++)
         {
             TakeDamage(damage, playerID, charMan);
+            if (_teleportToShop.teleportingToShop)
+                _teleportToShop.StopPlayerRecall();
             yield return Timing.WaitForSeconds(timeBetweenTicks);
         }
     }
@@ -187,6 +191,8 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     {
         if (!invulnurable)
         {
+            if (_teleportToShop.teleportingToShop)
+                _teleportToShop.StopPlayerRecall();
             if (playerID > 0) //Environmental kills have ID of negative value
             {
 
@@ -216,6 +222,8 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     {
         if (!invulnurable)
         {
+            if (_teleportToShop.teleportingToShop)
+                _teleportToShop.StopPlayerRecall();
             if (playerID > 0) //Environmental kills have ID of negative value
             {
                 for (int i = 0; i < playerManager.Players.Count; i++)
