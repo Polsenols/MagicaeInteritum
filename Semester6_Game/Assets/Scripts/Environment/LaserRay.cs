@@ -19,6 +19,16 @@ public class LaserRay : MonoBehaviour {
             target.position = hit.point;
             if(!collisionObj.isPlaying)
                 collisionObj.Play();
+            if (hit.collider.CompareTag("Player"))
+            {
+                PhotonView m_photonView = hit.collider.GetComponent<PhotonView>();
+                if (m_photonView.isMine)
+                {
+                    collisionObj.Emit(30);
+                    PlayerHealth_NET playerHealth = hit.collider.GetComponent<PlayerHealth_NET>();
+                    playerHealth.TakeDamage(playerHealth.maxHealth, -1, null, origin, 10.0f);
+                }
+            }
         }
         else
         {
