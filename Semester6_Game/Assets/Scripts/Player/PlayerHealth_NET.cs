@@ -100,8 +100,6 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         {
             UnCursePlayer();
         }
-
-
     }
 
     private void UpdateHealthBarPos()
@@ -315,5 +313,4 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         iceBlock.SetActive(false);
         timeStamp2 = 0;
     }
-
 }
