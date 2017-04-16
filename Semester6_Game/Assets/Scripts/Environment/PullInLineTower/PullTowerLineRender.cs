@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PullTowerLineRender : MonoBehaviour {
+public class PullTowerLineRender : MonoBehaviour
+{
 
 
     private LineRenderer lineRenderer;
@@ -15,25 +16,31 @@ public class PullTowerLineRender : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         lineRenderer.SetPosition(0, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z));
-	}
+    }
 
     void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "Environmental")
+        if (other.gameObject.tag == "Environmental")
         {
             lineRenderer.enabled = true;
             lineRenderer.SetPosition(1, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z));
         }
+        else
+        {
+            lineRenderer.enabled = false;
+            lineRenderer.SetPosition(1, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z));
+        }
     }
-    
+
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Environmental")
+        if (other.gameObject.tag == "Environmental")
         {
             lineRenderer.enabled = false;
         }
     }
-    
+
 }

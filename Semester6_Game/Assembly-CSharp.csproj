@@ -222,9 +222,9 @@
      <Compile Include="Assets\Scripts\SpawnManager.cs" />
      <Compile Include="Assets\Scripts\Sync.cs" />
      <Compile Include="Assets\Scripts\SyncRotation.cs" />
+     <Compile Include="Assets\Scripts\TeleportFromShop.cs" />
+     <Compile Include="Assets\Scripts\TeleportToShop.cs" />
      <Compile Include="Assets\Scripts\TurnOnDepthBuffer.cs" />
-     <Compile Include="Assets\TEMPORARY\ShopTeleportationFrom.cs" />
-     <Compile Include="Assets\TEMPORARY\ShopTeleportationTo.cs" />
      <Compile Include="Assets\Terrain\Water (Basic)\Scripts\WaterBasic.cs" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
