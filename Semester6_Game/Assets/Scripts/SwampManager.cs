@@ -21,16 +21,12 @@ public class SwampManager : MonoBehaviour
     void Start()
     {
         m_photonView = GetComponent<PhotonView>();
-        foreach (PlayerHealth_NET player in SpawnManager.Instance.Players)
-        {
-            if (player.m_PhotonView.isMine)
-                playersOutsideCircle.Add(player);
-        }
     }
 
     void Update()
     {
-        DamagePlayer();
+        if(playersOutsideCircle.Count > 0)
+            DamagePlayer();
     }
 
     void OnTriggerEnter(Collider other)
