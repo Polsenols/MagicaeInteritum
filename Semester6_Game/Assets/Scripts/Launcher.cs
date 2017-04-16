@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Launcher : Photon.PunBehaviour
@@ -12,6 +13,12 @@ public class Launcher : Photon.PunBehaviour
     [Tooltip("The UI Label to inform the user that the connection is in progress")]
     public GameObject progressLabel;
     public Dropdown dropdown;
+    public Text roomNameInput;
+    public string roomName;
+    public Button[] roomButton;
+
+    private Text[] roomText;
+    private RoomInfo[] roomsList;
     #endregion
 
     #region Private Variables
@@ -35,14 +42,15 @@ public class Launcher : Photon.PunBehaviour
     /// </summary>
     void Awake()
     {
-
+        roomText = new Text[roomButton.Length];
+        SetRoomText();
         // #NotImportant
         // Force Full LogLevel
         PhotonNetwork.logLevel = Loglevel;
 
         // #Critical
         // we don't join the lobby. There is no need to join a lobby to get the list of rooms.
-        PhotonNetwork.autoJoinLobby = false;
+        PhotonNetwork.autoJoinLobby = true;
 
         // #Critical
         // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
@@ -54,8 +62,17 @@ public class Launcher : Photon.PunBehaviour
     /// </summary>
     void Start()
     {
+        ConnectLobby();
         progressLabel.SetActive(false);
         controlPanel.SetActive(true);
+    }
+
+    void SetRoomText()
+    {
+        for (int i = 0; i < roomButton.Length; i++)
+        {
+            roomText[i] = roomButton[i].GetComponentInChildren<Text>();
+        }
     }
 
     #endregion
@@ -77,12 +94,37 @@ public class Launcher : Photon.PunBehaviour
         if (PhotonNetwork.connected)
         {
             // #Critical we need at this point to attempt joining a Random Room. If it fails, we'll get notified in OnPhotonRandomJoinFailed() and we'll create one.
-            PhotonNetwork.JoinRandomRoom();
+            if (roomName != null && roomName.Length > 0)
+            {
+                Debug.Log("Joining room with name: " + roomName);
+                PhotonNetwork.JoinRoom(roomName);
+            }
+            else
+            {
+                PhotonNetwork.JoinRandomRoom();
+            }
         }
         else
         {
             // #Critical, we must first and foremost connect to Photon Online Server.
             PhotonNetwork.ConnectUsingSettings(_gameVersion);
+        }
+    }
+
+    public void ConnectLobby()
+    {
+        if (PhotonNetwork.connectionState != ConnectionState.Disconnected)
+        {
+            return;
+        }
+
+        try
+        {
+            PhotonNetwork.ConnectUsingSettings("1.0");
+        }
+        catch
+        {
+            Debug.LogWarning("Couldn't connect to server");
         }
     }
 
@@ -100,16 +142,28 @@ public class Launcher : Photon.PunBehaviour
         if (isConnecting)
         {
             // #Critical: The first we try to do is to join a potential existing room. If there is, good, else, we'll be called back with OnPhotonRandomJoinFailed()
-            PhotonNetwork.JoinRandomRoom();
+            if (roomName != null && roomName.Length > 0)
+            {
+                PhotonNetwork.JoinRoom(roomName);
+            }
+            else
+            {
+                PhotonNetwork.JoinRandomRoom();
+            }
         }
-        Debug.Log("DemoAnimator/Launcher: OnConnectedToMaster() was called by PUN");
+        Debug.Log("Launcher: OnConnectedToMaster() was called by PUN");
 
 
     }
 
     public void CreateRoom()
     {
-        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = MaxPlayersPerRoom }, null);
+        PhotonNetwork.CreateRoom("cheese", new RoomOptions() { MaxPlayers = MaxPlayersPerRoom }, null);
+    }
+
+    public void SetRoomName(string value)
+    {
+        roomName = value;
     }
 
 
@@ -130,15 +184,75 @@ public class Launcher : Photon.PunBehaviour
 
     public void SetRoomPlayerCount()
     {
-        MaxPlayersPerRoom = (byte)(dropdown.value+1);
+        MaxPlayersPerRoom = (byte)(dropdown.value + 1);
     }
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Game");
+        PhotonNetwork.LoadLevel("Lobby");
         Debug.Log("DemoAnimator/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
     }
 
     #endregion
+
+   /* void OnGUI()
+    {
+        if (!PhotonNetwork.connected)
+        {
+            GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
+        }
+        else if (PhotonNetwork.room == null)
+        {
+            // Create Room
+            if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
+                CreateRoom();
+
+            // Join Room
+            if (roomsList != null)
+            {
+                for (int i = 0; i < roomsList.Length; i++)
+                {
+                    if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100), "Join " + roomsList[i].Name))
+                        PhotonNetwork.JoinRoom(roomsList[i].Name);
+                }
+            }
+        }
+    }*/
+
+    void Update()
+    {
+        if (PhotonNetwork.room == null)
+        {
+            for (int i = 0; i < roomButton.Length; i++)
+            {
+                if (roomsList != null)
+                {
+                    if (roomsList.Length > i)
+                    {
+                        roomButton[i].enabled = true;
+                        roomText[i].text = roomsList[i].Name;
+                    }
+                }
+                else
+                {
+                    roomButton[i].enabled = false;
+                    roomText[i].text = "";
+                }
+            }
+        }
+    }
+
+    public void JoinOpenRoom(int index)
+    {
+        if (roomsList[index] != null)
+        {
+            PhotonNetwork.JoinRoom(roomText[index].text);
+        }
+    }
+
+    void OnReceivedRoomListUpdate()
+    {
+        roomsList = PhotonNetwork.GetRoomList();
+    }
 
 }

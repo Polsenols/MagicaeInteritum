@@ -87,8 +87,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AudioSourceFollow.cs" />
-    <Compile Include="Assets\DisplayPing.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
@@ -225,11 +223,13 @@
     <Compile Include="Assets\Scripts\Abilities\poisonDartbehaviour.cs" />
     <Compile Include="Assets\Scripts\Abilities\rotateLifeStealParticles.cs" />
     <Compile Include="Assets\Scripts\Abilities\seekNearbyPlayers.cs" />
+    <Compile Include="Assets\Scripts\AudioSourceFollow.cs" />
     <Compile Include="Assets\Scripts\Camera\AssignCamera.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Camera\HealthbarUI.cs" />
     <Compile Include="Assets\Scripts\Camera\ScreenEffects.cs" />
     <Compile Include="Assets\Scripts\DestroyWithDelay.cs" />
+    <Compile Include="Assets\Scripts\DisplayPing.cs" />
     <Compile Include="Assets\Scripts\Environment\DeathCircleController.cs" />
     <Compile Include="Assets\Scripts\Environment\EnvironmentSpawner.cs" />
     <Compile Include="Assets\Scripts\Environment\LaserOscillation.cs" />
@@ -247,6 +247,7 @@
     <Compile Include="Assets\Scripts\HUD Canvas\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Launcher.cs" />
     <Compile Include="Assets\Scripts\LightAnimation.cs" />
+    <Compile Include="Assets\Scripts\LobbyManager.cs" />
     <Compile Include="Assets\Scripts\MagicShopPeaceZone.cs" />
     <Compile Include="Assets\Scripts\Player\Ability_Dash.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterManager_NET.cs" />
@@ -261,13 +262,14 @@
     <Compile Include="Assets\Scripts\RagdollControl.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\SingleTon.cs" />
+    <Compile Include="Assets\Scripts\SlowlyRotate.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\SwampManager.cs" />
     <Compile Include="Assets\Scripts\Sync.cs" />
     <Compile Include="Assets\Scripts\SyncRotation.cs" />
     <Compile Include="Assets\Scripts\TeleportFromShop.cs" />
     <Compile Include="Assets\Scripts\TeleportToShop.cs" />
     <Compile Include="Assets\Scripts\TurnOnDepthBuffer.cs" />
-    <Compile Include="Assets\SwampManager.cs" />
     <Compile Include="Assets\Terrain\Water (Basic)\Scripts\WaterBasic.cs" />
   </ItemGroup>
   <ItemGroup>

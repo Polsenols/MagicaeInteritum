@@ -29,8 +29,8 @@ public class CharacterManager_NET : Photon.PunBehaviour {
         m_PhotonView = GetComponent<PhotonView>();
     }
 
-	void Start () {    
-        SetScore(0,0);
+	void Start () {
+        StartScore();
         m_PhotonView.RPC("AddPlayers", PhotonTargets.All);
         if (m_PhotonView.isMine)
         {
@@ -115,6 +115,13 @@ public class CharacterManager_NET : Photon.PunBehaviour {
     {
         playerShop.AddResource(resourceGain);
         this.score += score;
+        string scoreText = playerName + " : " + this.score.ToString();
+        GameObject.Find("Player" + playerID).GetComponent<Text>().text = scoreText;
+    }
+
+    public void StartScore()
+    {
+        this.score = 0;
         string scoreText = playerName + " : " + this.score.ToString();
         GameObject.Find("Player" + playerID).GetComponent<Text>().text = scoreText;
     }

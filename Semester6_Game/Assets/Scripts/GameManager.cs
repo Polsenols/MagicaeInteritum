@@ -34,10 +34,13 @@ public class GameManager : Photon.PunBehaviour
         }
         else
         {
-            Debug.Log("We are Instantiating LocalPlayer from Game");
-            // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-            GameObject go = (GameObject)PhotonNetwork.Instantiate(this.playerPrefab.name, SpawnPos(), Quaternion.identity, 0);
-            SetupPlayer(go);
+            if (PhotonNetwork.inRoom)
+            {
+                Debug.Log("We are Instantiating LocalPlayer from Game");
+                // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+                GameObject go = (GameObject)PhotonNetwork.Instantiate(this.playerPrefab.name, SpawnPos(), Quaternion.identity, 0);
+                SetupPlayer(go);
+            }
         }
     }
 

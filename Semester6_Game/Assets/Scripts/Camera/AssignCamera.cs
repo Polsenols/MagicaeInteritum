@@ -11,7 +11,10 @@ public class AssignCamera : MonoBehaviour {
 
         if (m_PhotonView.isMine)
         {
-            Camera.main.GetComponent<CameraFollow>().player = gameObject;
+            if (Camera.main.GetComponent<CameraFollow>() != null)
+            {
+                Camera.main.GetComponent<CameraFollow>().player = gameObject;
+            }
         }
 
     }

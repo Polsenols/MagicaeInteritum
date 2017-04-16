@@ -106,10 +106,13 @@ public class PlayerHealth_NET : Photon.PunBehaviour
 
     private void UpdateHealthBarPos()
     {
-        Vector3 healthBarPos = new Vector3(transform.position.x, transform.position.y + healthBarHeight, transform.position.z);
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(healthBarPos);
-        healthbarUI.transform.position = Vector3.Lerp(healthbarUI.transform.position, screenPos, Time.deltaTime * 8.0f);
-        healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
+        if (healthbarUI != null)
+        {
+            Vector3 healthBarPos = new Vector3(transform.position.x, transform.position.y + healthBarHeight, transform.position.z);
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(healthBarPos);
+            healthbarUI.transform.position = Vector3.Lerp(healthbarUI.transform.position, screenPos, Time.deltaTime * 8.0f);
+            healthBar.fillAmount = Mathf.Clamp((float)health / (float)maxHealth, 0, maxHealth);
+        }
     }
 
     public void Die()

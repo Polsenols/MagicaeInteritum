@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class MagicShopPeaceZone : MonoBehaviour
 {
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerHealth_NET>().invulnurable = true;
-            other.GetComponent<SpellManager>().canCastSpells = false;
-            other.GetComponent<ShopScript>().resourcePerTick = 0;
+            if (other.GetComponent<PhotonView>().isMine)
+            {
+                other.GetComponent<PlayerHealth_NET>().invulnurable = true;
+                other.GetComponent<SpellManager>().canCastSpells = false;
+                other.GetComponent<ShopScript>().resourcePerTick = 0;
+            }
         }
     }
 
