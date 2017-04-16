@@ -30,7 +30,7 @@ public class MousePositionScript : MonoBehaviour {
         if (Physics.Raycast(ray, out hit, 1000, mask))
         {
             Vector3 worldPos = hit.point;
-            worldPos.y = 0;
+            //worldPos.y = 0;
             return worldPos;
         }
         return transform.position;

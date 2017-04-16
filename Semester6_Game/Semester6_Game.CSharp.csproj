@@ -247,6 +247,7 @@
     <Compile Include="Assets\Scripts\HUD Canvas\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Launcher.cs" />
     <Compile Include="Assets\Scripts\LightAnimation.cs" />
+    <Compile Include="Assets\Scripts\MagicShopPeaceZone.cs" />
     <Compile Include="Assets\Scripts\Player\Ability_Dash.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterManager_NET.cs" />
     <Compile Include="Assets\Scripts\Player\DashAbilityController.cs" />
@@ -266,6 +267,7 @@
     <Compile Include="Assets\Scripts\TeleportFromShop.cs" />
     <Compile Include="Assets\Scripts\TeleportToShop.cs" />
     <Compile Include="Assets\Scripts\TurnOnDepthBuffer.cs" />
+    <Compile Include="Assets\SwampManager.cs" />
     <Compile Include="Assets\Terrain\Water (Basic)\Scripts\WaterBasic.cs" />
   </ItemGroup>
   <ItemGroup>
