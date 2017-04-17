@@ -3,23 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using MovementEffects;
 
-public class EnvironmentSpawner : Photon.MonoBehaviour {
+public class EnvironmentSpawner : Photon.MonoBehaviour
+{
 
-    public GameObject LaserTower;
-    public Transform laserSpawnPos;
-	// Use this for initialization
-	void Start () {
+    public GameObject[] GameEvent;
+    public int[] EventTimer;
+    public Transform EventSpawnPos;
+
+    void Start()
+    {
         if (PhotonNetwork.isMasterClient)
         {
-            Timing.RunCoroutine(_SpawnElement(LaserTower, 8.0f, laserSpawnPos.position));
+            Timing.RunCoroutine(_SpawnEvent(EventSpawnPos.position));
         }
-	}
-	
-    IEnumerator<float> _SpawnElement(GameObject element, float waitTime, Vector3 pos)
+    }
+
+
+    IEnumerator<float> _SpawnEvent(Vector3 pos)
     {
-        yield return Timing.WaitForSeconds(waitTime);
-        PhotonNetwork.Instantiate(element.name, pos, Quaternion.identity, 0);
-        //LaserTower.SetActive(true);
-        yield return 0f;
+        for (int i = 0; i < GameEvent.Length; i++)
+        {
+            yield return Timing.WaitForSeconds(EventTimer[i]);
+            PhotonNetwork.Instantiate(GameEvent[i].name, pos, Quaternion.identity, 0);
+            yield return 0f;
+        }
     }
 }

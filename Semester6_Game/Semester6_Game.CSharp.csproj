@@ -264,6 +264,8 @@
     <Compile Include="Assets\Scripts\Player\SpellManager.cs" />
     <Compile Include="Assets\Scripts\PlayerNameInputField.cs" />
     <Compile Include="Assets\Scripts\RagdollControl.cs" />
+    <Compile Include="Assets\Scripts\RecallBar.cs" />
+    <Compile Include="Assets\Scripts\RotateRecallImg.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\SingleTon.cs" />
     <Compile Include="Assets\Scripts\SlowlyRotate.cs" />
@@ -324,6 +326,7 @@
     <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
     <None Include="Assets\Shaders\Additive.shader" />
     <None Include="Assets\Shaders\AlphaBlended.shader" />
+    <None Include="Assets\Shaders\Dissolve.shader" />
     <None Include="Assets\Shaders\Highlight.shader" />
     <None Include="Assets\Shaders\Ice.shader" />
     <None Include="Assets\Shaders\ProjectorBlended.shader" />

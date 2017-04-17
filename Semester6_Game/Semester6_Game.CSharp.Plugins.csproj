@@ -171,6 +171,7 @@
     <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
     <None Include="Assets\Shaders\Additive.shader" />
     <None Include="Assets\Shaders\AlphaBlended.shader" />
+    <None Include="Assets\Shaders\Dissolve.shader" />
     <None Include="Assets\Shaders\Highlight.shader" />
     <None Include="Assets\Shaders\Ice.shader" />
     <None Include="Assets\Shaders\ProjectorBlended.shader" />
