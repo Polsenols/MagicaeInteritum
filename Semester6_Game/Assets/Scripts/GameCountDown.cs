@@ -19,7 +19,10 @@ public class GameCountDown : MonoBehaviour
     {
         Canvas = GameObject.Find("Canvas");
         winState = GameObject.Find("WinState");
-        winState.SetActive(false);
+        if (winState != null)
+        {
+            winState.SetActive(false);
+        }
         m_photonView = GetComponent<PhotonView>();
     }
     void Start()

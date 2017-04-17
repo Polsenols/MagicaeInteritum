@@ -19,9 +19,12 @@ public class MagicShopPeaceZone : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        other.GetComponent<PlayerHealth_NET>().invulnurable = false;
-        other.GetComponent<SpellManager>().magicPeaceZone = false;
-        other.GetComponent<ShopScript>().resourcePerTick = other.GetComponent<ShopScript>().originalResourcePerTick;
+        if (other.GetComponent<PhotonView>().isMine)
+        {
+            other.GetComponent<PlayerHealth_NET>().invulnurable = false;
+            other.GetComponent<SpellManager>().magicPeaceZone = false;
+            other.GetComponent<ShopScript>().resourcePerTick = other.GetComponent<ShopScript>().originalResourcePerTick;
+        }
     }
 
 }

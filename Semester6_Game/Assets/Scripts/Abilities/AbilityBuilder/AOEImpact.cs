@@ -42,7 +42,7 @@ public class AOEImpact : MonoBehaviour
                     if (player.m_PhotonView.isMine)
                     {
                         if (canPush)
-                            Push(player.GetComponent<Rigidbody>(), isDistanceBased, spellData);
+                            Push(player.GetComponent<Rigidbody>(), false, spellData);
 
                         if (canFreeze)
                             player.playerHealth().Freeze(spellData.freezeDuration());
@@ -89,6 +89,10 @@ public class AOEImpact : MonoBehaviour
         if (isDistanceBased) {
             float distance = pushDir.magnitude;
             force = Remap(distance, 0, spellData.knockbackForce(), spellData.radius(), spellData.knockbackForce()*0.2f);
+        }
+        else
+        {
+            force = spellData.knockbackForce();
         }
         rb.AddForce(pushDir.normalized * Mathf.Abs(force), ForceMode.Impulse);
     }
