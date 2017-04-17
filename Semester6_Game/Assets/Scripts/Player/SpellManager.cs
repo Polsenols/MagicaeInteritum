@@ -31,6 +31,12 @@ public class SpellManager : Photon.MonoBehaviour
     public int m_LastInstantiatedID = 0;
     public bool canCastSpells = true;
 
+    #region winState
+    private Animator anim;
+    private float winCastTimestamp = 0;
+    private float interval = 0.15f;
+    #endregion
+
     #region animation
     private float animTimestamp;
 
@@ -45,6 +51,7 @@ public class SpellManager : Photon.MonoBehaviour
         m_photonView = GetComponent<PhotonView>();
         mousePos = GetComponent<MousePositionScript>();
         playerAnim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     void Start()
@@ -134,6 +141,15 @@ public class SpellManager : Photon.MonoBehaviour
         {
             if (m_photonView.isMine)
             {
+                if (anim.GetBool("Won"))
+                {
+                    if (Time.time > winCastTimestamp)
+                    {
+                        winCastTimestamp = Time.time + interval;
+                        Vector3 randomPos = transform.position + Random.insideUnitSphere;
+                        ShoutSpell(0, GetProjectileSpawnPos(), randomPos);
+                    }
+                }
                 lastKeySelected();
                 positionReticles();
                 for (int i = 0; i < keyCodes.Length; i++)

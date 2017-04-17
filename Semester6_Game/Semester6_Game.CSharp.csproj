@@ -252,9 +252,11 @@
     <Compile Include="Assets\Scripts\LobbyManager.cs" />
     <Compile Include="Assets\Scripts\MagicShopPeaceZone.cs" />
     <Compile Include="Assets\Scripts\Player\Ability_Dash.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimateTiledTexture.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterManager_NET.cs" />
     <Compile Include="Assets\Scripts\Player\DashAbilityController.cs" />
     <Compile Include="Assets\Scripts\Player\MousePositionScript.cs" />
+    <Compile Include="Assets\Scripts\Player\MoveIndicatorController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerHealth_NET.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerResources.cs" />
@@ -272,7 +274,6 @@
     <Compile Include="Assets\Scripts\TeleportFromShop.cs" />
     <Compile Include="Assets\Scripts\TeleportToShop.cs" />
     <Compile Include="Assets\Scripts\TurnOnDepthBuffer.cs" />
-    <Compile Include="Assets\Terrain\Water (Basic)\Scripts\WaterBasic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
@@ -406,7 +407,6 @@
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
-    <None Include="Assets\Terrain\Water (Basic)\Shaders\FXWaterBasic.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

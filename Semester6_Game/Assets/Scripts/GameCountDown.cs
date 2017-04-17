@@ -42,8 +42,7 @@ public class GameCountDown : MonoBehaviour {
             countDownSeconds -= Time.unscaledDeltaTime;
             countDownText.text = "Time left: " + ((int)countDownSeconds).ToString();
         }
-        if (PhotonNetwork.isMasterClient)
-        {
+
             Debug.Log("Finding winner..");
             int highestScorePlayerID = -1;
             for (int i = 0; i < SpawnManager.Instance.Players.Count; i++)
@@ -59,13 +58,13 @@ public class GameCountDown : MonoBehaviour {
             }
             SpawnManager.Instance.Players[highestScorePlayerID-1].transform.localScale *= 5;
             SpawnManager.Instance.Players[highestScorePlayerID-1].setHealth(1000000);
+            SpawnManager.Instance.Players[highestScorePlayerID - 1].GetComponent<Animator>().SetBool("Won", true);
             string playerName = SpawnManager.Instance.Players[highestScorePlayerID-1].GetComponent<CharacterManager_NET>().playerName;
             winState.SetActive(true);
             winnerNameText.text = playerName;
             Debug.Log(playerName + "Won");
             //Play fireworks!
             //Text on screen
-        }
     }
 
 }
