@@ -18,7 +18,6 @@ public class SpellMovement : MonoBehaviour
     {
         spellData = GetComponent<SpellData>();
         transform.position = m_startPosition;
-        //transform.position += spellDir * 1.25f;
     }
 
     void FixedUpdate()

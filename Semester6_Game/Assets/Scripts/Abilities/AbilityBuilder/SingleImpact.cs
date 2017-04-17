@@ -37,6 +37,8 @@ public class SingleImpact : MonoBehaviour
         Impact(other);
     }
 
+
+
     public void Impact(Collider other)
     {
         if (other.CompareTag("Ability"))

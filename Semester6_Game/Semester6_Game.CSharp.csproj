@@ -208,6 +208,7 @@
     <Compile Include="Assets\Scripts\Abilities\CurseBehaviour.cs" />
     <Compile Include="Assets\Scripts\Abilities\ForcePull.cs" />
     <Compile Include="Assets\Scripts\Abilities\ForcePullDrag.cs" />
+    <Compile Include="Assets\Scripts\Abilities\ForceWallController.cs" />
     <Compile Include="Assets\Scripts\Abilities\FreezeSpikeMovementBehaviour.cs" />
     <Compile Include="Assets\Scripts\Abilities\FrostBolt.cs" />
     <Compile Include="Assets\Scripts\Abilities\Icespikes.cs" />

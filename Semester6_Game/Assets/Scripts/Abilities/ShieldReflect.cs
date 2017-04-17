@@ -7,11 +7,12 @@ public class ShieldReflect : MonoBehaviour
 
     SpellData spellData;
     Transform originTransform;
-    // Use this for initialization
+
     void Start()
     {
         spellData = GetComponent<SpellData>();
         originTransform = spellData.owner.transform;
+        Destroy(this.gameObject, spellData.travelDuration());
     }
 
     void Update()
@@ -26,6 +27,7 @@ public class ShieldReflect : MonoBehaviour
             SpellData enemySpellData = other.GetComponent<SpellData>();
             if (spellData.owner.m_photonView.isMine && enemySpellData.ownerID() != spellData.ownerID())
             {
+                spellData.PlayImpactSound();
                 Vector3 collisionPoint = other.transform.position;
                 Vector3 normal = collisionPoint - transform.position;
                 Vector3 reflectDir = Vector3.Reflect(other.GetComponent<SpellMovement>().GetSpellDir(), normal);
