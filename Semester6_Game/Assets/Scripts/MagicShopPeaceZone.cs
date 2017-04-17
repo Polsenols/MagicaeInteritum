@@ -11,7 +11,7 @@ public class MagicShopPeaceZone : MonoBehaviour
             if (other.GetComponent<PhotonView>().isMine)
             {
                 other.GetComponent<PlayerHealth_NET>().invulnurable = true;
-                other.GetComponent<SpellManager>().canCastSpells = false;
+                other.GetComponent<SpellManager>().magicPeaceZone = true;
                 other.GetComponent<ShopScript>().resourcePerTick = 0;
             }
         }
@@ -19,9 +19,8 @@ public class MagicShopPeaceZone : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("Peace Zone left");
         other.GetComponent<PlayerHealth_NET>().invulnurable = false;
-        other.GetComponent<SpellManager>().canCastSpells = true;
+        other.GetComponent<SpellManager>().magicPeaceZone = false;
         other.GetComponent<ShopScript>().resourcePerTick = other.GetComponent<ShopScript>().originalResourcePerTick;
     }
 

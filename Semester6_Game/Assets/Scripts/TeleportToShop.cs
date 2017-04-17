@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TeleportToShop : Photon.MonoBehaviour
 {
@@ -17,7 +18,13 @@ public class TeleportToShop : Photon.MonoBehaviour
     private PlayerMovement _playerMovement;
 
     public float recallCastDuration = 5;
+    public float currentRecallAmount = 0;
     public bool teleportingToShop = false;
+    private float t = 0;
+
+    public Image recallUI1;
+    public Image recallUI2;
+    public Image recallUI3;
 
     void Awake()
     {
@@ -29,6 +36,13 @@ public class TeleportToShop : Photon.MonoBehaviour
     {
         for (int i = 0; i < teleportVectorPoints.Length; i++)
             teleportVectorPoints[i] = magicShopPosition.GetComponent<Transform>().position;
+
+        recallUI3.GetComponent<Image>();
+        recallUI3.enabled = false;
+        recallUI1.GetComponent<Image>();
+        recallUI1.enabled = false;
+        recallUI2.GetComponent<Image>();
+        recallUI2.enabled = false;
 
         teleportVectorPoints[0] = new Vector3(teleportVectorPoints[0].x, teleportVectorPoints[0].y, teleportVectorPoints[0].z - bigRecallOffset);
         teleportVectorPoints[1] = new Vector3(teleportVectorPoints[1].x + bigRecallOffset, teleportVectorPoints[1].y, teleportVectorPoints[1].z);
@@ -52,7 +66,24 @@ public class TeleportToShop : Photon.MonoBehaviour
             {
                 StopPlayerRecall();
             }
+
+
+            if (teleportingToShop)
+                currentRecallAmount = Mathf.Lerp(0, recallCastDuration, t);
+            else
+                currentRecallAmount = 0;
+
+            if (t < 1)
+            {
+                t += Time.deltaTime / recallCastDuration;
+            }
+
         }
+    }
+
+    public float currentRecallDuration()
+    {
+        return currentRecallAmount;
     }
 
     public void RecallToShop()
@@ -81,6 +112,10 @@ public class TeleportToShop : Photon.MonoBehaviour
             if (myIndicator != null)
                 Destroy(myIndicator);
 
+            recallUI3.enabled = false;
+            recallUI1.enabled = false;
+            recallUI2.enabled = false;
+
             teleportingToShop = false;
         }
     }
@@ -89,11 +124,21 @@ public class TeleportToShop : Photon.MonoBehaviour
     {
         if (m_photonView.isMine)
         {
+            t = 0;
             teleportingToShop = true;
             _playerMovement.moving = false;
             myIndicator = (GameObject)Instantiate(teleportIndicator, transform.position, Quaternion.identity);
             Destroy(myIndicator, recallCastDuration);
+
+            recallUI3.enabled = true;
+            recallUI1.enabled = true;
+            recallUI2.enabled = true;
+
             yield return new WaitForSeconds(recallCastDuration);
+
+            recallUI3.enabled = false;
+            recallUI1.enabled = false;
+            recallUI2.enabled = false;
             transform.position = teleportVectorPoints[m_photonView.ownerId - 1];
             teleportingToShop = false;
             yield break;

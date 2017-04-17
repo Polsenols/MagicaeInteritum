@@ -29,7 +29,8 @@ public class SpellManager : Photon.MonoBehaviour
     public GameObject reticle_Direction;
     public List<SpellData> m_sceneAbilities = new List<SpellData>();
     public int m_LastInstantiatedID = 0;
-    public bool canCastSpells = true;
+    bool canCastSpells = true;
+    public bool magicPeaceZone = false;
 
     #region winState
     private Animator anim;
@@ -137,7 +138,7 @@ public class SpellManager : Photon.MonoBehaviour
         {
             playerAnim.SetBool("Cast", false);
         }
-        if (canCastSpells)
+        if (canCastSpells && !magicPeaceZone)
         {
             if (m_photonView.isMine)
             {
