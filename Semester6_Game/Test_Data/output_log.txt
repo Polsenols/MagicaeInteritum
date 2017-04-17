@@ -23,7 +23,7 @@ Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Gam
 Loading C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Test_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
 Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Test_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Test_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.030 seconds
+- Completed reload, in  0.041 seconds
 Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Test_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Test_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
@@ -38,37 +38,7 @@ The referenced script on this Behaviour (Game Object 'TeleportFrom') is missing!
  
 (Filename:  Line: 1754)
 
-UnloadTime: 1.664424 ms
+UnloadTime: 1.572051 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1b4c -> priority: 1 
-  Thread -> id: 15ac -> priority: 1 
-Operation failed: OperationResponse 227: ReturnCode: 32766 (A game with the specified id already exist.). Parameters: {} Server: MasterServer
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Operation failed: OperationResponse 227: ReturnCode: 32766 (A game with the specified id already exist.). Parameters: {} Server: MasterServer
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Operation failed: OperationResponse 227: ReturnCode: 32766 (A game with the specified id already exist.). Parameters: {} Server: MasterServer
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Operation failed: OperationResponse 227: ReturnCode: 32766 (A game with the specified id already exist.). Parameters: {} Server: MasterServer
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-DemoAnimator/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.633057 ms
-
-Unloading 1409 unused Assets to reduce memory usage. Loaded Objects now: 3986.
-Total: 7.941510 ms (FindLiveObjects: 0.156948 ms CreateObjectMapping: 0.135138 ms MarkObjects: 0.837771 ms  DeleteObjects: 6.806948 ms)
-
-We are Instantiating LocalPlayer from Game
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
+  Thread -> id: 22f8 -> priority: 1 
+  Thread -> id: 2118 -> priority: 1 

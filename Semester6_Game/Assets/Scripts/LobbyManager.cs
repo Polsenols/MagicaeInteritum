@@ -62,6 +62,8 @@ public class LobbyManager : Photon.PunBehaviour
     {
         if (PhotonNetwork.isMasterClient)
         {
+            PhotonNetwork.room.IsOpen = false;
+            PhotonNetwork.room.IsVisible = false;
             PhotonNetwork.LoadLevel("Game");
         }
     }
