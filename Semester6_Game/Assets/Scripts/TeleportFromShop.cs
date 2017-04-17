@@ -30,6 +30,8 @@ public class TeleportFromShop : MonoBehaviour
     {
         if(other.CompareTag("Player") && other.GetComponent<PhotonView>().isMine)
         {
+            other.GetComponent<SpellManager>().canCastSpells = true;
+            other.GetComponent<SpellManager>().magicPeaceZone = false;
             other.transform.position = teleportTranformPoints[Random.Range(0,3)];
         }
     }
