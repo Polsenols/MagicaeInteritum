@@ -5,7 +5,6 @@ using UnityEngine;
 public class PullTowerLineRender : MonoBehaviour
 {
 
-
     private LineRenderer lineRenderer;
 
 
@@ -21,23 +20,18 @@ public class PullTowerLineRender : MonoBehaviour
         lineRenderer.SetPosition(0, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z));
     }
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Environmental")
+        if (other.gameObject.tag == "PullTower")
         {
             lineRenderer.enabled = true;
             lineRenderer.SetPosition(1, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z));
-        }
-        else
-        {
-            lineRenderer.enabled = false;
-            lineRenderer.SetPosition(1, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z));
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Environmental")
+        if (other.gameObject.tag == "PullTower")
         {
             lineRenderer.enabled = false;
         }

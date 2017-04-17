@@ -208,6 +208,7 @@
     <Compile Include="Assets\Scripts\Abilities\CurseBehaviour.cs" />
     <Compile Include="Assets\Scripts\Abilities\ForcePull.cs" />
     <Compile Include="Assets\Scripts\Abilities\ForcePullDrag.cs" />
+    <Compile Include="Assets\Scripts\Abilities\ForceWallController.cs" />
     <Compile Include="Assets\Scripts\Abilities\FreezeSpikeMovementBehaviour.cs" />
     <Compile Include="Assets\Scripts\Abilities\FrostBolt.cs" />
     <Compile Include="Assets\Scripts\Abilities\Icespikes.cs" />
@@ -276,6 +277,7 @@
     <Compile Include="Assets\Scripts\TeleportFromShop.cs" />
     <Compile Include="Assets\Scripts\TeleportToShop.cs" />
     <Compile Include="Assets\Scripts\TurnOnDepthBuffer.cs" />
+    <Compile Include="Assets\Scripts\changeEmissionOfMaterial.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
