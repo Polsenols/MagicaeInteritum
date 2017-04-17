@@ -47,12 +47,14 @@ public class RockPillar : MonoBehaviour
             {
                 return;
             }
+            particleEffect.transform.SetParent(null);
             spellData.owner.SendAbilityHit(spellData.InstantiateID(), true, true);
             spellData.AbilityImpactEffect();
             Destroy(this.gameObject);
         }
         else if (other.CompareTag("Environmental"))
         {
+            particleEffect.transform.SetParent(null);
             spellData.owner.SendAbilityHit(spellData.InstantiateID(), true, true);
             spellData.AbilityImpactEffect();
             Destroy(this.gameObject);

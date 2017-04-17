@@ -34,7 +34,7 @@ public class SpellManager : Photon.MonoBehaviour
     #region winState
     private Animator anim;
     private float winCastTimestamp = 0;
-    private float interval = 0.15f;
+    public float winCastinterval = 0.15f;
     #endregion
 
     #region animation
@@ -145,9 +145,10 @@ public class SpellManager : Photon.MonoBehaviour
                 {
                     if (Time.time > winCastTimestamp)
                     {
-                        winCastTimestamp = Time.time + interval;
-                        Vector3 randomPos = transform.position + Random.insideUnitSphere;
-                        ShoutSpell(0, GetProjectileSpawnPos(), randomPos);
+                        winCastTimestamp = Time.time + winCastinterval;
+                        Vector3 randomPos = transform.position + Random.insideUnitSphere * Random.Range(1,8);
+                        randomPos.y = 0;
+                        ShoutSpell((int)Random.Range(0,15), GetProjectileSpawnPos(), randomPos);
                     }
                 }
                 lastKeySelected();

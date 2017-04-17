@@ -12,7 +12,7 @@ public class ShopScript : MonoBehaviour
     Elemental spells:
     Fireball
     Meteor
-    Frostbolt
+    Earth Pillar
     Ice Spikes
     Freeze Spikes
     -----------
@@ -258,14 +258,14 @@ public class ShopScript : MonoBehaviour
         }
     }
 
-    public void TooltipFrostBolt(int spellIndexLocator)
+    public void TooltipRockPillar(int spellIndexLocator)
     {
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Frost Bolt: Shoots a frost bolt in a specific" +
-                System.Environment.NewLine + "direction and damages+freezes on impact";
-            SpellTooltipInfo("Frost Bolt", setSpellDescipTxt, spellCostArray[2], 3, 7, 0, 0);
+            string setSpellDescipTxt = "Rock Pillar: Rock pillars emerge in a specific" +
+                System.Environment.NewLine + "direction and damages + knockbacks on impact";
+            SpellTooltipInfo("Rock Pillar", setSpellDescipTxt, spellCostArray[2], 3, 7, 0, 0);
         }
     }
 
@@ -439,7 +439,6 @@ public class ShopScript : MonoBehaviour
             playerResource.CurrentResources -= spellCostArray[spellIndexNumber]; // Reduce the amount of resources with the spell cost
             doYouHaveSpell[spellIndexNumber] = true; //Set the index position of the spell to true; i.e. player have bought the spell and cannot buy it again.
             spellManager.addSpell(spellIndexNumber);
-            Debug.Log("You Bought a Spell!");
 
             //Return to "default" shop; i.e. close "confirm" canvas.
             buySpellCanvas.enabled = false;
