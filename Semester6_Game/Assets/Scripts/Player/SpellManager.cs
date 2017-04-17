@@ -12,6 +12,7 @@ public class SpellManager : Photon.MonoBehaviour
     public PlayerHealth_NET playerHealth;
     private MousePositionScript mousePos;
     private PlayerMovement playerMove;
+    public TeleportToShop teleportControl;
     private AudioSource audio;
     private Animator playerAnim;
     public GameObject[] Spell;
@@ -29,7 +30,7 @@ public class SpellManager : Photon.MonoBehaviour
     public GameObject reticle_Direction;
     public List<SpellData> m_sceneAbilities = new List<SpellData>();
     public int m_LastInstantiatedID = 0;
-    bool canCastSpells = true;
+    public bool canCastSpells = true;
     public bool magicPeaceZone = false;
 
     #region winState
@@ -46,6 +47,7 @@ public class SpellManager : Photon.MonoBehaviour
 
     void Awake()
     {
+        teleportControl = GetComponent<TeleportToShop>();
         audio = GetComponent<AudioSource>();
         playerHealth = GetComponent<PlayerHealth_NET>();
         charMananager = GetComponent<CharacterManager_NET>();
@@ -134,7 +136,7 @@ public class SpellManager : Photon.MonoBehaviour
 
     void Update()
     {
-        if(animTimestamp <= Time.time)
+        if (animTimestamp <= Time.time)
         {
             playerAnim.SetBool("Cast", false);
         }
@@ -147,9 +149,9 @@ public class SpellManager : Photon.MonoBehaviour
                     if (Time.time > winCastTimestamp)
                     {
                         winCastTimestamp = Time.time + winCastinterval;
-                        Vector3 randomPos = transform.position + Random.insideUnitSphere * Random.Range(1,8);
+                        Vector3 randomPos = transform.position + Random.insideUnitSphere * Random.Range(1, 8);
                         randomPos.y = 0;
-                        ShoutSpell((int)Random.Range(0,15), GetProjectileSpawnPos(), randomPos);
+                        ShoutSpell((int)Random.Range(0, 15), GetProjectileSpawnPos(), randomPos);
                     }
                 }
                 lastKeySelected();
@@ -158,27 +160,29 @@ public class SpellManager : Photon.MonoBehaviour
                 {
                     if (currentKey == keyCodes[i] && mySpells.Count > i)
                     {
-                            if (m_spellData[mySpells[i]].isUtility())
+                        if (m_spellData[mySpells[i]].isUtility())
+                        {
+                            if (Input.GetKeyDown(currentKey) && isSpellReady(i))
                             {
-                                if (Input.GetKeyDown(currentKey) && isSpellReady(i))
+                                CastAnim(false);
+                                ShoutSpell(mySpells[i], GetProjectileSpawnPos(), mousePos.getMouseWorldPoint());
+                                Timing.RunCoroutine(_StartCooldown(i));
+                                teleportControl.StopPlayerRecall();
+                            }
+                        }
+                        else
+                        {
+                            if (Input.GetMouseButtonDown(0) && spellSelected)
+                            {
+                                if (isSpellReady(i))
                                 {
-                                    CastAnim(false);
+                                    CastAnim(true);
                                     ShoutSpell(mySpells[i], GetProjectileSpawnPos(), mousePos.getMouseWorldPoint());
                                     Timing.RunCoroutine(_StartCooldown(i));
+                                    teleportControl.StopPlayerRecall();
                                 }
                             }
-                            else
-                            {
-                                if (Input.GetMouseButtonDown(0) && spellSelected)
-                                {
-                                    if (isSpellReady(i))
-                                    {
-                                        CastAnim(true);
-                                        ShoutSpell(mySpells[i], GetProjectileSpawnPos(), mousePos.getMouseWorldPoint());
-                                        Timing.RunCoroutine(_StartCooldown(i));
-                                    }
-                                }
-                            }                        
+                        }
                     }
                 }
             }

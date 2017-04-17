@@ -41,18 +41,7 @@ public class RockPillar : MonoBehaviour
 
     public void Impact(Collider other)
     {
-        if (other.CompareTag("Ability"))
-        {
-            if (spellData.ownerID() == other.GetComponent<SpellData>().ownerID())
-            {
-                return;
-            }
-            particleEffect.transform.SetParent(null);
-            spellData.owner.SendAbilityHit(spellData.InstantiateID(), true, true);
-            spellData.AbilityImpactEffect();
-            Destroy(this.gameObject);
-        }
-        else if (other.CompareTag("Environmental"))
+        if (other.CompareTag("Environmental"))
         {
             particleEffect.transform.SetParent(null);
             spellData.owner.SendAbilityHit(spellData.InstantiateID(), true, true);

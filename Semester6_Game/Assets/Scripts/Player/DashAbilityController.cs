@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DashAbilityController : MonoBehaviour {
+public class DashAbilityController : MonoBehaviour
+{
 
     public KeyCode triggerKey = KeyCode.Space;
 
@@ -12,13 +13,15 @@ public class DashAbilityController : MonoBehaviour {
 
     public PhotonView m_PhotonView;
     public Ability_Dash dashAbility;
+    public SpellManager spellManager;
 
     private float coolDownTimeLeft;
     private float coolDownDuration;
     private float nextReadyTime;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         if (m_PhotonView.isMine)
         {
             coolDownDuration = dashAbility.coolDownTime;
@@ -30,12 +33,12 @@ public class DashAbilityController : MonoBehaviour {
         {
             Destroy(this);
         }
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-        if(Time.time > nextReadyTime)
+        if (Time.time > nextReadyTime)
         {
             AbilityReady();
 
@@ -47,8 +50,8 @@ public class DashAbilityController : MonoBehaviour {
         else
         {
             CoolDown();
-        }		
-	}
+        }
+    }
 
     private void AbilityReady()
     {
@@ -66,9 +69,12 @@ public class DashAbilityController : MonoBehaviour {
 
     private void ButtonTriggered()
     {
-        nextReadyTime = coolDownDuration + Time.time;
-        coolDownTimeLeft = coolDownDuration;
-
-        dashAbility.Dash();
+        if (spellManager.canCastSpells)
+        {
+            nextReadyTime = coolDownDuration + Time.time;
+            coolDownTimeLeft = coolDownDuration;
+            dashAbility.Dash();
+            spellManager.teleportControl.StopPlayerRecall();
+        }
     }
 }

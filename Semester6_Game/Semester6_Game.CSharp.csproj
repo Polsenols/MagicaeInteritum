@@ -277,6 +277,7 @@
     <Compile Include="Assets\Scripts\TeleportFromShop.cs" />
     <Compile Include="Assets\Scripts\TeleportToShop.cs" />
     <Compile Include="Assets\Scripts\TurnOnDepthBuffer.cs" />
+    <Compile Include="Assets\Scripts\changeEmissionOfMaterial.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Photon Unity Networking\changelog.txt" />

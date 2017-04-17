@@ -23,32 +23,32 @@ Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Gam
 Loading C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Test_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
 Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Test_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Test_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.035 seconds
+- Completed reload, in  0.027 seconds
 Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Test_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\John\Documents\GitHub\MagicaeInteritum\Semester6_Game\Test_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.655871 ms
+UnloadTime: 2.134414 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2264 -> priority: 1 
-  Thread -> id: 31e8 -> priority: 1 
+  Thread -> id: 1810 -> priority: 1 
+  Thread -> id: 16e8 -> priority: 1 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.658996 ms
+UnloadTime: 3.319867 ms
 
-Unloading 1468 unused Assets to reduce memory usage. Loaded Objects now: 3993.
-Total: 13.430860 ms (FindLiveObjects: 0.254881 ms CreateObjectMapping: 0.125729 ms MarkObjects: 2.149810 ms  DeleteObjects: 10.895308 ms)
+Unloading 1491 unused Assets to reduce memory usage. Loaded Objects now: 3994.
+Total: 11.908844 ms (FindLiveObjects: 0.394295 ms CreateObjectMapping: 0.158231 ms MarkObjects: 1.248745 ms  DeleteObjects: 10.099018 ms)
 
 We are Instantiating LocalPlayer from Game
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 6.504597 ms
+UnloadTime: 4.567330 ms
 
-Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 6286.
-Total: 2.480385 ms (FindLiveObjects: 0.341694 ms CreateObjectMapping: 0.198003 ms MarkObjects: 1.911607 ms  DeleteObjects: 0.028225 ms)
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 6372.
+Total: 3.770613 ms (FindLiveObjects: 0.469562 ms CreateObjectMapping: 0.279257 ms MarkObjects: 2.996562 ms  DeleteObjects: 0.023948 ms)
 
 We are Instantiating LocalPlayer from Game
  
@@ -59,7 +59,17 @@ We are Instantiating LocalPlayer from Game
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 NullReferenceException: Object reference not set to an instance of an object
-  at PullTowerLineRender.OnTriggerStay (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
+  at GameCountDown.Awake () [0x00000] in <filename unknown>:0 
+UnityEngine.Object:INTERNAL_CALL_Internal_InstantiateSingle(Object, Vector3&, Quaternion&)
+UnityEngine.Object:Internal_InstantiateSingle(Object, Vector3, Quaternion)
+UnityEngine.Object:Instantiate(Object, Vector3, Quaternion)
+UnityEngine.Object:Instantiate(GameObject, Vector3, Quaternion)
+NetworkingPeer:DoInstantiate(Hashtable, PhotonPlayer, GameObject)
+NetworkingPeer:OnEvent(EventData)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update()
  
 (Filename:  Line: -1)
 
@@ -70,12 +80,12 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename:  Line: -1)
 
 Setting up 6 worker threads for Enlighten.
-  Thread -> id: 221c -> priority: 1 
-  Thread -> id: 2ca8 -> priority: 1 
-  Thread -> id: c14 -> priority: 1 
-  Thread -> id: 3640 -> priority: 1 
-  Thread -> id: 356c -> priority: 1 
-  Thread -> id: 22f8 -> priority: 1 
+  Thread -> id: 2208 -> priority: 1 
+  Thread -> id: 313c -> priority: 1 
+  Thread -> id: 3238 -> priority: 1 
+  Thread -> id: 18ec -> priority: 1 
+  Thread -> id: fac -> priority: 1 
+  Thread -> id: 31e4 -> priority: 1 
 NullReferenceException
   at (wrapper managed-to-native) UnityEngine.Component:GetComponentFastPath (System.Type,intptr)
   at UnityEngine.Component.GetComponent[Image] () [0x00000] in <filename unknown>:0 
@@ -85,35 +95,12 @@ NullReferenceException
  
 (Filename:  Line: -1)
 
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.Behaviour:set_enabled (bool)
-  at TeleportToShop+<_recall>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
-  at UnityEngine.SetupCoroutine.InvokeMoveNext (IEnumerator enumerator, IntPtr returnValueAddress) [0x00000] in <filename unknown>:0 
-UnityEngine.MonoBehaviour:StartCoroutine(String, Object)
-UnityEngine.MonoBehaviour:StartCoroutine(String)
-TeleportToShop:_recallToShop()
-System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
-System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo)
-System.Reflection.MethodBase:Invoke(Object, Object[])
-NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer)
-NetworkingPeer:OnEvent(EventData)
-ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
-ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
-ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
-PhotonHandler:Update()
- 
-(Filename:  Line: -1)
-
 NullReferenceException: Object reference not set to an instance of an object
   at MagicShopPeaceZone.OnTriggerExit (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-[Singleton] Using instance already created: CameraHolder
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Shaking!
+Shop Exited
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -121,11 +108,55 @@ Shop Exited
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Shaking!
+OnPhotonPlayerDisconnected() osten
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Shaking!
+OnPhotonPlayerConnected isMasterClient True
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PhotonNetwork : Loading Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.428771 ms
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 6372.
+Total: 2.804546 ms (FindLiveObjects: 0.418672 ms CreateObjectMapping: 0.265999 ms MarkObjects: 2.080530 ms  DeleteObjects: 0.038061 ms)
+
+We are Instantiating LocalPlayer from Game
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.Component.GetComponent[Image] () [0x00000] in <filename unknown>:0 
+  at ShopScript.checkAffordance () [0x00000] in <filename unknown>:0 
+  at ShopScript+<_ResourceProvider>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
+  at MovementEffects.Timing.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at DeathCircleController.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.Component:GetComponentFastPath (System.Type,intptr)
+  at UnityEngine.Component.GetComponent[CharacterManager_NET] () [0x00000] in <filename unknown>:0 
+  at GameCountDown.GetWinner () [0x00000] in <filename unknown>:0 
+  at GameCountDown.FindWinner () [0x00000] in <filename unknown>:0 
+  at GameCountDown+<_CountDown>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
+  at MovementEffects.Timing.Update () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at SingleImpact.Impact (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
+  at SingleImpact.OnTriggerEnter (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 

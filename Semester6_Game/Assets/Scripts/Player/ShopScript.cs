@@ -47,6 +47,7 @@ public class ShopScript : MonoBehaviour
     PlayerResources playerResource = new PlayerResources();
     public int startResourceAmount = 500;
     public int resourcePerTick = 3;
+    public float resourceInterval = 0.5f;
     public int originalResourcePerTick;
 
     #region Canvas Related Variables
@@ -97,7 +98,7 @@ public class ShopScript : MonoBehaviour
             Destroy(this);
         }
         playerResource.CurrentResources = startResourceAmount;
-        Timing.RunCoroutine(_ResourceProvider(playerResource.MoneyWaitTime));
+        Timing.RunCoroutine(_ResourceProvider(resourceInterval));
         canvasPlaceholder.SetActive(false);
 
         spellSchoolCanvas1.enabled = false;

@@ -93,10 +93,9 @@ public class PlayerMovement : MonoBehaviour
                     moving = false;
                 else
                     FollowTarget(targetPosition, movementSpeed);
-
+                RotateToPos();
             }
-
-            RotateToPos();
+;
             #endregion
         }
 

@@ -124,6 +124,23 @@ public class CharacterManager_NET : Photon.PunBehaviour {
         GameObject.Find("Player" + playerID).GetComponent<Text>().text = scoreText;
     }
 
+    public void SetPlayerPosition(Vector3 position, int playerID)
+    {
+        m_PhotonView.RPC("SetPosition", PhotonTargets.AllBuffered, position, playerID);
+    }
+
+    [PunRPC]
+    void SetPosition(Vector3 position, int playerID)
+    {
+        for (int i = 0; i < Players.Count; i++)
+        {
+            if (Players[i].playerID == playerID)
+            {
+                Players[i].transform.position = position;
+            }
+        }
+    }
+
     public void StartScore()
     {
         this.score = 0;

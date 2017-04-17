@@ -105,7 +105,8 @@ public class TeleportToShop : Photon.MonoBehaviour
     [PunRPC]
     void _stopPlayerRecall()
     {
-
+        if (teleportingToShop)
+        {
             StopCoroutine("_recall");
 
             if (myIndicator != null)
@@ -116,6 +117,7 @@ public class TeleportToShop : Photon.MonoBehaviour
             recallUI2.enabled = false;
 
             teleportingToShop = false;
+        }
     }
 
     IEnumerator _recall()

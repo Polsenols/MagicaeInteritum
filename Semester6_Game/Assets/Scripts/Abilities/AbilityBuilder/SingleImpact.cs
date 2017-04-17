@@ -91,10 +91,10 @@ public class SingleImpact : MonoBehaviour
                     if (canCurse)
                         player.playerHealth().Curse(spellData.curseDuration(), spellData.curseDmgAdjuster());
                     if (canSwapPos)
-                    {
+                    {                    
                         Vector3 hitPlayerPos = other.transform.position;
-                        other.transform.position = spellData.owner.transform.position;
-                        spellData.owner.transform.position = hitPlayerPos;
+                        spellData.owner.charMananager.SetPlayerPosition(spellData.owner.transform.position, player.playerID);
+                        spellData.owner.charMananager.SetPlayerPosition(hitPlayerPos, spellData.ownerID());
                     }
 
                     spellData.owner.SendAbilityHit(spellData.InstantiateID(), true, true);
