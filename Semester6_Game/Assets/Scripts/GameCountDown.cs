@@ -9,13 +9,17 @@ public class GameCountDown : MonoBehaviour
 
     public float countDownSeconds = 10;
     public GameObject winState;
-    public Text winnerNameText;
+    private Text winnerNameText;
     private PhotonView m_photonView;
     private Text countDownText;
     private List<PlayerHealth_NET> Player = new List<PlayerHealth_NET>();
+    private GameObject Canvas;
 
     void Awake()
     {
+        Canvas = GameObject.Find("Canvas");
+        winState = GameObject.Find("WinState");
+        winState.SetActive(false);
         m_photonView = GetComponent<PhotonView>();
     }
     void Start()
@@ -37,54 +41,58 @@ public class GameCountDown : MonoBehaviour
         Timing.RunCoroutine(_CountDown());
     }
 
+    void FindWinner()
+    {
+        m_photonView.RPC("DisplayWinner", PhotonTargets.All, GetWinner());
+    }
+    
+    private int GetWinner()
+    {
+        int highestScorePlayerID = -1;
+        for (int i = 0; i < SpawnManager.Instance.Players.Count; i++)
+        {
+            Debug.Log(SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().score);
+            if (highestScorePlayerID < SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().score)
+            {
+                highestScorePlayerID = SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().playerID;
+            }
+        }
+        return highestScorePlayerID;
+    }
+
+    [PunRPC]
     IEnumerator<float> _CountDown()
     {
         while (countDownSeconds > 0f)
         {
             yield return 0f;
-            countDownSeconds -= Time.unscaledDeltaTime;
+            countDownSeconds -= Time.deltaTime;
             countDownText.text = "Time left: " + ((int)countDownSeconds).ToString();
         }
+        if (PhotonNetwork.isMasterClient)
+        {
+            FindWinner();
+        }
+    }
 
-        Debug.Log("Finding winner..");
-        int highestScorePlayerID = -1;
+    [PunRPC]
+    void DisplayWinner(int playerID)
+    {
         for (int i = 0; i < SpawnManager.Instance.Players.Count; i++)
         {
-            if (highestScorePlayerID < SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().score)
+            if(SpawnManager.Instance.Players[i].playerID == playerID)
             {
-                highestScorePlayerID = i;
-                if(i > 0)
-                {
-                    Player.Clear();
-                }
-                Player.Add(SpawnManager.Instance.Players[i]);
-            }
-            else if (highestScorePlayerID == SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().score)
-            {
-                Player.Add(SpawnManager.Instance.Players[i]);
+                SpawnManager.Instance.Players[i].transform.localScale *= 5;
+                SpawnManager.Instance.Players[i].setHealth(1000000);
+                SpawnManager.Instance.Players[i].GetComponent<Animator>().SetBool("Won", true);
+                string playerName = SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().playerName;
+                //go.GetComponent<Image>().rectTransform.position = UIPos;
+                winState.SetActive(true);
+                winnerNameText = winState.GetComponentInChildren<Text>();
+                winnerNameText.text = playerName;
             }
         }
 
-        string winText = "";
-        for (int i = 0; i < Player.Count; i++)
-        {
-            if (!SpawnManager.Instance.Players[i].gameObject.activeSelf)
-            {
-                SpawnManager.Instance.Players[i].gameObject.SetActive(true);
-            }
-
-            SpawnManager.Instance.Players[i].transform.localScale *= 5;
-            SpawnManager.Instance.Players[i].setHealth(1000000);
-            SpawnManager.Instance.Players[i].GetComponent<Animator>().SetBool("Won", true);
-            string playerName = SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().playerName;
-            winState.SetActive(true);
-            winText += playerName + " ";
-        }
-
-        winnerNameText.text = winText + "won!";
-        
-        //Play fireworks!
-        //Text on screen
     }
 
 }

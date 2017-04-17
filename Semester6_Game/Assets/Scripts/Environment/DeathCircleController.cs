@@ -47,7 +47,7 @@ public class DeathCircleController : MonoBehaviour
 
     void Start()
     {
-        mainLight = SpawnManager.Instance.mainLight;
+        mainLight = GameObject.Find("MainLight").GetComponent<Light>();
         m_photonView = GetComponent<PhotonView>();
         originalLightIntensity = mainLight.intensity;
         originalScale = circleObj.localScale;

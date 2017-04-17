@@ -46,7 +46,10 @@ public class MeteorController : MonoBehaviour
     public IEnumerator<float> _CleanUp(float duration)
     {
         yield return Timing.WaitForSeconds(duration);
-        Destroy(this.gameObject);
+        if (this.gameObject != null)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }

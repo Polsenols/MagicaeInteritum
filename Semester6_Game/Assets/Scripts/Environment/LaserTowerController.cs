@@ -5,6 +5,7 @@ using MovementEffects;
 
 public class LaserTowerController : MonoBehaviour {
     public float rotationSpeed;
+    public float duration;
     public bool isActive = false;
     public GameObject laser_rays;
     private SyncRotation syncRotate;
@@ -13,7 +14,7 @@ public class LaserTowerController : MonoBehaviour {
 	void Start () {
         syncRotate = transform.parent.GetComponent<SyncRotation>();
         if(PhotonNetwork.isMasterClient)
-        Timing.RunCoroutine(_ActivateLaser(5f));
+        Timing.RunCoroutine(_ActivateLaser(5f,duration));
 	}
 	
 	// Update is called once per frame
@@ -32,11 +33,13 @@ public class LaserTowerController : MonoBehaviour {
             }
     }
 
-    IEnumerator<float> _ActivateLaser(float waitTime)
+    IEnumerator<float> _ActivateLaser(float waitTime, float duration)
     {
         yield return Timing.WaitForSeconds(waitTime);
         laser_rays.SetActive(true);
         syncRotate.StartLasers();
         isActive = true;
+        yield return Timing.WaitForSeconds(duration);
+        PhotonNetwork.Destroy(transform.parent.gameObject);
     }
 }
