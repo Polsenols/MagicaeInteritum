@@ -68,12 +68,9 @@ public class ForcePullDrag : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if (pullDir != null)
+        if (pullDir.sqrMagnitude > distanceToBreak * distanceToBreak)
         {
-            if (pullDir.sqrMagnitude > distanceToBreak * distanceToBreak)
-            {
-                Destroy(this.gameObject);
-            }
+            Destroy(this.gameObject);
         }
         origin = spellData.owner.transform.position;
         target = targetTransform.position;

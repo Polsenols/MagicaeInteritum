@@ -33,7 +33,6 @@ public class DeathCircleController : MonoBehaviour
     private bool canStop = false;
     private bool scaleInComplete = false;
     private bool moving = false;
-    private bool movementStopped = false;
     private bool startMoveTrigger = false;
     private float startMoveTimestamp = 0;
     private float timeSinceMoveStart = 0;
@@ -156,12 +155,6 @@ public class DeathCircleController : MonoBehaviour
     private void startEvent()
     {
         canStart = true;
-    }
-
-    [PunRPC]
-    private void stopEvent()
-    {
-        movementStopped = true;
     }
 
     private void StartFadeIn()

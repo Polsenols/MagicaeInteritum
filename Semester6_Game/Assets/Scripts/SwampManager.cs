@@ -13,15 +13,9 @@ public class SwampManager : MonoBehaviour
     #endregion
 
     #region Private variables
-    private PhotonView m_photonView;
     private float timeSinceDamage = 0;
     public List<PlayerHealth_NET> playersOutsideCircle = new List<PlayerHealth_NET>();
     #endregion
-
-    void Start()
-    {
-        m_photonView = GetComponent<PhotonView>();
-    }
 
     void Update()
     {

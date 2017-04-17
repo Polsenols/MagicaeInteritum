@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerResources : MonoBehaviour
+public class PlayerResources
 {
 
     private int currentResources;

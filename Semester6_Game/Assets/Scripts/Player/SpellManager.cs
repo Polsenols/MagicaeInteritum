@@ -336,10 +336,6 @@ public class SpellManager : Photon.MonoBehaviour
         m_sceneAbilities.RemoveAll(item => item = null);
         SpellData spell = m_sceneAbilities.Find(item => item.InstantiateID() == ID);
 
-        if (spell == null)
-        {
-            Debug.Log("Something went wrong - spell is null");
-        }
         if (spell != null)
         {
             if (destroyAbility)

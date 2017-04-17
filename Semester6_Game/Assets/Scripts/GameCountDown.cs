@@ -4,19 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using MovementEffects;
 
-public class GameCountDown : MonoBehaviour {
+public class GameCountDown : MonoBehaviour
+{
 
     public float countDownSeconds = 10;
     public GameObject winState;
     public Text winnerNameText;
     private PhotonView m_photonView;
     private Text countDownText;
+    private List<PlayerHealth_NET> Player = new List<PlayerHealth_NET>();
 
     void Awake()
     {
         m_photonView = GetComponent<PhotonView>();
     }
-	void Start () {
+    void Start()
+    {
         if (m_photonView.isMine)
         {
             countDownText = GameObject.Find("CountDown").GetComponent<Text>();
@@ -25,9 +28,9 @@ public class GameCountDown : MonoBehaviour {
         {
             m_photonView.RPC("startCountDown", PhotonTargets.AllBuffered, PhotonNetwork.time);
         }
-	}
-	
-	[PunRPC]
+    }
+
+    [PunRPC]
     void startCountDown(double countDownTimeStart)
     {
         countDownSeconds -= (float)(PhotonNetwork.time - countDownTimeStart);
@@ -36,35 +39,52 @@ public class GameCountDown : MonoBehaviour {
 
     IEnumerator<float> _CountDown()
     {
-        while(countDownSeconds > 0f)
+        while (countDownSeconds > 0f)
         {
             yield return 0f;
             countDownSeconds -= Time.unscaledDeltaTime;
             countDownText.text = "Time left: " + ((int)countDownSeconds).ToString();
         }
 
-            Debug.Log("Finding winner..");
-            int highestScorePlayerID = -1;
-            for (int i = 0; i < SpawnManager.Instance.Players.Count; i++)
+        Debug.Log("Finding winner..");
+        int highestScorePlayerID = -1;
+        for (int i = 0; i < SpawnManager.Instance.Players.Count; i++)
+        {
+            if (highestScorePlayerID < SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().score)
             {
-                if(highestScorePlayerID < SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().score)
+                highestScorePlayerID = i;
+                if(i > 0)
                 {
-                    highestScorePlayerID = i + 1;
+                    Player.Clear();
                 }
+                Player.Add(SpawnManager.Instance.Players[i]);
             }
-            if (!SpawnManager.Instance.Players[highestScorePlayerID - 1].gameObject.activeSelf)
+            else if (highestScorePlayerID == SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().score)
             {
-                SpawnManager.Instance.Players[highestScorePlayerID - 1].gameObject.SetActive(true);
+                Player.Add(SpawnManager.Instance.Players[i]);
             }
-            SpawnManager.Instance.Players[highestScorePlayerID-1].transform.localScale *= 5;
-            SpawnManager.Instance.Players[highestScorePlayerID-1].setHealth(1000000);
-            SpawnManager.Instance.Players[highestScorePlayerID - 1].GetComponent<Animator>().SetBool("Won", true);
-            string playerName = SpawnManager.Instance.Players[highestScorePlayerID-1].GetComponent<CharacterManager_NET>().playerName;
+        }
+
+        string winText = "";
+        for (int i = 0; i < Player.Count; i++)
+        {
+            if (!SpawnManager.Instance.Players[i].gameObject.activeSelf)
+            {
+                SpawnManager.Instance.Players[i].gameObject.SetActive(true);
+            }
+
+            SpawnManager.Instance.Players[i].transform.localScale *= 5;
+            SpawnManager.Instance.Players[i].setHealth(1000000);
+            SpawnManager.Instance.Players[i].GetComponent<Animator>().SetBool("Won", true);
+            string playerName = SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().playerName;
             winState.SetActive(true);
-            winnerNameText.text = playerName;
-            Debug.Log(playerName + "Won");
-            //Play fireworks!
-            //Text on screen
+            winText += playerName + " ";
+        }
+
+        winnerNameText.text = winText + "won!";
+        
+        //Play fireworks!
+        //Text on screen
     }
 
 }

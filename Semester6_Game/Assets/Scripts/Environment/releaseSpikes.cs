@@ -7,7 +7,7 @@ public class releaseSpikes : MonoBehaviour
 {
     public Transform spike;
     public float waitTime = 0.5f;
-    private AudioSource audio;
+    private AudioSource _audio;
     // animate the game object from -1 to +1 and back
     float minimum;
     float maximum;
@@ -24,7 +24,7 @@ public class releaseSpikes : MonoBehaviour
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        _audio = GetComponent<AudioSource>();
         minimum = spike.transform.position.y;
         maximum = minimum + offset;
     }
@@ -90,7 +90,7 @@ public class releaseSpikes : MonoBehaviour
     IEnumerator<float> _ActivateTrap()
     {
         yield return Timing.WaitForSeconds(waitTime);
-        audio.Play();  
+        _audio.Play();  
         activateTrap = true;
     }
 }
