@@ -50,7 +50,7 @@ public class Launcher : Photon.PunBehaviour
 
         // #Critical
         // we don't join the lobby. There is no need to join a lobby to get the list of rooms.
-        PhotonNetwork.autoJoinLobby = true;
+        PhotonNetwork.autoJoinLobby = false;
 
         // #Critical
         // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
@@ -158,7 +158,7 @@ public class Launcher : Photon.PunBehaviour
 
     public void CreateRoom()
     {
-        PhotonNetwork.CreateRoom("cheese", new RoomOptions() { MaxPlayers = MaxPlayersPerRoom }, null);
+        PhotonNetwork.CreateRoom(roomName, new RoomOptions() { MaxPlayers = MaxPlayersPerRoom }, null);
     }
 
     public void SetRoomName(string value)

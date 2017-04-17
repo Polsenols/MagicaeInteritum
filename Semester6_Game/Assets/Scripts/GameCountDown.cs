@@ -7,8 +7,9 @@ using MovementEffects;
 public class GameCountDown : MonoBehaviour {
 
     public float countDownSeconds = 10;
+    public GameObject winState;
+    public Text winnerNameText;
     private PhotonView m_photonView;
-    public bool gameStarted = false;
     private Text countDownText;
 
     void Awake()
@@ -20,16 +21,11 @@ public class GameCountDown : MonoBehaviour {
         {
             countDownText = GameObject.Find("CountDown").GetComponent<Text>();
         }
-        Time.timeScale = 0;
-	}
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.U) && PhotonNetwork.isMasterClient)
+        if (PhotonNetwork.isMasterClient)
         {
             m_photonView.RPC("startCountDown", PhotonTargets.AllBuffered, PhotonNetwork.time);
         }
-    }
+	}
 	
 	[PunRPC]
     void startCountDown(double countDownTimeStart)
@@ -44,11 +40,32 @@ public class GameCountDown : MonoBehaviour {
         {
             yield return 0f;
             countDownSeconds -= Time.unscaledDeltaTime;
-            countDownText.text = ((int)countDownSeconds).ToString();
+            countDownText.text = "Time left: " + ((int)countDownSeconds).ToString();
         }
-        gameStarted = true;
-        Destroy(countDownText.gameObject);
-        Time.timeScale = 1;
+        if (PhotonNetwork.isMasterClient)
+        {
+            Debug.Log("Finding winner..");
+            int highestScorePlayerID = -1;
+            for (int i = 0; i < SpawnManager.Instance.Players.Count; i++)
+            {
+                if(highestScorePlayerID < SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().score)
+                {
+                    highestScorePlayerID = i + 1;
+                }
+            }
+            if (!SpawnManager.Instance.Players[highestScorePlayerID - 1].gameObject.activeSelf)
+            {
+                SpawnManager.Instance.Players[highestScorePlayerID - 1].gameObject.SetActive(true);
+            }
+            SpawnManager.Instance.Players[highestScorePlayerID-1].transform.localScale *= 5;
+            SpawnManager.Instance.Players[highestScorePlayerID-1].setHealth(1000000);
+            string playerName = SpawnManager.Instance.Players[highestScorePlayerID-1].GetComponent<CharacterManager_NET>().playerName;
+            winState.SetActive(true);
+            winnerNameText.text = playerName;
+            Debug.Log(playerName + "Won");
+            //Play fireworks!
+            //Text on screen
+        }
     }
 
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CharacterManager_NET : Photon.PunBehaviour {
 
@@ -31,7 +32,11 @@ public class CharacterManager_NET : Photon.PunBehaviour {
 
 	void Start () {
         StartScore();
-        m_PhotonView.RPC("AddPlayers", PhotonTargets.All);
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "Game")
+        {
+            m_PhotonView.RPC("AddPlayers", PhotonTargets.All);
+        }
         if (m_PhotonView.isMine)
         {
             GameObject go = (GameObject)Instantiate(audioFollower, transform.position, audioFollower.transform.rotation);

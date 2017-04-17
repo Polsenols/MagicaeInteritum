@@ -76,7 +76,7 @@ public class LobbyManager : Photon.PunBehaviour
             CharacterManager_NET charMan = player.GetComponent<CharacterManager_NET>();
             charMan.photonView.RPC("SetID", PhotonTargets.AllBuffered, PhotonNetwork.player.ID);
             charMan.photonView.RPC("SetName", PhotonTargets.AllBuffered, PhotonNetwork.player.NickName);
-            charMan.photonView.RPC("AddPlayers", PhotonTargets.AllBuffered);
+            //charMan.photonView.RPC("AddPlayers", PhotonTargets.AllBuffered);
         }
     }
 
