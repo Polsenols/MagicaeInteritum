@@ -17,9 +17,8 @@ public class TeleportFromShop : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") && other.GetComponent<PhotonView>().isMine)
         {
-            Debug.Log("Teleporting from Shop");
             other.transform.position = teleportTranformPoints[indexer];
             indexer++;
             if(indexer == 3)

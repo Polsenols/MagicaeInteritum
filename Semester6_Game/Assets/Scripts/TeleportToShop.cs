@@ -105,8 +105,7 @@ public class TeleportToShop : Photon.MonoBehaviour
     [PunRPC]
     void _stopPlayerRecall()
     {
-        if (m_photonView.isMine)
-        {
+
             StopCoroutine("_recall");
 
             if (myIndicator != null)
@@ -117,31 +116,30 @@ public class TeleportToShop : Photon.MonoBehaviour
             recallUI2.enabled = false;
 
             teleportingToShop = false;
-        }
     }
 
     IEnumerator _recall()
     {
+        t = 0;
+        teleportingToShop = true;
         if (m_photonView.isMine)
         {
-            t = 0;
-            teleportingToShop = true;
             _playerMovement.moving = false;
-            myIndicator = (GameObject)Instantiate(teleportIndicator, transform.position, Quaternion.identity);
-            Destroy(myIndicator, recallCastDuration);
-
-            recallUI3.enabled = true;
-            recallUI1.enabled = true;
-            recallUI2.enabled = true;
-
-            yield return new WaitForSeconds(recallCastDuration);
-
-            recallUI3.enabled = false;
-            recallUI1.enabled = false;
-            recallUI2.enabled = false;
-            transform.position = teleportVectorPoints[m_photonView.ownerId - 1];
-            teleportingToShop = false;
-            yield break;
         }
+        myIndicator = (GameObject)Instantiate(teleportIndicator, transform.position, Quaternion.identity);
+        Destroy(myIndicator, recallCastDuration);
+
+        recallUI3.enabled = true;
+        recallUI1.enabled = true;
+        recallUI2.enabled = true;
+
+        yield return new WaitForSeconds(recallCastDuration);
+
+        recallUI3.enabled = false;
+        recallUI1.enabled = false;
+        recallUI2.enabled = false;
+        transform.position = teleportVectorPoints[m_photonView.ownerId - 1];
+        teleportingToShop = false;
+        yield break;
     }
 }
