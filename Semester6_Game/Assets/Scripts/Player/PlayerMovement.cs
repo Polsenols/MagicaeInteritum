@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
     private PhotonView m_PhotonView;
     private MousePositionScript mouseController;
     private Animator anim;
+    private MoveIndicatorController moveIndicator;
+
     public float movementSpeed = 15f;
     public float rotationSpeed = 10f;
     public float distanceToStop;
@@ -38,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         m_PhotonView = GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
         _teleportToShop = GetComponent<TeleportToShop>();
+        moveIndicator = GetComponent<MoveIndicatorController>();
     }
 
     void Start()
@@ -72,6 +75,9 @@ public class PlayerMovement : MonoBehaviour
             targetPosRotation = targetPosition;
             moving = true;
             anim.SetBool("Cast", false);
+
+            //Update MoveIndicator
+            moveIndicator.UpdateMoveIndicator(targetPosition);
         }
         #endregion
 
