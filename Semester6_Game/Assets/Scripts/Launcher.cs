@@ -195,30 +195,6 @@ public class Launcher : Photon.PunBehaviour
 
     #endregion
 
-   /* void OnGUI()
-    {
-        if (!PhotonNetwork.connected)
-        {
-            GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
-        }
-        else if (PhotonNetwork.room == null)
-        {
-            // Create Room
-            if (GUI.Button(new Rect(100, 100, 250, 100), "Start Server"))
-                CreateRoom();
-
-            // Join Room
-            if (roomsList != null)
-            {
-                for (int i = 0; i < roomsList.Length; i++)
-                {
-                    if (GUI.Button(new Rect(100, 250 + (110 * i), 250, 100), "Join " + roomsList[i].Name))
-                        PhotonNetwork.JoinRoom(roomsList[i].Name);
-                }
-            }
-        }
-    }*/
-
     void Update()
     {
         if (PhotonNetwork.room == null)
@@ -229,14 +205,14 @@ public class Launcher : Photon.PunBehaviour
                 {
                     if (roomsList.Length > i)
                     {
-                        roomButton[i].enabled = true;
+                        roomButton[i].interactable = true;
                         roomText[i].text = roomsList[i].Name;
                     }
                 }
                 else
                 {
-                    roomButton[i].enabled = false;
-                    roomText[i].text = "";
+                    roomButton[i].interactable = false;
+                    roomText[i].text = "Empty";
                 }
             }
         }
