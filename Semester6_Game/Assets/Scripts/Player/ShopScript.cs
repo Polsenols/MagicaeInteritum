@@ -10,31 +10,31 @@ public class ShopScript : MonoBehaviour
     /* Spell Index Lookup: (Update to fit new spells (11th of april) - in correct order)
     -----------
     Elemental spells:
-    Fireball
-    Meteor
-    Earth Pillar
-    Ice Spikes
-    Freeze Spikes
+    Fireball 0
+    Meteor 1
+    Earth Pillar 2
+    Ice Spikes 3
+    Freeze Spikes 4
     -----------
     Kinematic spells:
-    Shield
-    Gravity orb
-    Bouncer
-    Force wall
-    Force pull
+    Shield 5
+    Gravity orb 6
+    Bouncer 7
+    Force wall 8
+    Force pull 9
     -----------
     Dark spells:
-    Poison Arrow
-    Gas Cloud
-    Life Steal
-    Place Swapper
-    Curse
+    Poison Arrow 10
+    Gas Cloud 11 
+    Life Steal 12
+    Place Swapper 13
+    Curse 14
     ----------- 
     */
 
     // Array to determine the cost of a spell at a given index
     private int[] spellCostArray = new int[15]
-    { 50, 100, 50, 75, 75, 50, 50, 100, 75, 75, 50, 100, 75, 75, 50 };
+    { 50, 80, 50, 75, 75, 50, 70, 50, 65, 75, 50, 85, 55, 50, 60 };
 
     // Array to control whether the player got the spell; false = dont have spell; true = players have bought the spell
     // Check this bool array to determine whether a player have a spell so he may use it.
@@ -243,8 +243,8 @@ public class ShopScript : MonoBehaviour
         {
             spellIndexer = spellIndexLocator;
             string setSpellDescipTxt = "Fire Ball: Shoots a ball of fire in a specific" +
-                System.Environment.NewLine + "direction, and explodes upon impact";
-            SpellTooltipInfo("Fire Ball", setSpellDescipTxt, spellCostArray[0], 2, 10, 4, 0);
+                System.Environment.NewLine + "direction, and explodes and knocks back on impact";
+            SpellTooltipInfo("Fire Ball", setSpellDescipTxt, spellCostArray[0], 4, 15, 0, 0);
         }
     }
 
@@ -254,8 +254,8 @@ public class ShopScript : MonoBehaviour
         {
             spellIndexer = spellIndexLocator;
             string setSpellDescipTxt = "Meteor: Hurls a massive meteor from the sky," +
-                System.Environment.NewLine + "which explodes in a large field on impact";
-            SpellTooltipInfo("Meteor", setSpellDescipTxt, spellCostArray[1], 10, 30, 10, 0);
+                System.Environment.NewLine + "which explodes and knocks back on impact";
+            SpellTooltipInfo("Meteor", setSpellDescipTxt, spellCostArray[1], 8, 35, 2, 0);
         }
     }
 
@@ -265,8 +265,8 @@ public class ShopScript : MonoBehaviour
         {
             spellIndexer = spellIndexLocator;
             string setSpellDescipTxt = "Rock Pillar: Rock pillars emerge in a specific" +
-                System.Environment.NewLine + "direction and damages + knockbacks on impact";
-            SpellTooltipInfo("Rock Pillar", setSpellDescipTxt, spellCostArray[2], 3, 7, 0, 0);
+                System.Environment.NewLine + "direction and damages and knockbacks on impact";
+            SpellTooltipInfo("Rock Pillar", setSpellDescipTxt, spellCostArray[2], 3, 10, 0, 0);
         }
     }
 
@@ -275,9 +275,9 @@ public class ShopScript : MonoBehaviour
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Ice Spike: Shoots an ice spike in a specific" +
-                System.Environment.NewLine + "direction and explodes in pieces upon impact";
-            SpellTooltipInfo("Ice Spike", setSpellDescipTxt, spellCostArray[3], 5, 15, 5, 0);
+            string setSpellDescipTxt = "Ice Spike: Summons ice spikes from the ground" +
+                System.Environment.NewLine + "in a selected area and freezes players after 1.7 seconds";
+            SpellTooltipInfo("Ice Spike", setSpellDescipTxt, spellCostArray[3], 5, 25, 1.7f, 2.5f);
         }
     }
 
@@ -287,8 +287,8 @@ public class ShopScript : MonoBehaviour
         {
             spellIndexer = spellIndexLocator;
             string setSpellDescipTxt = "Freeze Spike: Hurls a cluster of frostbolts" +
-                System.Environment.NewLine + "that freezes and damanges on impact";
-            SpellTooltipInfo("Freeze Spike", setSpellDescipTxt, spellCostArray[4], 10, 2, 10, 5);
+                System.Environment.NewLine + "that freezes and damages on impact";
+            SpellTooltipInfo("Freeze Spike", setSpellDescipTxt, spellCostArray[4], 6, 10, 0, 1.5f);
         }
     }
     #endregion
@@ -300,8 +300,8 @@ public class ShopScript : MonoBehaviour
         {
             spellIndexer = spellIndexLocator;
             string setSpellDescipTxt = "Reflective Shield: Creates a shield around you that " +
-                System.Environment.NewLine + "reflects spells and makes you immune";
-            SpellTooltipInfo("Reflective Shield", setSpellDescipTxt, spellCostArray[5], 10, 0, 0, 2);
+                System.Environment.NewLine + "reflects projectiles";
+            SpellTooltipInfo("Reflective Shield", setSpellDescipTxt, spellCostArray[5], 14, 0, 0, 5);
         }
     }
     public void TooltipOrbOfGravity(int spellIndexLocator)
@@ -309,9 +309,10 @@ public class ShopScript : MonoBehaviour
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Gravity Orb: create a static gravity orb that pulls in " +
-                System.Environment.NewLine + "your enemies and shoots them out afterwards";
-            SpellTooltipInfo("Gravity Orb", setSpellDescipTxt, spellCostArray[6], 10, 0, 0, 3);
+            string setSpellDescipTxt = "Gravity Orb: create a moving gravity orb that pulls in " +
+                System.Environment.NewLine + "nearby enemies along its path and continuosly" +
+                System.Environment.NewLine + " damages players per 0.5 seconds";
+            SpellTooltipInfo("Gravity Orb", setSpellDescipTxt, spellCostArray[6], 10, 2, 0, 3);
         }
     }
 
@@ -321,8 +322,8 @@ public class ShopScript : MonoBehaviour
         {
             spellIndexer = spellIndexLocator;
             string setSpellDescipTxt = "Bouncer: Shoots a projectile that bounces" +
-                System.Environment.NewLine + "between enemies upon impact on each";
-            SpellTooltipInfo("Bouncer", setSpellDescipTxt, spellCostArray[7], 10, 0, 0, 0);
+                System.Environment.NewLine + "between enemies on impact on each bounce";
+            SpellTooltipInfo("Bouncer", setSpellDescipTxt, spellCostArray[7], 3, 10, 0, 0);
         }
     }
 
@@ -332,9 +333,10 @@ public class ShopScript : MonoBehaviour
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Force Wall: shoots a kinematic wall that " +
-                System.Environment.NewLine + "forces enemies in a specific direction";
-            SpellTooltipInfo("Force Wall", setSpellDescipTxt, spellCostArray[8], 5, 10, 3, 0);
+            string setSpellDescipTxt = "Force Wall: shoots a moving force wall that " +
+                System.Environment.NewLine + "pushes enemies in a specific direction" +
+                System.Environment.NewLine + "and blocks projectiles";
+            SpellTooltipInfo("Force Wall", setSpellDescipTxt, spellCostArray[8], 6, 0, 0, 2);
         }
     }
 
@@ -343,9 +345,9 @@ public class ShopScript : MonoBehaviour
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Force Pull: Draws enemies in along the line " +
-                System.Environment.NewLine + "forcing them in a specific direction";
-            SpellTooltipInfo("Force Pull", setSpellDescipTxt, spellCostArray[9], 5, 20, 0, 0);
+            string setSpellDescipTxt = "Force Pull: Continuously damages and drags " +
+                System.Environment.NewLine + "a player toward you on impact";
+            SpellTooltipInfo("Force Pull", setSpellDescipTxt, spellCostArray[9], 3.5f, 5, 0, 3);
         }
     }
     #endregion
@@ -357,8 +359,8 @@ public class ShopScript : MonoBehaviour
         {
             spellIndexer = spellIndexLocator;
             string setSpellDescipTxt = "Poison Arrow: Shoots a poison arrow that " +
-                System.Environment.NewLine + "slows and damanges the enemy over time";
-            SpellTooltipInfo("Poison Bolt", setSpellDescipTxt, spellCostArray[10], 4, 20, 0, 0);
+                System.Environment.NewLine + "slows and damages the enemy over time";
+            SpellTooltipInfo("Poison Bolt", setSpellDescipTxt, spellCostArray[10], 6, 30, 0, 0);
         }
     }
 
@@ -367,9 +369,10 @@ public class ShopScript : MonoBehaviour
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Gas Cloud: summons a gas cloud that moves in " +
-                System.Environment.NewLine + "a direction and damages anyone who enters";
-            SpellTooltipInfo("Gas Cloud", setSpellDescipTxt, spellCostArray[11], 10, 20, 5, 5);
+            string setSpellDescipTxt = "Gas Cloud: summon a gas cloud in a direction " +
+                System.Environment.NewLine + "that slowly moves and continuously damages" +
+            System.Environment.NewLine + " nearby players";
+        SpellTooltipInfo("Gas Cloud", setSpellDescipTxt, spellCostArray[11], 12, 0.9f, 1.5f, 5);
         }
     }
 
@@ -378,9 +381,9 @@ public class ShopScript : MonoBehaviour
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Life Steal: shoots a life stealing skull that " +
-                System.Environment.NewLine + "will seek enemies and steal life on impact";
-            SpellTooltipInfo("Life Steal", setSpellDescipTxt, spellCostArray[12], 10, 15, 0, 5);
+            string setSpellDescipTxt = "Life Steal: shoots a skull in a direction " +
+                System.Environment.NewLine + "that steals life on impact";
+            SpellTooltipInfo("Life Steal", setSpellDescipTxt, spellCostArray[12], 4, 20, 0, 0);
         }
     }
 
@@ -391,7 +394,7 @@ public class ShopScript : MonoBehaviour
             spellIndexer = spellIndexLocator;
             string setSpellDescipTxt = "Place Swapper: shoots a projectile that will " +
                 System.Environment.NewLine + "make you swap position with another player";
-            SpellTooltipInfo("Place Swapper", setSpellDescipTxt, spellCostArray[13], 25, 2, 0, 60);
+            SpellTooltipInfo("Place Swapper", setSpellDescipTxt, spellCostArray[13], 4, 12.5f, 0, 0);
         }
     }
 
@@ -400,9 +403,9 @@ public class ShopScript : MonoBehaviour
         if (!buyingSpells)
         {
             spellIndexer = spellIndexLocator;
-            string setSpellDescipTxt = "Curse: places a curse on an enemy player " +
-                System.Environment.NewLine + "that increases damage taken from next spell";
-            SpellTooltipInfo("Curse", setSpellDescipTxt, spellCostArray[14], 20, 10, 0, 20);
+            string setSpellDescipTxt = "Curse: places a curse in an area " +
+                System.Environment.NewLine + "that increases affected players damage taken";
+            SpellTooltipInfo("Curse", setSpellDescipTxt, spellCostArray[14], 12, 0, 1.7f, 6);
         }
     }
 

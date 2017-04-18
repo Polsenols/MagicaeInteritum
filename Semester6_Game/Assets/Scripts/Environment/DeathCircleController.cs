@@ -11,7 +11,7 @@ public class DeathCircleController : MonoBehaviour
     public Renderer CircleEdge;
     public float fadeInDampenSpeed = 1;
     public float fadeOutDampenSpeed = 1;
-    public float scaleDampen = 1;
+    public float scaleSpeed = 1;
     public float scaleTarget = 10;
     public float lightIntensityTarget = 0.3f;
     public float moveSpeed = 5;
@@ -188,7 +188,7 @@ public class DeathCircleController : MonoBehaviour
 
     private void ScaleIn()
     {
-        circleObj.localScale = Vector3.MoveTowards(circleObj.localScale, new Vector3(scaleTarget, scaleTarget, scaleTarget), Time.deltaTime);
+        circleObj.localScale = Vector3.MoveTowards(circleObj.localScale, new Vector3(scaleTarget, scaleTarget, scaleTarget), Time.deltaTime * scaleSpeed);
         SpawnManager.Instance.SetSpawnRadius(circleObj.localScale.x);    
         if (circleObj.localScale.x < scaleTarget + 0.1f && scaleInComplete == false)
         {

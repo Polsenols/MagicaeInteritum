@@ -32,6 +32,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     public int scoreKillAmount = 10;
     public GameObject iceBlock, curseMarker;
     private LineRenderer myLine;
+    public SkinnedMeshRenderer render;
     TeleportToShop _teleportToShop;
 
     void Awake()
@@ -174,6 +175,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         timeStamp1 = Time.time + deathTimer;
         healthbarUI.SetActive(true);
         this.gameObject.SetActive(true);
+        Timing.RunCoroutine(_SetInvulColor());
         UnfreezePlayer();
         UnCursePlayer();
         myLine.enabled = false;
@@ -182,7 +184,18 @@ public class PlayerHealth_NET : Photon.PunBehaviour
         //Timing.RunCoroutine(_Invul(3.0f));
     }
 
-
+    private IEnumerator<float> _SetInvulColor()
+    {
+        for (int i = 0; i < render.materials.Length; i++)
+        {
+            render.materials[i].color = Color.black;
+        }
+        yield return Timing.WaitForSeconds(deathTimer);
+        for (int i = 0; i < render.materials.Length; i++)
+        {
+            render.materials[i].color = Color.white;
+        }
+    }
 
     private IEnumerator<float> _Invul(float invul_time)
     {
