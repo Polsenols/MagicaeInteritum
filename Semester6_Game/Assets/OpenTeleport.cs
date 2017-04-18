@@ -15,9 +15,8 @@ public class OpenTeleport : MonoBehaviour
     void Start()
     {
         text = GetComponent<TextMesh>();
-        currentTime = Time.time;
-        startTime = Time.time + openTeleportDelay;
-        Debug.Log(startTime);
+        currentTime = 0;
+        startTime = openTeleportDelay;
     }
 
 

@@ -20,10 +20,7 @@ public class GameCountDown : MonoBehaviour
     }
     void Start()
     {
-        if (m_photonView.isMine)
-        {
-            countDownText = GameObject.Find("CountDown").GetComponent<Text>();
-        }
+        countDownText = GameObject.Find("CountDown").GetComponent<Text>();
         if (PhotonNetwork.isMasterClient)
         {
             m_photonView.RPC("startCountDown", PhotonTargets.AllBuffered, PhotonNetwork.time);
