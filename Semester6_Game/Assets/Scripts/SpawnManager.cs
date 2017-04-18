@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class SpawnManager : SingleTon<SpawnManager> {
@@ -14,6 +15,8 @@ public class SpawnManager : SingleTon<SpawnManager> {
     public Light mainLight;
     public List<PlayerHealth_NET> Players = new List<PlayerHealth_NET>();
     public Transform[] spawnPoints;
+    public GameObject WinState;
+
     private float originalSpawnRadius;
 
     void Start()

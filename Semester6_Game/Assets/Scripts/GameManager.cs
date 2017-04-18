@@ -12,6 +12,7 @@ public class GameManager : Photon.PunBehaviour
     [Tooltip("The prefab to use for representing the player")]
     public GameObject playerPrefab;
     public Transform[] spawnPos;
+
     public Texture2D mouseTexture;
     #region Photon Messages
 
@@ -101,9 +102,6 @@ public class GameManager : Photon.PunBehaviour
         if (PhotonNetwork.isMasterClient)
         {
             Debug.Log("OnPhotonPlayerConnected isMasterClient " + PhotonNetwork.isMasterClient); // called before OnPhotonPlayerDisconnected
-
-
-            LoadArena();
         }
     }
 

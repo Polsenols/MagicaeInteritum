@@ -13,16 +13,9 @@ public class GameCountDown : MonoBehaviour
     private PhotonView m_photonView;
     private Text countDownText;
     private List<PlayerHealth_NET> Player = new List<PlayerHealth_NET>();
-    private GameObject Canvas;
 
     void Awake()
     {
-        Canvas = GameObject.Find("Canvas");
-        winState = GameObject.Find("WinState");
-        if (winState != null)
-        {
-            winState.SetActive(false);
-        }
         m_photonView = GetComponent<PhotonView>();
     }
     void Start()
@@ -52,12 +45,14 @@ public class GameCountDown : MonoBehaviour
     private int GetWinner()
     {
         int highestScorePlayerID = -1;
+        int highestScore = -1;
         for (int i = 0; i < SpawnManager.Instance.Players.Count; i++)
         {
             Debug.Log(SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().score);
-            if (highestScorePlayerID < SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().score)
+            if (highestScore < SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().score)
             {
                 highestScorePlayerID = SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().playerID;
+                highestScore = SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().score;
             }
         }
         return highestScorePlayerID;
@@ -89,13 +84,11 @@ public class GameCountDown : MonoBehaviour
                 SpawnManager.Instance.Players[i].setHealth(1000000);
                 SpawnManager.Instance.Players[i].GetComponent<Animator>().SetBool("Won", true);
                 string playerName = SpawnManager.Instance.Players[i].GetComponent<CharacterManager_NET>().playerName;
-                //go.GetComponent<Image>().rectTransform.position = UIPos;
-                winState.SetActive(true);
-                winnerNameText = winState.GetComponentInChildren<Text>();
+                SpawnManager.Instance.WinState.SetActive(true);
+                winnerNameText = SpawnManager.Instance.WinState.GetComponentInChildren<Text>();
                 winnerNameText.text = playerName;
             }
         }
-
     }
 
 }
