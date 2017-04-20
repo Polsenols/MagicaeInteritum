@@ -42,6 +42,13 @@ public class ForceWallController : MonoBehaviour
 
     public void Impact(Collider other)
     {
+        if (other.CompareTag("Ability"))
+        {
+            SpellData spell = other.GetComponent<SpellData>();
+            spell.owner.SendAbilityHit(spell.InstantiateID(), true, true);
+            spell.AbilityImpactEffect();
+            Destroy(other.gameObject);
+        }
         if (other.CompareTag("Environmental"))
         {
             spellData.owner.SendAbilityHit(spellData.InstantiateID(), true, true);

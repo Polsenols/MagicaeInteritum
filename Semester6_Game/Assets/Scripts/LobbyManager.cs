@@ -15,6 +15,8 @@ public class LobbyManager : Photon.PunBehaviour
     public Texture2D mouseTexture;
     public Button startBtn;
     public Text waitText;
+
+    private int indexer = 1;
     #region Photon Messages
 
 
@@ -56,6 +58,20 @@ public class LobbyManager : Photon.PunBehaviour
     Vector3 SpawnPos()
     {
         return spawnPos[PhotonNetwork.player.ID - 1].position;
+    }
+
+    void OnPhotonPlayerConnected(PhotonPlayer player)
+    {
+        if (PhotonNetwork.isMasterClient)
+        {
+            indexer++;
+            Debug.Log(indexer);
+            if (indexer >= 5)
+            {
+                PhotonNetwork.room.IsOpen = false;
+                PhotonNetwork.room.IsVisible = false;
+            }
+        }
     }
 
     public void StartGame()

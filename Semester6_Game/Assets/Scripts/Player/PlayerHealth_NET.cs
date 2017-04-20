@@ -135,6 +135,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     [PunRPC]
     void RespawnOverride(Vector3 hitPos, float force)
     {
+        lastAttackedByPlayer = null;
         GameObject go = (GameObject)Instantiate(ragdoll, transform.position, ragdoll.transform.rotation);
         go.GetComponent<RagdollControl>().PushRagdoll(hitPos, force * 1000f);
         Timing.RunCoroutine(_Die(2.0f));
@@ -143,6 +144,7 @@ public class PlayerHealth_NET : Photon.PunBehaviour
     [PunRPC]
     public void Respawn()
     {
+        lastAttackedByPlayer = null;
         GameObject go = (GameObject)Instantiate(ragdoll, transform.position, ragdoll.transform.rotation);
         go.GetComponent<RagdollControl>().PushRagdoll(transform.position, 5.0f);
         Timing.RunCoroutine(_Die(2.0f));
